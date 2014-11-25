@@ -59,5 +59,7 @@ var BookingSchema = new mongoose.Schema({
     regDate : Date
 });
 
-mongoose.model('User', usersSchema, "testusers");
+mongoose.model('Guest', GuestSchema, "guests");
+mongoose.model('Room', RoomSchema, "rooms");
+mongoose.model('Booking', BookingSchema, "bookings");
 
