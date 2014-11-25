@@ -35,11 +35,28 @@ process.on('SIGINT', function () {
 
 /** User SCHEMA **/
 /** Replace this Schema with your own(s) **/
-var usersSchema = new mongoose.Schema({
-    userName: String,
-    email: {type: String, unique: true},
-    pw: String,
-    created: {type: Date, default: new Date()}
+var GuestSchema = new mongoose.Schema({
+    firstName : String,
+    lastName : String,
+    address : String,
+    country : String,
+    phone : String,
+    email: String,
+    dateOfBirth : Date,
+    booking : Number
+});
+
+var RoomSchema = new mongoose.Schema({
+    _id : Number,
+    roomSize : Number
+});
+
+var BookingSchema = new mongoose.Schema({
+    _id : Number,
+    startDate : Date,
+    endDate : Date,
+    roomId : Number,
+    regDate : Date
 });
 
 mongoose.model('User', usersSchema, "testusers");
