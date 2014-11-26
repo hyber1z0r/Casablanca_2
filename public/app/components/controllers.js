@@ -1,6 +1,6 @@
-angular.module('myAppRename.controllers', []).
+angular.module('casablanca.controllers', []).
     controller('AppCtrl', function ($scope) {
-        $scope.title = "Demo Angular, Express and MongoDb";
+        $scope.title = "Casablanca";
     })
     .controller('MyCtrl2', function ($scope) {
         // write MyCtrl2 here

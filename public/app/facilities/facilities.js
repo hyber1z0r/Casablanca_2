@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myAppRename.facilities', ['ngRoute'])
+angular.module('casablanca.facilities', ['ngRoute'])
 
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/facilities', {

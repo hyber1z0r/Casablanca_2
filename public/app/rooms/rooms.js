@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myAppRename.rooms', ['ngRoute'])
+angular.module('casablanca.rooms', ['ngRoute'])
 
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/rooms', {

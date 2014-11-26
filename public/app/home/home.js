@@ -1,9 +1,9 @@
 'use strict';
 
-angular.module('myAppRename.home', ['ngRoute'])
+angular.module('casablanca.home', ['ngRoute'])
 
     .config(['$routeProvider', function ($routeProvider) {
-        $routeProvider.when('/home', {
+        $routeProvider.when('/', {
             templateUrl: '/app/home/home.html',
             controller: 'HomeCtrl'
         });

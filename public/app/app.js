@@ -1,17 +1,18 @@
 'use strict';
 
 // Declare app level module which depends on views, and components
-angular.module('myAppRename', [
+angular.module('casablanca', [
     'ngRoute',
-    'myAppRename.controllers',
-    'myAppRename.directives',
-    'myAppRename.services',
-    'myAppRename.factories',
-    'myAppRename.filters',
-    'myAppRename.home',
-    'myAppRename.rooms',
-    'myAppRename.facilities'
+    'casablanca.controllers',
+    'casablanca.directives',
+    'casablanca.services',
+    'casablanca.factories',
+    'casablanca.filters',
+    'casablanca.home',
+    'casablanca.rooms',
+    'casablanca.facilities',
+    'casablanca.reservation'
 ]).
     config(['$routeProvider', function ($routeProvider) {
-        $routeProvider.otherwise({redirectTo: '/home'});
+        $routeProvider.otherwise({redirectTo: '/'});
     }]);

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="myAppRename" ng-controller="AppCtrl">
+<html ng-app="casablanca" ng-controller="AppCtrl">
 <head>
     <meta charset="utf8"/>
     <title>{{title}}</title>
@@ -8,7 +8,7 @@
 
 
 
-<body background="images/frontpagebg.jpg" class="backgroundpic">
+<body background="images/frontpagebg.jpg" class="backgroundpic" ng-cloak="" >
 
 <div ng-controller="AppCtrl">
     <nav class="navbar navbar-fixed-top navbar-inverse" role="navigation" id="menubar">
@@ -26,9 +26,9 @@
                 <ul class="nav navbar-nav">
                     <li><a class="active menutext" href="#/home">Home</a></li>
                     <li><a href="#/rooms" class="menutext">Rooms</a></li>
-                    <li><a href="#/view3" class="menutext">Facilities</a></li>
-                    <li><a href="#/view2" class="menutext">Reservation</a></li>
-                    <li><a href="#/view2" class="menutext">Login</a></li>
+                    <li><a href="#/facilities" class="menutext">Facilities</a></li>
+                    <li><a href="#/reservation" class="menutext">Reservation</a></li>
+                    <li><a href="#/login" class="menutext">Login</a></li>
                 </ul>
             </div>
         </div>
@@ -47,6 +47,7 @@
 <script src="app/app.js"></script>
 <script src="app/home/home.js"></script>
 <script src="app/rooms/rooms.js"></script>
+<script src="app/reservation/reservation.js"></script>
 <script src="app/facilities/facilities.js"></script>
 <script src="app/components/controllers.js"></script>
 <script src="app/components/directives.js"></script>
