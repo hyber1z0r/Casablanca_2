@@ -1,2 +1,3 @@
-var mongoose = require('mongoose');
-var wiki = mongoose.model('wiki');
+var bookinglayer = require('./domain/bookinglayer');
+
+module.exports.getBooked = bookinglayer.getBooked;
