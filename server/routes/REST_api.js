@@ -5,12 +5,11 @@ var async = require('async');
 
 router.post('/freeRooms', function(req, res) {
     if (typeof global.mongo_error !== "undefined") return res.status(500).end('Error: ' + global.mongo_error);
-
     var roomIDs = [];
     var rooms = [];
     async.series([
         function (callback) {
-            datalayer.getBooked(req.body.start, req.body.end, function (err, roomsTaken) {
+            datalayer.getBooked(new Date(req.body.start), new Date(req.body.end), function (err, roomsTaken) {
                 if (err) return callback(err);
                 roomIDs = roomsTaken;
                 callback();

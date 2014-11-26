@@ -7,7 +7,7 @@ if (typeof global.TEST_DATABASE != 'undefined') {
     dbURI = global.TEST_DATABASE;
 }
 else {
-    dbURI = 'mongodb://localhost/testdb';
+    dbURI = 'mongodb://localhost/casablanca';
 }
 
 mongoose.connect(dbURI);
