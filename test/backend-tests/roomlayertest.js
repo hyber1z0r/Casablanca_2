@@ -32,8 +32,7 @@ describe('Roomlayer', function () {
             });
         });
         it('Should return 0 rooms', function (done) {
-            var roomIds = []; // There's 4 booked rooms and 5 in total with size 1
-            // so it should display 1 room
+            var roomIds = []; // There's no booked rooms and no size chosen, so it should return nothing.
             roomlayer.getFreeRooms(roomIds, '', function (err, documents) {
                 should.not.exist(err);
                 documents.length.should.equal(0);
