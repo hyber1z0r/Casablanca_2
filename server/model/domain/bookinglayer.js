@@ -1,18 +1,17 @@
 var mongoose = require('mongoose');
 var booking = mongoose.model('Booking');
 
-function get(start, slut, callback) {
-// a = parameter der kommer ind - startdato
-// b = parameter der kommer ind - slutdato
+function getBooked(start, slut, callback) {
+// start = parameter der kommer ind - startdato
+// slut = parameter der kommer ind - slutdato
 // startDate = property i databasen
 // endDate = property i databasen
-
     booking.find({
-        $and: [
-            { $or: [{startDate: {$gte: start}}, {endDate: {$lte: slut}}, {endDate: {$gte: start}}] },
-            { $or: [{startDate: {$gte: start}}, {startDate: {$lte: slut}}, {endDate: {$gte: slut}} ] },
-            { $or: [{startDate: {$lte: start}}, {endDate: {$gte: slut}}] },
-            { $or: [{startDate: {$gte: start}}, {endDate: {$lte: slut}}] }
+        $or: [
+            {$and: [{startDate: {$lte: start}}, {endDate: {$lte: slut}}, {endDate: {$gte: start}}]},
+            {$and: [{startDate: {$gte: start}}, {startDate: {$lte: slut}}, {endDate: {$gte: slut}}]},
+            {$and: [{startDate: {$lte: start}}, {endDate: {$gte: slut}}]},
+            {$and: [{startDate: {$gte: start}}, {endDate: {$lte: slut}}]}
         ]
     }, function (err, results) {
         if (err) {
@@ -23,3 +22,5 @@ function get(start, slut, callback) {
         }
     })
 }
+
+module.exports.getBooked = getBooked;

@@ -33,8 +33,7 @@ process.on('SIGINT', function () {
 });
 
 
-/** User SCHEMA **/
-/** Replace this Schema with your own(s) **/
+/* GuestSchema */
 var GuestSchema = new mongoose.Schema({
     firstName : String,
     lastName : String,
@@ -46,11 +45,13 @@ var GuestSchema = new mongoose.Schema({
     booking : Number
 });
 
+/* RoomSchema */
 var RoomSchema = new mongoose.Schema({
     _id : Number,
     roomSize : Number
 });
 
+/* BookingSchema */
 var BookingSchema = new mongoose.Schema({
     _id : Number,
     startDate : Date,
