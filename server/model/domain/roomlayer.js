@@ -1,11 +1,11 @@
 var mongoose = require('mongoose');
 var room = mongoose.model('Room');
 
-function getFreeRooms(ids, callback) {
+function getFreeRooms(ids, size, callback) {
     room.find({
         $and: [
             {
-                id: {
+                _id: {
                     $not: {$in: ids}
                 }
             },
