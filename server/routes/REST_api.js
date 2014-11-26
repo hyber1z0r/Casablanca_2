@@ -1,23 +1,31 @@
 var express = require('express');
 var router = express.Router();
+var datalayer = require('../model/datalayer');
+var async = require('async');
 
-var mongoose = require('mongoose');
+router.post('/freeRooms', function(req, res) {
+    if (typeof global.mongo_error !== "undefined") return res.status(500).end('Error: ' + global.mongo_error);
 
-/* GET A User From The DataBase */
-router.get('/user', function (req, res) {
-    if (typeof global.mongo_error !== "undefined") {
-        res.status(500);
-        res.end("Error: " + global.mongo_error + " To see a list of users here, make sure you have started the database and set up some test users (see model-->db.js for instructions)");
-        return;
-    }
-    user.find({}, function (err, users) {
-        if (err) {
-            res.status(err.status || 400);
-            res.end(JSON.stringify({error: err.toString()}));
-            return;
+    var roomIDs = [];
+    var rooms = [];
+    async.series([
+        function (callback) {
+            datalayer.getBooked(req.body.start, req.body.end, function (err, roomsTaken) {
+                if (err) return callback(err);
+                roomIDs = roomsTaken;
+                callback();
+            })
+        },
+        function (callback) {
+            datalayer.getFreeRooms(roomIDs, req.body.roomsize, function (err, freeRooms) {
+                if (err) return callback(err);
+                rooms = freeRooms;
+                callback();
+            })
         }
-        res.header("Content-type", "application/json");
-        res.end(JSON.stringify(users));
+    ], function (err) {
+        if(err) return res.status(500).end('Error');
+        res.json(rooms);
     });
 });
 
