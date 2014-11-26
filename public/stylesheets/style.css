@@ -8,10 +8,20 @@ a {
 }
 
 #menubar {
-    background-color: #fffff9;
-    opacity: 0.8;
+    background: rgba(255,255,255,0.4);
     padding: 20px;
     padding-left: 450px;
+}
+
+#navbar > ul > li> a {
+    color: #0c958f;
+    border-color: #000000;
+    opacity: 1;
+    text-shadow: 1px 1px 1px rgba(255,255,255,0.8);
+    border: #080808;
+    font-family: Georgia, serif;
+    font-size: 20px;
+    font-style: oblique;
 }
 
 div.transbox {
@@ -20,7 +30,7 @@ div.transbox {
     margin: 20px 100px;
     background-color: #ffffff;
     border: 1px solid black;
-    opacity: 0.6;
+    opacity: 1;
     filter: alpha(opacity=60); /* For IE8 and earlier */
 }
 
@@ -28,4 +38,27 @@ div.transbox p {
     margin: 30px 40px;
     font-weight: bold;
     color: #000000;
+}
+
+.backgroundpic {
+    width: 1000px;
+    height: 450px;
+    padding-right: 350px;
+}
+
+#businesslounge, #dinningroom, #tenniscourt {
+    height: 450px;
+}
+
+@font-face {
+    font-family: myFirstFont;
+    src: url(http://www.1001freefonts.com/sandrino.font);
+}
+
+#hometext {
+    font-family: myFirstFont;
+
+    color:#000000;
+
+
 }

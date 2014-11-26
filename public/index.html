@@ -3,10 +3,12 @@
 <head>
     <meta charset="utf8"/>
     <title>{{title}}</title>
-    <link rel="stylesheet" href="/stylesheets/style.css"/>
     <link rel="stylesheet" href="../vendor/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="/stylesheets/style.css"/>
 
-<body>
+
+
+<body background="images/frontpagebg.jpg" class="backgroundpic">
 
 <div ng-controller="AppCtrl">
     <nav class="navbar navbar-fixed-top navbar-inverse" role="navigation" id="menubar">
@@ -22,22 +24,26 @@
             </div>
             <div id="navbar" class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li><a class="active" href="#/view1" class="home">Home</a></li>
-                    <li><a href="#/view2" class="rooms">Rooms</a></li>
-                    <li><a href="#/view3" class="facilities">Facilities</a></li>
-                    <li><a href="#/view2" class="reservation">Reservation</a></li>
-                    <li><a href="#/view2" class="login">Login</a></li>
+                    <li><a class="active menutext" href="#/home">Home</a></li>
+                    <li><a href="#/rooms" class="menutext">Rooms</a></li>
+                    <li><a href="#/view3" class="menutext">Facilities</a></li>
+                    <li><a href="#/view2" class="menutext">Reservation</a></li>
+                    <li><a href="#/view2" class="menutext">Login</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
     <div class="container">
+
         <div ng-view="ng-view"></div>
     </div>
 </div>
+
 <script src="vendor/angular/angular.js"></script>
 <script src="vendor/angular-route/angular-route.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="vendor/bootstrap/dist/js/bootstrap.js"></script>
 <script src="app/app.js"></script>
 <script src="app/home/home.js"></script>
 <script src="app/rooms/rooms.js"></script>
