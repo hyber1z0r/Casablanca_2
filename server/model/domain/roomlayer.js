@@ -21,3 +21,4 @@ function getFreeRooms(ids, callback) {
     });
 }
 
+module.exports.getFreeRooms = getFreeRooms;
