@@ -9,7 +9,7 @@ function getBooked(start, slut, callback) {
             {$and: [{startDate: {$lte: start}}, {endDate: {$gte: slut}}]},
             {$and: [{startDate: {$gte: start}}, {endDate: {$lte: slut}}]}
         ]
-    },{ '_id': 0, 'roomId' :1}, function (err, results) {
+    }, '-_id roomId', function (err, results) {
         if (err) {
             callback(err);
         }

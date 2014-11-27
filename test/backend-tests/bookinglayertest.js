@@ -47,7 +47,6 @@ describe('Bookinglayer', function () {
             var slut = new Date();
             slut.setFullYear(2014, 10, 12); // 12 nov, 2014
             bookinglayer.getBooked(start, slut, function (err, documents) {
-                console.log(documents);
                 documents.length.should.equal(1);
                 done();
             });
