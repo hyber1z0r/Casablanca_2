@@ -19,4 +19,22 @@ function getBooked(start, slut, callback) {
     });
 }
 
+function insertBooking(start, slut, rId, callback) {
+    var b = new booking({
+        startDate: start,
+        endDate: slut,
+        roomId: rId,
+        regDate: new Date()
+    });
+
+    b.save(function (err) {
+        if (err) {
+            callback(err);
+        } else {
+            callback(null, b);
+        }
+    });
+}
+
 module.exports.getBooked = getBooked;
+module.exports.insertBooking = insertBooking;
