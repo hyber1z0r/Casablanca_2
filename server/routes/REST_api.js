@@ -56,7 +56,7 @@ router.post('/newReservation', function (req, res) {
     }
 
     var _booking;
-    var _guests;
+    var _rowsInserted;
     async.series([
         function (callback) {
             datalayer.insertBooking(new Date(req.body.start), new Date(req.body.end), req.body.roomsize, function (err, booking) {
@@ -70,12 +70,12 @@ router.post('/newReservation', function (req, res) {
             })
         },
         function (callback) {
-            datalayer.insertGuests(req.body.guests, _booking._id, function (err, guests) {
+            datalayer.insertGuests(req.body.guests, _booking._id, function (err, rowsInserted) {
                 if (err) {
                     callback(err);
                 }
                 else {
-                    _guests = guests;
+                    _rowsInserted = rowsInserted;
                     callback();
                 }
             })
@@ -84,9 +84,9 @@ router.post('/newReservation', function (req, res) {
         if (err) {
             res.status(500).end('Error ' + err);
         } else {
-            res.json({booking: _booking, guests: _guests});
+            res.json({booking: _booking, guests: _rowsInserted});
         }
-    })
+    });
 });
 
 module.exports = router;
