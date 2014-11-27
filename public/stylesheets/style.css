@@ -9,8 +9,15 @@ a {
 
 #menubar {
     background: rgba(255,255,255,0.4);
-    padding: 20px;
-    padding-left: 450px;
+    padding-left: 400px;
+    padding-top: 85px;
+}
+
+
+#navbar > ul {
+    text-align: center;
+    align-content: center;
+    margin: 0px auto 0px auto;
 }
 
 #navbar > ul > li> a {
@@ -22,12 +29,14 @@ a {
     font-family: Georgia, serif;
     font-size: 20px;
     font-style: oblique;
+
 }
+
 
 div.transbox {
     width: 1000px;
     height: 450px;
-    margin: 20px 100px;
+    margin: 50px 100px;
     background-color: #ffffff;
     border: 1px solid black;
     opacity: 1;
@@ -35,7 +44,7 @@ div.transbox {
 }
 
 div.transbox p {
-    margin: 30px 40px;
+
     font-weight: bold;
     color: #000000;
 }
@@ -46,19 +55,97 @@ div.transbox p {
     padding-right: 350px;
 }
 
-#businesslounge, #dinningroom, #tenniscourt {
+#businesslounge, #dinningroom, #tenniscourt, #familyroom, #singleroom, #doubleroom, #hotel, #outsideview, #daypic, #nightpic {
     height: 450px;
+    width: 850px;
 }
 
-@font-face {
-    font-family: myFirstFont;
-    src: url(http://www.1001freefonts.com/sandrino.font);
+#logo {
+    height: 100px;
+    width: 200px;
+    position: absolute;
+    top: 0;
+    left: 550px;
 }
 
-#hometext {
-    font-family: myFirstFont;
-
-    color:#000000;
-
-
+input[type=radio] {
+    display:none;
 }
+
+input[type=radio] + label:before {
+    content: "";
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    vertical-align:middle;
+    margin-right: 8px;
+    background-color: #aaa;
+    box-shadow: inset 0px 2px 2px rgba(0, 0, 0, .3);
+    border-radius: 8px;
+}
+input[type=radio]:checked + label:before {
+    content: "\2022"; /* Bullet */
+    color:white;
+    background-color: #666;
+    font-size:1.8em;
+    text-align:center;
+    line-height:14px;
+    text-shadow:0px 0px 3px #eee;
+}
+
+.roomtype {
+    float: left;
+    font-family: "Helvetica Neue Light", "Lucida Grande", "Calibri", "Arial", sans-serif;
+}
+
+#searchDateButton{
+    margin-left: 10px;
+    margin-top: 15px;
+}
+
+input[type=text]{
+    width: 200px;
+    overflow: hidden;
+}
+
+.input-group {
+    padding-top: 10px;
+}
+
+.check-in, .check-out, #searchDateButton {
+    margin-bottom: 50px;
+}
+
+#notes {
+    width: 600px;
+    height: 120px;
+}
+
+.fade {
+    position: fixed;
+    top: 100px;
+    left: 50px;
+    right: 0;
+    height: 100%;
+    opacity: 1;
+}
+.fade.ng-enter,
+.fade.ng-leave {
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    transition: all 1s ease;
+}
+.fade.ng-enter {
+    opacity: 0;
+}
+.fade.ng-enter-active {
+    opacity: 1;
+}
+.fade.ng-leave {
+    opacity: 1;
+}
+.fade.ng-leave-active {
+    opacity: 0;
+}
+

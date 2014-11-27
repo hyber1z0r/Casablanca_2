@@ -9,5 +9,8 @@ angular.module('casablanca.reservation', ['ngRoute'])
         });
     }])
 
-    .controller('ReservationCtrl', function () {
+    .controller('ReservationCtrl', function ($scope) {
+        $scope.search = function () {
+            $scope.showRest = true
+        }
     });
