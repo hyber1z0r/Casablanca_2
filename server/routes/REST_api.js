@@ -13,14 +13,14 @@ router.post('/freeRooms', function(req, res) {
                 if (err) return callback(err);
                 roomIDs = roomsTaken;
                 callback();
-            })
+            });
         },
         function (callback) {
             datalayer.getFreeRooms(roomIDs, req.body.roomsize, function (err, freeRooms) {
                 if (err) return callback(err);
                 rooms = freeRooms;
                 callback();
-            })
+            });
         }
     ], function (err) {
         if(err) return res.status(500).end('Error');

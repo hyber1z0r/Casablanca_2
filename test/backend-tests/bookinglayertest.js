@@ -2,8 +2,6 @@ global.TEST_DATABASE = "mongodb://localhost/TestDataBase_zz1243";
 
 var should = require("should");
 var app = require("../../server/app");
-var mongoose = require("mongoose");
-var booking = mongoose.model("Booking");
 var bookinglayer = require('../../server/model/domain/bookinglayer');
 var testdata = require('./testdb');
 
@@ -17,9 +15,10 @@ describe('Bookinglayer', function () {
     });
 
     describe('getBooked', function () {
+
         it('Should return an empty array when nothing found', function (done) {
-            var start = '';
-            var slut = '';
+            var start = new Date('October 13, 2009 11:13:00');
+            var slut = new Date('October 18, 2009 14:20:00');
             bookinglayer.getBooked(start, slut, function (err, documents) {
                 should.not.exist(err);
                 documents.length.should.equal(0);
@@ -48,6 +47,7 @@ describe('Bookinglayer', function () {
             var slut = new Date();
             slut.setFullYear(2014, 10, 12); // 12 nov, 2014
             bookinglayer.getBooked(start, slut, function (err, documents) {
+                console.log(documents);
                 documents.length.should.equal(1);
                 done();
             });
