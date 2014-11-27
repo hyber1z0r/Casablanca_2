@@ -37,7 +37,7 @@ describe('GuestLayer', function () {
         it('Should have all the right properties', function (done) {
             var guestArray = [];
             var toby = {firstName: "Toby", lastName: "Maguire", address: "Spiderman address",
-                phone: "88888888", email: "Toby@SpiderMail.com", dateOfBirth: "1982-07-23"};
+                phone: "88888888", email: "Toby@SpiderMail.com", dateOfBirth: "1983-07-23"};
             var bId = new ObjectId();
             guestArray.push(toby);
             guestlayer.insertGuests(guestArray, bId, function (err, document) {
