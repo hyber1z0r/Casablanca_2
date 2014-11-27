@@ -4,7 +4,9 @@ var datalayer = require('../model/datalayer');
 var async = require('async');
 
 router.post('/freeRooms', function (req, res) {
-    if (typeof global.mongo_error !== "undefined") return res.status(500).end('Error: ' + global.mongo_error);
+    if (typeof global.mongo_error !== "undefined") {
+        return res.status(500).end('Error: ' + global.mongo_error);
+    }
     var roomIDs = [];
     var rooms = [];
     async.series([
@@ -46,4 +48,45 @@ function filterIds(array) {
     }
     return result;
 }
+
+
+router.post('/newReservation', function (req, res) {
+    if (typeof global.mongo_error !== "undefined") {
+        return res.status(500).end('Error: ' + global.mongo_error);
+    }
+
+    var _booking;
+    var _guests;
+    async.series([
+        function (callback) {
+            datalayer.insertBooking(new Date(req.body.start), new Date(req.body.end), req.body.roomsize, function (err, booking) {
+                if (err) {
+                    callback(err);
+                }
+                else {
+                    _booking = booking;
+                    callback();
+                }
+            })
+        },
+        function (callback) {
+            datalayer.insertGuests(req.body.guests, _booking._id, function (err, guests) {
+                if (err) {
+                    callback(err);
+                }
+                else {
+                    _guests = guests;
+                    callback();
+                }
+            })
+        }
+    ], function (err) {
+        if (err) {
+            res.status(500).end('Error ' + err);
+        } else {
+            res.json({booking: _booking, guests: _guests});
+        }
+    })
+});
+
 module.exports = router;

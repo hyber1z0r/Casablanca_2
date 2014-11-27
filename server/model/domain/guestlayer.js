@@ -6,11 +6,11 @@ function insertGuests(guests, bId, callback) {
     for(g in guests){
         g.booking = bId;
     }
-    guest.create(guests, function (err) {
+    guest.create(guests, function (err, gs) {
         if(err) {
             callback(err)
         } else {
-            callback(null);
+            callback(null, gs);
         }
     });
 }
