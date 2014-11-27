@@ -1,10 +1,103 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
+<div class="background">
+    <div class="transbox" style="background-image: url(images/casapattern.png)">
+        <div class="col-md-4">
+            <h2>Make a Reservation</h2>
+            <h4 class="roomtype">Please Select Room Type</h4><br><br><br>
 
-</body>
-</html>
+            <form action="">
+                <input type="radio" id="singleroom" name="rb" value="" checked>
+                <label for="singleroom">Single Room</label><br>
+                <input type="radio" id="doubleroom" name="rb" value="">
+                <label for="doubleroom">Double Room</label><br>
+                <input type="radio" id="familyroom" name="rb" value="">
+                <label for="familyroom">Family room</label>
+            </form>
+            <div id="cancelationpolicy">
+                <h3>Cancelation policy</h3>
+                <ul>
+                    <li><strong>2 weeks before</strong><br>
+                    You get half of the money back with no questions asked you son of a bitch</li>
+                    <li><strong>1 week before</strong><br>
+                    You only get one fourth of the paid amount back, with some questions asked you son of a bitch</li>
+                    <li><strong>Less then 1 week</strong><br>
+                    You dont get any money back because you are a son of a bitch, you son of a bitch.</li>
+                </ul>
+            </div>
+
+        </div>
+        <div class="col-md-8">
+
+
+            <div class="row">
+                <div class="col-xs-5">
+                    <div class="input-group check-in">
+                        <span class="input-group-addon">Check in</span>
+                        <input type="date" class="form-control" >
+                    </div>
+                </div>
+                <div class="col-xs-5">
+                    <div class="input-group check-out">
+                        <span class="input-group-addon">Check out</span>
+                        <input type="date" class="form-control" >
+
+                    </div>
+                </div>
+                <div class="col-xs-2">
+                    <input type="button" value="Search" id="searchDateButton" ng-click="search()"/>
+                </div>
+            </div>
+
+
+
+
+         <div ng-show="showRest">
+            <div class="row">
+                <div class="col-xs-5">
+                    <div class="input-group">
+                        <span class="input-group-addon">First name</span>
+                        <input type="text" class="form-control" >
+                    </div>
+                </div>
+                <div class="col-xs-5">
+                    <div class="input-group">
+                        <span class="input-group-addon">Last name</span>
+                        <input type="text" class="form-control" >
+
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-xs-5">
+                    <div class="input-group">
+                        <span class="input-group-addon">Email</span>
+                        <input type="email" class="form-control" >
+                    </div>
+                </div>
+                <div class="col-xs-5">
+                    <div class="input-group">
+                        <span class="input-group-addon">Phone</span>
+                        <input type="number" class="form-control" >
+
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-xs-5">
+                    <div class="input-group">
+                        <span class="input-group-addon">Date of birth</span>
+                        <input type="date" class="form-control" >
+                    </div>
+                </div>
+
+
+        </div>
+            <p>If you have some wishes, write them here</p>
+            <textarea name="notes" id="notes" cols="30" rows="10" class="form-control" >me wishes, write them here</textarea>
+
+         </div>
+    </div>
+</div>

@@ -8,7 +8,7 @@
 
 
 
-<body background="images/frontpagebg.jpg" class="backgroundpic" ng-cloak="" >
+<body background="images/frontpagebg_blur.jpg" class="backgroundpic" ng-cloak="" >
 
 <div ng-controller="AppCtrl">
     <nav class="navbar navbar-fixed-top navbar-inverse" role="navigation" id="menubar">
@@ -24,6 +24,7 @@
             </div>
             <div id="navbar" class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
+                    <img src="app/images/Casa_logo_burned.png" alt="logo" id="logo"/>
                     <li><a class="active menutext" href="#/home">Home</a></li>
                     <li><a href="#/rooms" class="menutext">Rooms</a></li>
                     <li><a href="#/facilities" class="menutext">Facilities</a></li>
@@ -36,7 +37,7 @@
 
     <div class="container">
 
-        <div ng-view="ng-view"></div>
+        <div ng-view="ng-view" class="fade"></div>
     </div>
 </div>
 
@@ -44,6 +45,7 @@
 <script src="vendor/angular-route/angular-route.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script src="vendor/bootstrap/dist/js/bootstrap.js"></script>
+<script src="vendor/angular-animate/angular-animate.js"></script>
 <script src="app/app.js"></script>
 <script src="app/home/home.js"></script>
 <script src="app/rooms/rooms.js"></script>
