@@ -20,8 +20,25 @@ app.factory('hotelBookingFactory', function ($http) {
             })
     };
 
+    var newBooking  = function (start, end, rID, guests, callback) {
+        $http.post('/api/newReservation', {
+            start: start,
+            end: end,
+            rID: rID,
+            guests: guests
+        })
+            .success(function (data, status, headers, config) {
+                callback(null, data)
+            })
+            .error(function (data, status, headers, config) {
+                callback(data)
+            })
+    }
+
     return {
-        getFreeRooms: getFreeRooms
+        getFreeRooms: getFreeRooms,
+        newBooking: newBooking
     }
 
 });
+
