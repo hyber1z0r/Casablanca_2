@@ -42,7 +42,7 @@ var GuestSchema = new mongoose.Schema({
     phone : String,
     email: String,
     dateOfBirth : Date,
-    booking : Number
+    booking : mongoose.Schema.Types.ObjectId
 });
 
 /* RoomSchema */
@@ -53,26 +53,10 @@ var RoomSchema = new mongoose.Schema({
 
 /* BookingSchema */
 var BookingSchema = new mongoose.Schema({
-    _id : {type: Number, unique: true},
     startDate : Date,
     endDate : Date,
     roomId : Number,
     regDate : Date
-});
-
-/* CounterSchema */
-var Settings = new Schema({
-    nextSeqNumber: { type: Number, default: 1000 }
-});
-
-BookingSchema.pre('save', function (next) {
-    var doc = this;
-    // You have to know the settings_id, for me, I store it in memory: app.current.settings.id
-    Settings.findByIdAndUpdate( settings_id, { $inc: { nextSeqNumber: 1 } }, function (err, settings) {
-        if (err) next(err);
-        doc._id = settings.nextSeqNumber - 1; // substract 1 because I need the 'current' sequence number, not the next
-        next();
-    });
 });
 
 mongoose.model('Guest', GuestSchema, "guests");
