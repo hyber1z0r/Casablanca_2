@@ -25,15 +25,15 @@ angular.module('casablanca.reservation', ['ngRoute'])
                     $scope.showRest = true
                 }
             });
-        }
+        };
 
       $scope.persons = [];
       $scope.add = function () {
           $scope.persons.push($scope.guest);
           $scope.guest = {};
-      }
+      };
       $scope.submit = function () {
-          hotelBookingFactory.newBooking($scope.startDate, $scope.endDate, room_id, persons, function (err, data) {
+          hotelBookingFactory.newBooking($scope.startDate, $scope.endDate, room_id, $scope.persons, function (err, data) {
               if(err){
                   console.log("Error in submitting persons");
               }
