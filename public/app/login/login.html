@@ -1,31 +1,55 @@
-<div class="background">
-    <div class="transbox" style="background-image: url(images/casapattern.png)">
+        <div id="wrapper">
 
+            <!--SLIDE-IN ICONS-->
+            <div class="user-icon"></div>
+            <div class="pass-icon"></div>
+            <!--END SLIDE-IN ICONS-->
 
+            <!--LOGIN FORM-->
+            <form name="login-form" class="login-form" action="" method="post">
 
-
-
-        <div class="col-xs-12 col-sm-6 col-lg-8">
-
-            <div class="row">
-                <div class="col-xs-6">
-                    <div class="input-group">
-                        <span class="input-group-addon">Enter username</span>
-                        <input type="text" class="form-control" required>
-                    </div>
+                <!--HEADER-->
+                <div class="header">
+                    <!--TITLE--><h1>Login Form</h1><!--END TITLE-->
+                    <!--DESCRIPTION--><span>Fill out the form below to lin.</span><!--END DESCRIPTION-->
                 </div>
-            </div>
-        </div>
-            <div class="row">
-                <div class="col-xs-6">
-                    <div class="input-group">
-                        <span class="input-group-addon">Enter password</span>
-                        <input type="password" class="form-control" required>
-                    </div>
+                <!--END HEADER-->
+
+                <!--CONTENT-->
+                <div class="content">
+                    <!--USERNAME--><input name="username" type="text" class="input username" value="Username" onfocus="this.value=''" /><!--END USERNAME-->
+                    <!--PASSWORD--><input name="password" type="password" class="input password" value="Password" onfocus="this.value=''" /><!--END PASSWORD-->
                 </div>
-            </div>
+                <!--END CONTENT-->
+
+                <!--FOOTER-->
+                <div class="footer">
+                    <!--LOGIN BUTTON--><input type="submit" name="submit" value="Login" class="button" /><!--END LOGIN BUTTON-->
+                </div>
+                <!--END FOOTER-->
+
+            </form>
+            <!--END LOGIN FORM-->
+
         </div>
-    </div>
-</div>
+        <!--END WRAPPER-->
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $(".username").focus(function() {
+                    $(".user-icon").css("left","-48px");
+                });
+                $(".username").blur(function() {
+                    $(".user-icon").css("left","0px");
+                });
+
+                $(".password").focus(function() {
+                    $(".pass-icon").css("left","-48px");
+                });
+                $(".password").blur(function() {
+                    $(".pass-icon").css("left","0px");
+                });
+            });
+        </script>
+
 
 
