@@ -55,9 +55,9 @@ div.transbox p {
     padding-right: 350px;
 }
 
-#businesslounge, #dinningroom, #tenniscourt, #familyroom, #singleroom, #doubleroom, #hotel, #outsideview, #daypic, #nightpic {
+#businesslounge, #dinningroom, #familyroom, #singleroom, #doubleroom, #hotel, #outsideview, #daypic, #nightpic, #tennis, #golf, #gym, #handball, #pingpong, #netcafe, #swimming {
     height: 450px;
-    width: 850px;
+    width: 900px;
 }
 
 #logo {
@@ -100,7 +100,7 @@ input[type=radio]:checked + label:before {
 
 #searchDateButton{
     margin-left: 10px;
-    margin-top: 15px;
+    margin-top: 10px;
 }
 
 input[type=text]{

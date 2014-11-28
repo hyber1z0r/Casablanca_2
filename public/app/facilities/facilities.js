@@ -5,21 +5,12 @@ angular.module('casablanca.facilities', ['ngRoute'])
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/facilities', {
             templateUrl: 'app/facilities/facilities.html',
-            controller: 'View3Ctrl'
+            controller: 'FacilityCtrl'
         });
     }])
 
-    .controller('View3Ctrl', function ($scope, $http) {
-        $http({
-            method: 'GET',
-            url: 'api/user'
-        }).
-            success(function (data, status, headers, config) {
-                $scope.users = data;
-            }).
-            error(function (data, status, headers, config) {
-                $scope.error = data;
-            });
+    .controller('FacilityCtrl', function ($scope, $http) {
+
     });
 
 

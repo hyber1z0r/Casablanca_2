@@ -32,18 +32,18 @@
                 <div class="col-xs-5">
                     <div class="input-group check-in">
                         <span class="input-group-addon">Check in</span>
-                        <input type="date" class="form-control" >
+                        <input type="date" class="form-control" required >
                     </div>
                 </div>
                 <div class="col-xs-5">
                     <div class="input-group check-out">
                         <span class="input-group-addon">Check out</span>
-                        <input type="date" class="form-control" >
+                        <input type="date" class="form-control" required>
 
                     </div>
                 </div>
                 <div class="col-xs-2">
-                    <input type="button" value="Search" id="searchDateButton" ng-click="search()"/>
+                    <input type="button" value="Search" id="searchDateButton" ng-click="search()" class="form-control"/>
                 </div>
             </div>
 
@@ -55,13 +55,13 @@
                 <div class="col-xs-5">
                     <div class="input-group">
                         <span class="input-group-addon">First name</span>
-                        <input type="text" class="form-control" >
+                        <input type="text" class="form-control" required>
                     </div>
                 </div>
                 <div class="col-xs-5">
                     <div class="input-group">
                         <span class="input-group-addon">Last name</span>
-                        <input type="text" class="form-control" >
+                        <input type="text" class="form-control" required>
 
                     </div>
                 </div>
@@ -72,13 +72,13 @@
                 <div class="col-xs-5">
                     <div class="input-group">
                         <span class="input-group-addon">Email</span>
-                        <input type="email" class="form-control" >
+                        <input type="email" class="form-control" required>
                     </div>
                 </div>
                 <div class="col-xs-5">
                     <div class="input-group">
                         <span class="input-group-addon">Phone</span>
-                        <input type="number" class="form-control" >
+                        <input type="number" class="form-control" required>
 
                     </div>
                 </div>
@@ -89,14 +89,14 @@
                 <div class="col-xs-5">
                     <div class="input-group">
                         <span class="input-group-addon">Date of birth</span>
-                        <input type="date" class="form-control" >
+                        <input type="date" class="form-control" required>
                     </div>
                 </div>
 
 
         </div>
             <p>If you have some wishes, write them here</p>
-            <textarea name="notes" id="notes" cols="30" rows="10" class="form-control" >me wishes, write them here</textarea>
+            <textarea name="notes" id="notes" cols="30" rows="10" class="form-control" ></textarea>
 
          </div>
     </div>

@@ -12,7 +12,8 @@ angular.module('casablanca', [
     'casablanca.home',
     'casablanca.rooms',
     'casablanca.facilities',
-    'casablanca.reservation'
+    'casablanca.reservation',
+    'casablanca.login'
 ]).
     config(['$routeProvider', function ($routeProvider) {
         $routeProvider.otherwise({redirectTo: '/'});
