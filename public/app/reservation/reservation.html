@@ -5,11 +5,11 @@
             <h4 class="roomtype">Please Select Room Type</h4><br><br><br>
 
             <form action="">
-                <input type="radio" id="singleroom" name="rb" value="" checked>
+                <input type="radio" id="singleroom" name="rb" value="1" checked ng-model="roomsize">
                 <label for="singleroom">Single Room</label><br>
-                <input type="radio" id="doubleroom" name="rb" value="">
+                <input type="radio" id="doubleroom" name="rb" value="2" ng-model="roomsize">
                 <label for="doubleroom">Double Room</label><br>
-                <input type="radio" id="familyroom" name="rb" value="">
+                <input type="radio" id="familyroom" name="rb" value="5" ng-model="roomsize">
                 <label for="familyroom">Family room</label>
             </form>
             <div id="cancelationpolicy">
@@ -32,18 +32,18 @@
                 <div class="col-xs-5">
                     <div class="input-group check-in">
                         <span class="input-group-addon">Check in</span>
-                        <input type="date" class="form-control" required >
+                        <input type="date" class="form-control" ng-model="startDate">
                     </div>
                 </div>
                 <div class="col-xs-5">
                     <div class="input-group check-out">
                         <span class="input-group-addon">Check out</span>
-                        <input type="date" class="form-control" required>
+                        <input type="date" class="form-control" ng-model="endDate">
 
                     </div>
                 </div>
                 <div class="col-xs-2">
-                    <input type="button" value="Search" id="searchDateButton" ng-click="search()" class="form-control"/>
+                    <input type="button" value="Search" id="searchDateButton" ng-click="search()"/>
                 </div>
             </div>
 
@@ -55,13 +55,13 @@
                 <div class="col-xs-5">
                     <div class="input-group">
                         <span class="input-group-addon">First name</span>
-                        <input type="text" class="form-control" required>
+                        <input type="text" class="form-control" >
                     </div>
                 </div>
                 <div class="col-xs-5">
                     <div class="input-group">
                         <span class="input-group-addon">Last name</span>
-                        <input type="text" class="form-control" required>
+                        <input type="text" class="form-control" >
 
                     </div>
                 </div>
@@ -72,13 +72,13 @@
                 <div class="col-xs-5">
                     <div class="input-group">
                         <span class="input-group-addon">Email</span>
-                        <input type="email" class="form-control" required>
+                        <input type="email" class="form-control" >
                     </div>
                 </div>
                 <div class="col-xs-5">
                     <div class="input-group">
                         <span class="input-group-addon">Phone</span>
-                        <input type="number" class="form-control" required>
+                        <input type="number" class="form-control" >
 
                     </div>
                 </div>
@@ -89,14 +89,14 @@
                 <div class="col-xs-5">
                     <div class="input-group">
                         <span class="input-group-addon">Date of birth</span>
-                        <input type="date" class="form-control" required>
+                        <input type="date" class="form-control" >
                     </div>
                 </div>
 
 
         </div>
             <p>If you have some wishes, write them here</p>
-            <textarea name="notes" id="notes" cols="30" rows="10" class="form-control" ></textarea>
+            <textarea name="notes" id="notes" cols="30" rows="10" class="form-control" >me wishes, write them here</textarea>
 
          </div>
     </div>
