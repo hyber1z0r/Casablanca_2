@@ -43,11 +43,9 @@
                     </div>
                 </div>
                 <div class="col-xs-2">
-                    <input type="button" value="Search" id="searchDateButton" ng-click="search()"/>
+                    <input type="button" value="Search" id="searchDateButton" ng-click="search()" class="form-control"/>
                 </div>
             </div>
-
-
 
 
          <div ng-show="showRest">
@@ -67,8 +65,24 @@
                 </div>
             </div>
 
+             <div class="row">
+                 <div class="col-xs-5">
+                     <div class="input-group">
+                         <span class="input-group-addon">Address</span>
+                         <input type="text" class="form-control" >
+                     </div>
+                 </div>
+                 <div class="col-xs-5">
+                     <div class="input-group">
+                         <span class="input-group-addon">Country</span>
+                         <input type="text" class="form-control" >
 
-            <div class="row">
+                     </div>
+                 </div>
+             </div>
+
+
+             <div class="row">
                 <div class="col-xs-5">
                     <div class="input-group">
                         <span class="input-group-addon">Email</span>
@@ -88,15 +102,21 @@
             <div class="row">
                 <div class="col-xs-5">
                     <div class="input-group">
-                        <span class="input-group-addon">Date of birth</span>
+                        <span class="input-group-addon">DOB</span>
                         <input type="date" class="form-control" >
                     </div>
                 </div>
+                <div class="col-xs-3">
+                    <input type="button" value="Add person" id="addPerson" ng-click="add()" class="form-control"/>
+                    </div>
+                <div class="col-xs-3">
+                    <label for="addPerson" id="personlabel" ng-show="persons.length>0">Persons added:</label><span>{{persons.length}}</span>
+                </div>
+            </div>
 
 
-        </div>
-            <p>If you have some wishes, write them here</p>
-            <textarea name="notes" id="notes" cols="30" rows="10" class="form-control" >me wishes, write them here</textarea>
+
+            <textarea name="notes" id="notes" cols="20" rows="10" class="form-control" placeholder="If you have some wishes, write them here"></textarea>
 
          </div>
     </div>

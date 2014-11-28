@@ -113,12 +113,14 @@ input[type=text]{
 }
 
 .check-in, .check-out, #searchDateButton {
-    margin-bottom: 50px;
+    margin-bottom: 15px;
 }
 
+
 #notes {
-    width: 600px;
+    width: 522px;
     height: 120px;
+    margin-top: 20px;
 }
 
 .fade {
@@ -147,5 +149,12 @@ input[type=text]{
 }
 .fade.ng-leave-active {
     opacity: 0;
+}
+
+#addPerson{
+    margin-top: 10px;
+}
+#personlabel {
+    margin-top: 20px;
 }
 
