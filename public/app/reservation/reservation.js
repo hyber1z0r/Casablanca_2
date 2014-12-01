@@ -47,7 +47,6 @@ angular.module('casablanca.reservation', ['ngRoute'])
                     else {
                         console.log("Great Success!");
                         $location.path('#/home');
-
                     }
                 });
             } else {
