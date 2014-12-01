@@ -6,3 +6,4 @@ module.exports.getBooked = bookinglayer.getBooked;
 module.exports.getFreeRooms = roomlayer.getFreeRooms;
 module.exports.insertBooking = bookinglayer.insertBooking;
 module.exports.insertGuests = guestlayer.insertGuests;
+module.exports.getGuests = guestlayer.getGuests;

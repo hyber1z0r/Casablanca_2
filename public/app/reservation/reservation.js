@@ -31,7 +31,7 @@ angular.module('casablanca.reservation', ['ngRoute'])
         $scope.persons = [];
 
         $scope.add = function () {
-            $scope.persons.push($scope.guest);
+            $scope.persons.push(angular.copy($scope.guest));
             $scope.guest.firstName = '';
             $scope.guest.email = '';
             $scope.guest.dateOfBirth = '';

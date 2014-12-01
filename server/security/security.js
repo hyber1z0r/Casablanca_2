@@ -13,6 +13,15 @@ function hashPw(guest) {
 function verify(password, hashed) {
     return passwordHash.verify(password, hashed);
 }
+//
+//var test = {
+//    name: 'Lars',
+//    last: 'Hansen'
+//};
+//generateUserPw(test);
+//console.log(test);
+//hashPw(test);
+//console.log(test);
 
 module.exports.generate = generateUserPw;
 module.exports.hash = hashPw;

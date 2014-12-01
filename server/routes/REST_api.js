@@ -83,18 +83,31 @@ router.post('/newReservation', function (req, res) {
             })
         },
         function (callback) {
-            var guests = req.body.guests;
-            for(var i = 0; i < guests.length; i++){
-                security.generate(guests[i]);
-                security.hash(guests[i]);
-            }
-            request.post({url:'http://localhost:4000/URLURL', guests: guests}, function optionalCallback(err, httpResponse, body) {
+            var bookingId = req.body.guests[0].booking;
+            datalayer.getGuests(bookingId, function (err, gs) {
                 if (err) {
-                    //callback(err);
-                    // kommenteret ud fordi jpa ikke er lavet endnu. Så undgår vi at denne server crasher
+                    console.log('Error in get guests');
+                    callback(err);
                 } else {
-                    console.log('Upload to JPA successful! Server responded with:', body);
-                    callback();
+                    for (var i = 0; i < gs.length; i++) {
+                        security.generate(gs[i]);
+                        security.hash(gs[i]);
+                    }
+                    console.log('Guests should have: ID, USER, PASS \n');
+                    console.log(gs);
+                    request.post({
+                        url: 'http://localhost:4000/URLURL',
+                        guests: gs
+                    }, function optionalCallback(err, httpResponse, body) {
+                        if (err) {
+                            //callback(err);
+                            console.log('ERROR IN POST TO JPA');
+                            callback();
+                        } else {
+                            console.log('Upload to JPA successful! Server responded with:', body);
+                            callback();
+                        }
+                    });
                 }
             });
         }

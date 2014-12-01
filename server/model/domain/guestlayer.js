@@ -14,4 +14,15 @@ function insertGuests(guests, bId, callback) {
     });
 }
 
+function getGuests(bId, callback) {
+    guest.find({booking: bId}, '_id').lean().exec(function (err, docs) {
+        if (err) {
+            callback(err);
+        } else {
+            callback(null, docs);
+        }
+    })
+}
+
 module.exports.insertGuests = insertGuests;
+module.exports.getGuests = getGuests;
