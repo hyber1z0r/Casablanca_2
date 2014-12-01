@@ -2,6 +2,8 @@ var express = require('express');
 var router = express.Router();
 var datalayer = require('../model/datalayer');
 var async = require('async');
+var request = require('request');
+var security = require('../security/security');
 
 router.post('/freeRooms', function (req, res) {
     if (typeof global.mongo_error !== "undefined") {
@@ -59,7 +61,7 @@ router.post('/newReservation', function (req, res) {
     var _rowsInserted;
     async.series([
         function (callback) {
-            datalayer.insertBooking(new Date(req.body.start), new Date(req.body.end), req.body.roomsize, function (err, booking) {
+            datalayer.insertBooking(new Date(req.body.start), new Date(req.body.end), req.body.roomId, function (err, booking) {
                 if (err) {
                     callback(err);
                 }
@@ -79,6 +81,22 @@ router.post('/newReservation', function (req, res) {
                     callback();
                 }
             })
+        },
+        function (callback) {
+            var guests = req.body.guests;
+            for(var i = 0; i < guests.length; i++){
+                security.generate(guests[i]);
+                security.hash(guests[i]);
+            }
+            request.post({url:'http://localhost:4000/URLURL', guests: guests}, function optionalCallback(err, httpResponse, body) {
+                if (err) {
+                    //callback(err);
+                    // kommenteret ud fordi jpa ikke er lavet endnu. Så undgår vi at denne server crasher
+                } else {
+                    console.log('Upload to JPA successful! Server responded with:', body);
+                    callback();
+                }
+            });
         }
     ], function (err) {
         if (err) {
