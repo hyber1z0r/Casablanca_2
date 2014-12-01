@@ -1,0 +1,24 @@
+doctype html
+html
+    head
+    img(src='images/Casa_logo_burned.jpg')
+    h1 Booking informations from Casablanca with booking ID : #{g.bookingId}
+    body
+        p Hello #{g.firstName}, this is a confirmation mail for your booking at Casablanca hotel resort.
+        p You have booked #{roomId}, on #{startDate} to #{endDate}.
+        p We have created you in our system, so you will get a personal username and password so you can book a facility.
+        p Your guests include
+
+            each g in guests
+                ul
+                    li First name: #{g.firstName}
+                    li Last name : #{g.lastName}
+                    li Address   : #{g.address}
+                    li Country   : #{g.country}
+                    li Email     : #{g.email}
+                    li Phone     : #{g.phone}
+                    li Birth date: #{g.dateOfBirth}
+                    li Username  : #{g.userName}
+                    li Password  : #{g.passWord}
+        p We welcome you to the hotel, and are looking forward to you, to come.
+            p Kind reagards, Casablanda Hotel Resort
