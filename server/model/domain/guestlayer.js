@@ -14,8 +14,8 @@ function insertGuests(guests, bId, callback) {
     });
 }
 
-function getGuests(bId, callback) {
-    guest.find({booking: bId}, '_id').lean().exec(function (err, docs) {
+function getGuests(bId, select, callback) {
+    guest.find({booking: bId}, select).lean().exec(function (err, docs) {
         if (err) {
             callback(err);
         } else {

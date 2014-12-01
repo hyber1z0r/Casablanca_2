@@ -84,7 +84,7 @@ router.post('/newReservation', function (req, res) {
         },
         function (callback) {
             var bookingId = req.body.guests[0].booking;
-            datalayer.getGuests(bookingId, function (err, gs) {
+            datalayer.getGuests(bookingId, '_id', function (err, gs) {
                 if (err) {
                     console.log('Error in get guests');
                     callback(err);
@@ -93,8 +93,6 @@ router.post('/newReservation', function (req, res) {
                         security.generate(gs[i]);
                         security.hash(gs[i]);
                     }
-                    console.log('Guests should have: ID, USER, PASS \n');
-                    console.log(gs);
                     request.post({
                         url: 'http://localhost:4000/URLURL',
                         guests: gs
