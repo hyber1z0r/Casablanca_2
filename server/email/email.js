@@ -26,7 +26,7 @@ function sentMail(booking, guests) {
 
 
 
-    var html = jade.renderFile('emaildetail.jade', details)
+    var html = jade.renderFile('testemaildetail.jade', details)
 
 // setup e-mail data with unicode symbols
     var mailOptions = {
@@ -47,3 +47,5 @@ function sentMail(booking, guests) {
 
 
 }
+
+sentMail()
