@@ -11,6 +11,8 @@ a {
     background: rgba(255,255,255,0.4);
     padding-left: 400px;
     padding-top: 85px;
+    border: 0px;
+    box-shadow: 0px 2px 6px rgba(0,0,0,0.2);
 }
 
 
@@ -22,7 +24,6 @@ a {
 
 #navbar > ul > li> a {
     color: #0c958f;
-    border-color: #000000;
     opacity: 1;
     text-shadow: 1px 1px 1px rgba(255,255,255,0.8);
     border: #080808;
@@ -38,7 +39,7 @@ div.transbox {
     height: 450px;
     margin: 50px 100px;
     background-color: #ffffff;
-    border: 1px solid black;
+    box-shadow: 0px 2px 6px rgba(0,0,0,0.2);
     opacity: 1;
     filter: alpha(opacity=60); /* For IE8 and earlier */
 }
