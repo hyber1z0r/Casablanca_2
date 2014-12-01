@@ -9,7 +9,7 @@ angular.module('casablanca.reservation', ['ngRoute'])
         });
     }])
 
-    .controller('ReservationCtrl', function ($scope, hotelBookingFactory) {
+    .controller('ReservationCtrl', function ($scope, hotelBookingFactory, $location) {
         var room_id = '';
         $scope.search = function () {
             hotelBookingFactory.getFreeRooms($scope.startDate, $scope.endDate, $scope.roomsize, function (err, data) {
@@ -46,6 +46,8 @@ angular.module('casablanca.reservation', ['ngRoute'])
                     }
                     else {
                         console.log("Great Success!");
+                        $location.path('#/home');
+
                     }
                 });
             } else {
@@ -55,6 +57,7 @@ angular.module('casablanca.reservation', ['ngRoute'])
                     }
                     else {
                         console.log("Great Success!");
+                        $location.path('#/home');
                     }
                 });
             }

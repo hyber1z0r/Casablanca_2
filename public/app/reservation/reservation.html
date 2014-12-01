@@ -7,13 +7,13 @@
             <form action="">
                 <input type="radio" id="singleroom" name="rb" value="1" checked="true" ng-model="roomsize"
                        ng-click="single=true; disableForm=true">
-                <label for="singleroom">Single Room</label><label content="\&#63;"></label><br>
+                <label for="singleroom">Single Room</label><a href="images/singleroombg.jpg" onclick="javascript:void window.open('images/singleroombg.jpg','1417427479549','width=700,height=500,toolbar=0,menubar=0,location=0,status=1,scrollbars=1,resizable=1,left=0,top=0');return false;">?</a><br>
                 <input type="radio" id="doubleroom" name="rb" value="2" ng-model="roomsize"
                        ng-click="single=false; disableForm=true">
-                <label for="doubleroom">Double Room</label><br>
+                <label for="doubleroom">Double Room</label><a href="images/doubleroombg.jpg" onclick="javascript:void window.open('images/doubleroombg.jpg','1417427479549','width=700,height=500,toolbar=0,menubar=0,location=0,status=1,scrollbars=1,resizable=1,left=0,top=0');return false;">?</a><br>
                 <input type="radio" id="familyroom" name="rb" value="5" ng-model="roomsize"
                        ng-click="single=false; disableForm=true">
-                <label for="familyroom">Family room</label>
+                <label for="familyroom">Family room</label><a href="images/familyroombg.jpg" onclick="javascript:void window.open('images/familyroombg.jpg','1417427479549','width=700,height=500,toolbar=0,menubar=0,location=0,status=1,scrollbars=1,resizable=1,left=0,top=0');return false;">?</a>
             </form>
             <div id="cancelationpolicy">
                 <h3>Cancelation policy</h3>
@@ -128,7 +128,7 @@
                           placeholder="If you have some wishes, write them here"></textarea>
 
                 <div class="col-xs-3">
-                    <input type="button" value="Submit" id="submitPerson" ng-click="submit()" ng-disabled="(persons.length < 1 && !single) || disableForm" class="form-control"/>
+                    <input type="button" value="Submit" id="submitPerson" ng-click="submit()" ng-disabled="(persons.length < 1 && !single) || disableForm" class="form-control" />
                 </div>
             </div>
         </div>
