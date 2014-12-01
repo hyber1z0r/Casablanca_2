@@ -5,11 +5,11 @@
             <h4 class="roomtype">Please Select Room Type</h4><br><br><br>
 
             <form action="">
-                <input type="radio" id="singleroom" name="rb" value="1" checked ng-model="roomsize">
-                <label for="singleroom">Single Room</label><br>
-                <input type="radio" id="doubleroom" name="rb" value="2" ng-model="roomsize">
+                <input type="radio" id="singleroom" name="rb" value="1" checked ng-model="roomsize" ng-click="single=true">
+                <label for="singleroom">Single Room</label><label content="\&#63;"></label><br>
+                <input type="radio" id="doubleroom" name="rb" value="2" ng-model="roomsize" ng-click="single=false">
                 <label for="doubleroom">Double Room</label><br>
-                <input type="radio" id="familyroom" name="rb" value="5" ng-model="roomsize">
+                <input type="radio" id="familyroom" name="rb" value="5" ng-model="roomsize" ng-click="single=false">
                 <label for="familyroom">Family room</label>
             </form>
             <div id="cancelationpolicy">
@@ -53,13 +53,13 @@
                 <div class="col-xs-5">
                     <div class="input-group">
                         <span class="input-group-addon">First name</span>
-                        <input type="text" class="form-control" ng-model="guest.firstName">
+                        <input type="text" class="form-control" ng-model="guest.firstName" required>
                     </div>
                 </div>
                 <div class="col-xs-5">
                     <div class="input-group">
                         <span class="input-group-addon">Last name</span>
-                        <input type="text" class="form-control" ng-model="guest.lastName">
+                        <input type="text" class="form-control" ng-model="guest.lastName" required>
 
                     </div>
                 </div>
@@ -106,12 +106,12 @@
                         <input type="date" class="form-control" ng-model="guest.dateOfBirth">
                     </div>
                 </div>
-                <div class="col-xs-3">
+                <div class="col-xs-3" ng-hide="single">
                     <input type="button" value="Add person" id="addPerson" ng-click="add()" class="form-control"/>
                     </div>
                 <div class="col-xs-3">
                     <label for="addPerson" id="personlabel" ng-show="persons.length>0">Persons added:</label><span ng-show="
-                    persons.length>0">{{persons.length}}</span>
+                    persons.length>0">{{persons.length}}</span><label ng-show="persons.length>0"><a href="/#">View persons</a></label>
                 </div>
             </div>
 
