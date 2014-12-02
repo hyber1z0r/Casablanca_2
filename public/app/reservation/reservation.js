@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('casablanca.reservation', ['ngRoute'])
+angular.module('casablanca.reservation', ['ngRoute','ui.bootstrap'])
 
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/reservation', {
@@ -9,7 +9,7 @@ angular.module('casablanca.reservation', ['ngRoute'])
         });
     }])
 
-    .controller('ReservationCtrl', function ($scope, hotelBookingFactory, $location) {
+    .controller('ReservationCtrl', function ($scope, hotelBookingFactory, $location, $modal, $log) {
         var room_id = '';
         $scope.search = function () {
             hotelBookingFactory.getFreeRooms($scope.startDate, $scope.endDate, $scope.roomsize, function (err, data) {
@@ -38,6 +38,27 @@ angular.module('casablanca.reservation', ['ngRoute'])
             $scope.guest.phone = '';
         };
 
+        $scope.open = function (size) {
+            console.log($scope.persons);
+            var modalInstance = $modal.open({
+                templateUrl: 'myModalContent.html',
+                controller: 'ModalInstanceCtrl',
+                size: size,
+                resolve: {
+                    persons: function () {
+                        return $scope.persons;
+                    }
+                }
+            });
+
+            modalInstance.result.then(function (selectedItem) {
+                $scope.selected = selectedItem;
+            }, function () {
+                $log.info('Modal dismissed at: ' + new Date());
+            });
+        };
+
+
         $scope.submit = function () {
             if ($scope.single) {
                 hotelBookingFactory.newBooking($scope.startDate, $scope.endDate, room_id, [$scope.guest], function (err, data) {
@@ -61,4 +82,27 @@ angular.module('casablanca.reservation', ['ngRoute'])
                 });
             }
         }
+
+
+    })
+    .controller('ModalInstanceCtrl', function ($scope, $modalInstance, persons) {
+console.log(persons);
+        $scope.persons = persons;
+        $scope.selected = {
+            item: $scope.persons[0]
+        };
+
+        $scope.ok = function () {
+            $modalInstance.close($scope.selected.item);
+        };
+
+        $scope.cancel = function () {
+            $modalInstance.dismiss('cancel');
+        };
+
+
+        $scope.delete = function (index) {
+            $scope.persons.splice (index,1);
+        }
+
     });

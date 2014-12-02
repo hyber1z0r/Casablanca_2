@@ -119,7 +119,25 @@
                         <div class="col-xs-3" ng-show="persons.length > 0">
                             <label for="addPerson" id="personlabel">Persons added: </label>
                             <span>{{persons.length}}</span>
-                            <label><a href="#">View persons</a></label>
+                            <script type="text/ng-template" id="myModalContent.html">
+                                <div class="modal-header">
+                                    <h3 class="modal-title">Persons added</h3>
+                                </div>
+                                <div class="modal-body">
+                                    <ul>
+                                        <li ng-repeat="guest in persons">
+                                           {{guest.firstName}} {{guest.lastName}} {{guest.address}} {{guest.country}} {{guest.email}} {{guest.phone}} {{guest.dateOfBirth | date}} <a class="glyphicon glyphicon-trash" ng-click="delete($index)"></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="modal-footer">
+                                    <button class="btn btn-primary" ng-click="ok()">OK</button>
+                                    <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+                                </div>
+                            </script>
+
+                            <button class="btn btn-default" ng-click="open('lg')">View persons</button>
+
                         </div>
                     </div>
                 </div>
