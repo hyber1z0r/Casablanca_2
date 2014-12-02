@@ -2,10 +2,10 @@ doctype html
 html
     head
     img(src='http://webstoremall.com/images/company/80/C_Casa_logo.jpg')
-    h1 Booking informations from Casablanca with booking ID : <b>#{bookingId}</b>
+    h1 Booking informations from Casablanca with booking ID : <b>#{booking.bookingId}</b>
     body
-        p Hello <b>#{g.firstName}</b>, this is a confirmation mail for your booking at Casablanca hotel resort.
-        p You have booked roomnumber <b>#{roomId}</b>, on <b>#{startDate}</b> to <b>#{endDate}</b>.
+        p Hello <b>#{guests[0].firstName}</b>, this is a confirmation mail for your booking at Casablanca hotel resort.
+        p You have booked roomnumber <b>#{booking.roomId}</b>, on <b>#{booking.startDate}</b> to <b>#{booking.endDate}</b>.
         p We have created you in our system, so you will get a personal username and password so you can book a facility.
         p Your guests include
 

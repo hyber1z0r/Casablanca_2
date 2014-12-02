@@ -4,6 +4,11 @@
 var nodemailer = require('nodemailer');
 var jade = require('jade');
 
+var bookingTest = {bookingId: '20' ,startDate: '2015-01-10', endDate: '2015-01-29', roomId: '45'};
+var guestTest = [{firstName: 'Vuk', lastName: 'Rajovic', address: 'Frederiksvej 11B', country: 'Montenegro',
+    email: 'MessiKrkic@gmail.com', phone: '27620623' , dateOfBirth: '1993-06-23'}, {firstName: 'Vuk', lastName: 'Rajovic', address: 'Frederiksvej 11B', country: 'Montenegro',
+    email: 'MessiKrkic@gmail.com', phone: '27620623' , dateOfBirth: '1993-06-23'}];
+
 
 function sentMail(booking, guests) {
 
@@ -26,12 +31,12 @@ function sentMail(booking, guests) {
 
 
 
-    var html = jade.renderFile('testemaildetail.jade', details)
+    var html = jade.renderFile('emaildetail.jade', details)
 
 // setup e-mail data with unicode symbols
     var mailOptions = {
         from: 'Casablanca Hotel Resort <casablancaschoolproject@gmail.com>', // sender address
-        to: 'damii93@hotmail.com', // list of receivers
+        to: guests[0].email, // list of receivers
         subject: 'Confirmation email on your booking at Casablanca Hotel', // Subject line
         html: html // html body
     };
@@ -48,4 +53,4 @@ function sentMail(booking, guests) {
 
 }
 
-sentMail()
+sentMail(bookingTest, guestTest)
