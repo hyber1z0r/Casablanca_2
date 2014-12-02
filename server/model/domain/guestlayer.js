@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var guest = mongoose.model('Guest');
+var request = require('request');
 
 function insertGuests(guests, bId, callback) {
     for (var i = 0; i < guests.length; i++) {
@@ -24,5 +25,19 @@ function getGuests(bId, select, callback) {
     })
 }
 
+function insertUsernames(gs, callback) {
+    request.post({
+        url: 'http://localhost:4000/user',
+        guests: gs
+    }, function optionalCallback(err, httpResponse, body) {
+        if (err) {
+            callback(err);
+        } else {
+            callback(null, body);
+        }
+    });
+}
+
 module.exports.insertGuests = insertGuests;
 module.exports.getGuests = getGuests;
+module.exports.insertUsernames = insertUsernames;

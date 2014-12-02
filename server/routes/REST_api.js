@@ -2,7 +2,6 @@ var express = require('express');
 var router = express.Router();
 var datalayer = require('../model/datalayer');
 var async = require('async');
-var request = require('request');
 var security = require('../security/security');
 
 router.post('/freeRooms', function (req, res) {
@@ -90,22 +89,16 @@ router.post('/newReservation', function (req, res) {
                     callback(err);
                 } else {
                     for (var i = 0; i < gs.length; i++) {
-                        security.generate(gs[i]);
+                        security.generate(gs[i]); // we also set the role to user here!
                         security.hash(gs[i]);
                     }
-                    request.post({
-                        url: 'http://localhost:4000/URLURL',
-                        guests: gs
-                    }, function optionalCallback(err, httpResponse, body) {
-                        if (err) {
-                            //callback(err);
-                            console.log('ERROR IN POST TO JPA');
-                            callback();
+                    datalayer.insertGuests(gs, function (err, response) {
+                        if(err) {
+                            callback(err)
                         } else {
-                            console.log('Upload to JPA successful! Server responded with:', body);
                             callback();
                         }
-                    });
+                    })
                 }
             });
         }

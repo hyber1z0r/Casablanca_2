@@ -4,6 +4,7 @@ var passwordHash = require('password-hash');
 function generateUserPw(guest) {
     guest.username = generator(10, true, /$/, 'casa-');
     guest.password = generator(6, true);
+    guest.role = 'user';
 }
 
 function hashPw(guest) {
