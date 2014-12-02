@@ -4,6 +4,7 @@ var should = require("should");
 var app = require("../../server/app");
 var bookinglayer = require('../../server/model/domain/bookinglayer');
 var testdata = require('./testdb');
+var ObjectId = require('mongoose').Types.ObjectId;
 
 describe('Bookinglayer', function () {
 
@@ -78,23 +79,23 @@ describe('Bookinglayer', function () {
             });
         });
     });
-    
-    describe("insertBooking", function () {
-       it('Should not return any error, when making a new booking', function (done) {
-           var start = new Date();
-           var slut = new Date();
-           slut.setFullYear(2014,11,10);
-           var roomID = 1;
-           bookinglayer.insertBooking(start, slut, roomID, function (err, document) {
-            should.not.exist(err);
-               done();
-           });
-       });
 
-       it('Should have all the right properties', function (done) {
+    describe("insertBooking", function () {
+        it('Should not return any error, when making a new booking', function (done) {
             var start = new Date();
             var slut = new Date();
-            slut.setFullYear(2014,11,10);
+            slut.setFullYear(2014, 11, 10);
+            var roomID = 1;
+            bookinglayer.insertBooking(start, slut, roomID, function (err, document) {
+                should.not.exist(err);
+                done();
+            });
+        });
+
+        it('Should have all the right properties', function (done) {
+            var start = new Date();
+            var slut = new Date();
+            slut.setFullYear(2014, 11, 10);
             var roomID = 1;
             bookinglayer.insertBooking(start, slut, roomID, function (err, document) {
                 document.should.have.property('startDate');
@@ -106,8 +107,15 @@ describe('Bookinglayer', function () {
         });
 
 
-        
-        
     });
-
+    describe("getBooking", function () {
+        it('Should find one booking', function (done) {
+            var bookingID = new ObjectId("547db2df28fcd1341d67fa51");
+            bookinglayer.getBooking(bookingID, function (err, document) {
+                should.not.exist(err);
+                console.log(document);
+                done();
+            });
+        });
+    })
 });
