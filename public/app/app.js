@@ -18,4 +18,8 @@ angular.module('casablanca', [
 ]).
     config(['$routeProvider', function ($routeProvider) {
         $routeProvider.otherwise({redirectTo: '/'});
-    }]);
+    }])
+
+    .config(function ($httpProvider) {
+        $httpProvider.interceptors.push('authInterceptor');
+    });
