@@ -117,17 +117,16 @@
                                    class="form-control"/>
                         </div>
                         <div class="col-xs-3" ng-show="persons.length > 0">
-                            <label for="addPerson" id="personlabel">Persons added: </label>
-                            <span>{{persons.length}}</span>
                             <script type="text/ng-template" id="myModalContent.html">
                                 <div class="modal-header">
                                     <h3 class="modal-title">Persons added</h3>
                                 </div>
-                                <div class="modal-body">
-                                    <ul>
-                                        <li ng-repeat="guest in persons">
-                                           {{guest.firstName}} {{guest.lastName}} {{guest.address}} {{guest.country}} {{guest.email}} {{guest.phone}} {{guest.dateOfBirth | date}} <a class="glyphicon glyphicon-trash" ng-click="delete($index)"></a>
-                                        </li>
+                                <div class="modal-body" ng-class-even="md-col-4" ng-class-odd="row">
+                                    <ul ng-repeat="guest in persons">
+                                            <li>Full name : {{guest.firstName}} {{guest.lastName}}<a class="glyphicon glyphicon-trash" ng-click="delete($index)"></a></li>
+                                            <li>Address   : {{guest.address}}, {{guest.country}}</li>
+                                            <li>Email     : {{guest.email}} Phone {{guest.phone}}</li>
+                                            <li>DOB       : {{guest.dateOfBirth | date}}</li>
                                     </ul>
                                 </div>
                                 <div class="modal-footer">
@@ -136,7 +135,7 @@
                                 </div>
                             </script>
 
-                            <button class="btn btn-default" ng-click="open('lg')">View persons</button>
+                            <button class="btn btn-default" ng-click="open('lg')" id="viewPersons">View persons({{persons.length}})</button>
 
                         </div>
                     </div>
