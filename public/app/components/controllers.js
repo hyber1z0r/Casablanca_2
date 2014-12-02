@@ -1,5 +1,5 @@
 angular.module('casablanca.controllers', []).
-    controller('AppCtrl', function ($scope) {
+    controller('AppCtrl', function ($scope, $http, $window, $location) {
 
         function url_base64_decode(str) {
             var output = str.replace('-', '+').replace('_', '/');
