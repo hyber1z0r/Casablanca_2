@@ -35,9 +35,23 @@ app.factory('hotelBookingFactory', function ($http) {
             })
     };
 
+    var login = function (username, password, callback) {
+        $http.post('/authenticate', {
+            username: username,
+            password: password
+        })
+            .success(function (data, status, headers, config) {
+                callback(null, data);
+            })
+            .error(function (data, status, headers, config) {
+                callback(data);
+            })
+    };
+
     return {
         getFreeRooms: getFreeRooms,
-        newBooking: newBooking
+        newBooking: newBooking,
+        login: login
     }
 
 });

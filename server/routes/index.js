@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var jwt = require('jsonwebtoken');
 var request = require('request');
+var security = require('../security/security');
 
 /* GET home page. */
 router.get('/', function (req, res) {
@@ -12,7 +13,7 @@ router.post('/authenticate', function (req, res) {
 
     var profile;
 
-    request.post({url: 'http://localhost:4000/login', data: {username: req.body.username, password: req.body.password}},
+    request.post({url: 'http://localhost:4000/login', data: {username: req.body.username, password: security.hash(req.body.password)}},
         function callback(err, httpResponse, body) {
             if (err) {
                 res.status(httpResponse.statusCode() || 500).end('Something broke');
