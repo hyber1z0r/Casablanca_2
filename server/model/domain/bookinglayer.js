@@ -36,5 +36,17 @@ function insertBooking(start, slut, rId, callback) {
     });
 }
 
+function getBooking(objID, callback) {
+    booking.findById({_id : objID}, function (err, guestBooking) {
+        if(err){
+            callback(err)
+        }
+        else {
+            callback(null, guestBooking);
+        }
+    })
+};
+
 module.exports.getBooked = getBooked;
 module.exports.insertBooking = insertBooking;
+module.exports.getBooking = getBooking;
