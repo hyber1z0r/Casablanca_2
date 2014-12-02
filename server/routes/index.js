@@ -15,7 +15,7 @@ router.post('/authenticate', function (req, res) {
 
     request.post({url: 'http://localhost:4000/login', data: {username: req.body.username, password: security.hash(req.body.password)}},
         function callback(err, httpResponse, body) {
-            if (err) {
+            if  (err) {
                 res.status(httpResponse.statusCode() || 500).end('Something broke');
             } else {
                 // Request was a success, body should contain obj with obj_id, role, user and pw if statuscode is 200
