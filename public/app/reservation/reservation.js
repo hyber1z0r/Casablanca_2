@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('casablanca.reservation', ['ngRoute','ui.bootstrap'])
+angular.module('casablanca.reservation', ['ngRoute', 'ui.bootstrap'])
 
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/reservation', {
@@ -10,6 +10,27 @@ angular.module('casablanca.reservation', ['ngRoute','ui.bootstrap'])
     }])
 
     .controller('ReservationCtrl', function ($scope, hotelBookingFactory, $location, $modal, $log) {
+
+        /*
+         *
+         * ONLY FOR TESTING, AND NOT HAVE TO ENTER A GUEST EVERY DAMN TIME!!!
+         * !!!!!!!!!!
+         * ############
+         * */
+
+        $scope.guest = {
+            firstName: 'Leon',
+            lastName: 'Hansen',
+            address: 'Lærkevej 12, 4621 Gadstrup',
+            country: 'Denmark',
+            email: 'leon@landmand.dk',
+            phone: 38383060,
+            dateOfBirth: new Date(1956, 4, 23)
+        };
+        /*
+         * DELETE ^^^^^^^
+         * */
+
         var room_id = '';
         $scope.search = function () {
             hotelBookingFactory.getFreeRooms($scope.startDate, $scope.endDate, $scope.roomsize, function (err, data) {
@@ -86,7 +107,7 @@ angular.module('casablanca.reservation', ['ngRoute','ui.bootstrap'])
 
     })
     .controller('ModalInstanceCtrl', function ($scope, $modalInstance, persons) {
-console.log(persons);
+        console.log(persons);
         $scope.persons = persons;
         $scope.selected = {
             item: $scope.persons[0]
@@ -102,7 +123,7 @@ console.log(persons);
 
 
         $scope.delete = function (index) {
-            $scope.persons.splice (index,1);
+            $scope.persons.splice(index, 1);
         }
 
     });

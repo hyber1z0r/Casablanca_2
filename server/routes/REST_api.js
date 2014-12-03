@@ -90,9 +90,9 @@ router.post('/newReservation', function (req, res) {
                 } else {
                     for (var i = 0; i < gs.length; i++) {
                         security.generate(gs[i]); // we also set the role to user here!
-                        security.hash(gs[i]);
+                        //security.hash(gs[i]); disabled right now for testing login! We cant guess the password from the hash
                     }
-                    datalayer.insertGuests(gs, function (err, response) {
+                    datalayer.insertUsernames(gs, function (err, response) {
                         if(err) {
                             callback(err)
                         } else {

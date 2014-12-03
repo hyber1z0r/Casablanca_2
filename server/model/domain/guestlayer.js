@@ -28,9 +28,11 @@ function getGuests(bId, select, callback) {
 function insertUsernames(gs, callback) {
     request.post({
         url: 'http://localhost:4000/user',
-        guests: gs
+        body: gs,
+        json: true
     }, function optionalCallback(err, httpResponse, body) {
         if (err) {
+            console.log(err);
             callback(err);
         } else {
             callback(null, body);
