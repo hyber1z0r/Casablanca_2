@@ -1,0 +1,50 @@
+<div id="main_wrap">
+    <div id="sidebar">
+        <div id="insidesidebar">
+            <h3>Categories</h3>
+            <h4><a href="#/guest/home" class="active">Home</a></h4>
+            <h4><a href="#/guest/bookfacility">Book facility</a></h4>
+            <h4><a href="#/guest/viewbooking">View booking</a></h4>
+            <h4 id="logoutbutton"><a ng-click="logout()">Log out</a></h4>
+
+        </div>
+
+
+    </div>
+    <!--
+    **************
+    CONTENT!
+    **************
+    -->
+
+    <div id="homecontent" class="section group">
+
+        <div class="col span_1_of_2">
+        <h1 id="welcome">Welcome{{guest.firstName}}</h1>
+        '
+
+        <h3>This is your booking</h3>
+        <ul ng-repeat="guest in persons">
+            <li>Start date: {{booking.startDate}}</li>
+            <li>End date  : {{booking.endDate}}li>
+            <li>Roomnumber: {{booking.roomId}}li>
+            <li>Roomsize  : {{booking.roomSize}}li>
+            <li ng-show="booking.roomSize == 1">Picture   :<img src="images/singleroombg.jpg" alt="singleroom"/><li>
+            <li ng-show="booking.roomSize == 2">Picture   :<img src="images/doubleroombg.jpg" alt="doubleroom"/><li>
+            <li ng-show="booking.roomSize == 5">Picture   :<img src="images/familyroombg.jpg" alt="familyroom"/><li>
+        </ul>
+        </div>
+
+        <div class="col span_1_of_2">
+        <h3>This is your roommates</h3>
+        <ul ng-repeat="guest in persons">
+            <li>Full name : {{guest.firstName}} {{guest.lastName}}</li>
+            <li>Username  : {{guest.userName | date}} Password {{guest.password}}</li>
+        </ul>
+        </div>
+
+    </div>
+
+</div>
+
+

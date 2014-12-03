@@ -18,7 +18,142 @@
     -->
 
     <div id="homecontent">
-        <h1 id="welcome">Welcome {{USERNAME}}</h1>
+
+        <div class="col-md-4">
+            <h1 id="welcome">Welcome{{guest.firstName}}</h1>
+
+
+            <h4>This weeks menu for</h4>
+            <ul>
+                <li><strong>Monday</strong></li>
+                    <u>Breakfast</u><br/>
+                    Brunch buffet<br>
+                    <u>Lunch</u><br/>
+                    Hamburgers and fries<br>
+                    <u>Evening</u><br/>
+                    Paella
+                <li><strong>Tuesday</strong></li>
+                <u>Breakfast</u><br/>
+                Brunch buffet<br>
+                <u>Lunch</u><br/>
+                Hotdogs<br>
+                <u>Evening</u><br/>
+                Ribeye and potatoes
+                <li><strong>Wednesday</strong></li>
+                <u>Breakfast</u><br/>
+                Brunch buffet<br>
+                <u>Lunch</u><br/>
+                Spicy hot wings<br>
+                <u>Evening</u><br/>
+                Chicken tandori with rice
+
+
+            </ul>
+
+        </div>
+        <div class="col-md-4">
+            <div class="menufoodtext1">
+                <li><strong>Thursday</strong></li>
+                <u>Breakfast</u><br/>
+                Brunch buffet<br>
+                <u>Lunch</u><br/>
+                Güros<br>
+                <u>Evening</u><br/>
+                Rosted lamb garlic
+                <li><strong>Friday</strong></li>
+                <u>Breakfast</u><br/>
+                Brunch buffet<br>
+                <u>Lunch</u><br/>
+                Chicken and fries<br>
+                <u>Evening</u><br/>
+                Chicken breast with sauce
+                <li><strong>Saturday</strong></li>
+                <u>Breakfast</u><br/>
+                Brunch buffet<br>
+                <u>Lunch</u><br/>
+                Tuna sandwiches<br>
+                <u>Evening</u><br/>
+                Fish and chips
+
+            </div>
+       '
+        </div>
+        <div class="col-md-4">
+            <h1 id="bookingtext">Booking ID: {{guest.bookingID}}</h1>
+    <div class="menufoodtext2">
+        <li><strong>Sunday</strong></li>
+        <u>Breakfast</u><br/>
+        Brunch buffet<br>
+        <u>Lunch</u><br/>
+        Spareribs<br>
+        <u>Evening</u><br/>
+        American roasted steak
+    </div>
+
+
+
+            <div id="wrappedslider">
+            <h4 id="textpictureshotel">Pictures of hotel</h4>
+            <div id="myCarouselguestroom" class="carousel slide" data-ride="carousel" data-interval="2000">
+
+                <ol class="carousel-indicators">
+                    <li data-target = "#myCarouselguestroom" data-slide-to = "0" class="active"></li>
+                    <li data-target = "#myCarouselguestroom" data-slide-to = "1"></li>
+                    <li data-target = "#myCarouselguestroom" data-slide-to = "2"></li>
+                    <li data-target = "#myCarouselguestroom" data-slide-to = "3"></li>
+                    <li data-target = "#myCarouselguestroom" data-slide-to = "4"></li>
+                </ol>
+                <div class="carousel-inner">
+
+
+
+
+                    <div class="item active">
+                        <img src="images/breakfastbuffet.jpg" alt="breakfast" class="img-responsive" id="breakfastbuffet"/>
+                        <div class = "carousel-caption">
+                        </div>
+                        <h5 class="guesthomesliderh5">Breakfast buffet</h5>
+                    </div>
+
+                    <div class="item">
+                        <img src="images/lunchbuffet.jpg" alt="lunch" class="img-responsive" id="lunchbuffet"/>
+                        <div class = "carousel-caption">
+                        </div>
+                        <h5 class="guesthomesliderh5">Lunch buffet</h5>
+                    </div>
+
+                    <div class="item">
+                        <img src="images/eveningbuffet.jpg" alt="evening" class="img-responsive" id="eveningbuffet"/>
+                        <div class = "carousel-caption">
+                        </div>
+                        <h5 class="guesthomesliderh5">Evening buffet</h5>
+                    </div>
+
+                    <div class="item">
+                        <img src="images/barhotel.jpg" alt="bar" class="img-responsive" id="barhotel"/>
+                        <div class = "carousel-caption">
+                        </div>
+                        <h5 class="guesthomesliderh5">Hotel bar</h5>
+                    </div>
+
+                    <div class="item">
+                        <img src="images/entertainmenthotel.jpg" alt="entertainment" class="img-responsive" id="entertainment"/>
+                        <div class = "carousel-caption">
+                        </div>
+                        <h5 class="guesthomesliderh5">Entertainment</h5>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        <script script type="text/javascript">
+            $('.carousel').carousel({interval:1000})
+        </script>﻿
+
+        </div>
+        </div>
+
 
 
     </div>

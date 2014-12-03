@@ -387,6 +387,8 @@ FOOTER
 
 /*******************
 GUESTS LOGIN!!
+bruger: jpmiller
+pass: kdcoolk
 /*******************
 SIDEBAR AND CONTENT
 *******************/
@@ -409,10 +411,11 @@ SIDEBAR AND CONTENT
 
     min-width: 200px;
     display: table-cell;
-    height: 800px;
+    height: 600px;
     border-radius: 30px;
     padding-right:10px ;
-
+    padding-bottom: 100px;
+    position: fixed;
 }
 
 #homecontent {
@@ -422,12 +425,19 @@ SIDEBAR AND CONTENT
     background: rgba(255,255,255,0.8);
     color: #080808;
     border-radius: 30px;
+    padding-left: 200px;
+    height: 600px;
+
 }
 
 #welcome {
-    padding-left: 100px;
+    padding-left: 5px;
     font-family: Times;
 
+}
+#bookingtext{
+    padding-left: 5px;
+    font-family: Times;
 }
 
 #insidesidebar {
@@ -438,4 +448,98 @@ SIDEBAR AND CONTENT
 #logoutbutton {
     margin-top: 300px;
 
+}
+
+#breakfastbuffet, #lunchbuffet, #eveningbuffet, #barhotel, #entertainment {
+    height: 200px;
+    width: 300px;
+    border-radius: 10px;
+
+}
+#wrappedslider{
+    margin-top: 20px;
+}
+#textpictureshotel{
+    margin-left: 90px;
+}
+.menufoodtext2{
+    margin-top: 35px;
+}
+.menufoodtext1{
+    margin-top: 95px;
+}
+.guesthomesliderh5{
+
+    margin-left: 100px;
+}
+
+#myCarouselguestroom > ol
+{
+    padding-right: 50px;
+}
+
+
+/**
+***************************
+THIS IS VIEW BOOKING FOR GUESTS
+***************************
+**/
+/*  SECTIONS  */
+.section {
+    clear: both;
+    padding: 0px;
+    margin: 0px;
+}
+
+/*  COLUMN SETUP  */
+.col {
+    display: block;
+    float:left;
+    margin: 1% 0 1% 1.6%;
+}
+.col:first-child { margin-left: 0; }
+
+
+/*  GROUPING  */
+.group:before,
+.group:after {
+    content:"";
+    display:table;
+}
+.group:after {
+    clear:both;
+}
+.group {
+    zoom:1; /* For IE 6/7 */
+}
+
+/*  GRID OF THREE  */
+.span_3_of_3 {
+    width: 100%;
+}
+.span_2_of_3 {
+    width: 66.1%;
+}
+.span_1_of_3 {
+    width: 32.2%;
+}
+
+/*  GO FULL WIDTH AT LESS THAN 480 PIXELS */
+
+@media only screen and (max-width: 480px) {
+    .col {
+        margin: 1% 0 1% 0%;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .span_3_of_3 {
+        width: 100%;
+    }
+    .span_2_of_3 {
+        width: 100%;
+    }
+    .span_1_of_3 {
+        width: 100%;
+    }
 }
