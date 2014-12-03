@@ -1,5 +1,7 @@
 var mongoose = require('mongoose');
 var booking = mongoose.model('Booking');
+var ObjectId = require('mongoose').Types.ObjectId;
+
 
 function getBooked(start, slut, callback) {
     booking.find({
@@ -36,8 +38,8 @@ function insertBooking(start, slut, rId, callback) {
     });
 }
 
-function getBooking(objID, callback) {
-    booking.findById({_id : objID}, function (err, guestBooking) {
+function getBooking(ID, callback) {
+    booking.findById({_id : ObjectId(ID)}, function (err, guestBooking) {
         if(err){
             callback(err)
         }
