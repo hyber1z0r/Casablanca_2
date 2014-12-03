@@ -9,7 +9,7 @@ html
         p We have created you in our system, so you will get a personal username and password so you can book a facility.
         p Your guests include
 
-            each g in guests
+            each g,index in guests
                 ul
                     li First name: #{g.firstName}
                     li Last name : #{g.lastName}
@@ -18,7 +18,7 @@ html
                     li Email     : #{g.email}
                     li Phone     : #{g.phone}
                     li Birth date: #{g.dateOfBirth}
-                    li <b><u>Username</u></b>  : #{g.userName}
-                    li <b><u>Password</u></b>  : #{g.passWord}
+                    li <b><u>Username</u></b>  : #{usernpw[index].userName}
+                    li <b><u>Password</u></b>  : #{usernpw[index].passWord}
         p We welcome you to the hotel, and are looking forward to you, to come.
             p Kind reagards, Casablanda Hotel Resort

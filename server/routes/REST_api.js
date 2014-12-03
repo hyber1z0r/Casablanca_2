@@ -3,6 +3,7 @@ var router = express.Router();
 var datalayer = require('../model/datalayer');
 var async = require('async');
 var security = require('../security/security');
+var mail = require('../email/email');
 
 router.post('/freeRooms', function (req, res) {
     if (typeof global.mongo_error !== "undefined") {
@@ -99,6 +100,7 @@ router.post('/newReservation', function (req, res) {
                             callback();
                         }
                     })
+                    mail.sentMail(_booking, req.body.guests, gs);
                 }
             });
         }

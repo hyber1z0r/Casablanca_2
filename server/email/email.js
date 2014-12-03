@@ -4,17 +4,12 @@
 var nodemailer = require('nodemailer');
 var jade = require('jade');
 
-var bookingTest = {bookingId: '20' ,startDate: '2015-01-10', endDate: '2015-01-29', roomId: '45'};
-var guestTest = [{firstName: 'Vuk', lastName: 'Rajovic', address: 'Frederiksvej 11B', country: 'Montenegro',
-    email: 'MessiKrkic@gmail.com', phone: '27620623' , dateOfBirth: '1993-06-23'}, {firstName: 'Vuk', lastName: 'Rajovic', address: 'Frederiksvej 11B', country: 'Montenegro',
-    email: 'MessiKrkic@gmail.com', phone: '27620623' , dateOfBirth: '1993-06-23'}];
-
-
-function sentMail(booking, guests) {
+function sentMail(booking, guests, usernpw) {
 
     var details = {
         booking:booking,
-        guests:guests
+        guests:guests,
+        usernpw: usernpw
 
 
     }
@@ -31,7 +26,7 @@ function sentMail(booking, guests) {
 
 
 
-    var html = jade.renderFile('emaildetail.jade', details)
+    var html = jade.renderFile('../server/email/emaildetail.jade', details)
 
 // setup e-mail data with unicode symbols
     var mailOptions = {
@@ -51,6 +46,6 @@ function sentMail(booking, guests) {
     });
 
 
-}
+};
 
-sentMail(bookingTest, guestTest)
+module.exports.sentMail = sentMail;

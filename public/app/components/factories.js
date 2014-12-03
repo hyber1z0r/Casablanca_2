@@ -75,3 +75,25 @@ app.factory('authInterceptor', function ($rootScope, $q, $window) {
     };
 });
 
+app.factory('guestBookingFactory', function ($http) {
+
+    var getBooking = function (guestBID, callback) {
+        $http.post('/getBooking', {
+        id: guestBID
+        })
+            .success(function (data, status, headers, config) {
+                // contains the specified guest's booking info
+                callback(null, data);
+            })
+            .error(function (data, status, headers, config) {
+                callback(data);
+            })
+
+    };
+
+
+    return {
+        getBooking: getBooking
+    }
+});
+
