@@ -5,6 +5,7 @@ var guestlayer = require('./domain/guestlayer');
 module.exports.getBooked = bookinglayer.getBooked;
 module.exports.getFreeRooms = roomlayer.getFreeRooms;
 module.exports.insertBooking = bookinglayer.insertBooking;
+module.exports.getBooking = bookinglayer.getBooking;
 module.exports.insertGuests = guestlayer.insertGuests;
 module.exports.getGuests = guestlayer.getGuests;
 module.exports.insertUsernames = guestlayer.insertUsernames;
