@@ -13,13 +13,18 @@ router.post('/authenticate', function (req, res) {
 
     var profile;
 
-    request.post({url: 'http://localhost:4000/login', data: {username: req.body.username, password: security.hash(req.body.password)}},
+    // removed hashing the password before validating, because we have test passwords that are non hashed for testing.
+    //request.post({url: 'http://localhost:4000/login', data: {username: req.body.username, password: security.hash(req.body.password)}},
+    request.post({url: 'http://localhost:4000/login', body: {username: req.body.username, password: req.body.password}, json: true},
         function callback(err, httpResponse, body) {
+            console.log('Callback from postrequest');
             if  (err) {
-                res.status(httpResponse.statusCode() || 500).end('Something broke');
+                console.log(err);
+                res.status(500).end('Something broke');
             } else {
+                console.log('No error! ######');
                 // Request was a success, body should contain obj with obj_id, role, user and pw if statuscode is 200
-                if(httpResponse.statusCode() == '200') {
+                if(httpResponse.statusCode == '200') {
                     profile = body;
                     switch (profile.role) {
                         case 'admin':

@@ -1,5 +1,5 @@
 angular.module('casablanca.controllers', []).
-    controller('AppCtrl', function ($scope, $http, $window, $location) {
+    controller('AppCtrl', function ($scope, $http, $window, $location, hotelBookingFactory, LoginService) {
 
         function url_base64_decode(str) {
             var output = str.replace('-', '+').replace('_', '/');
@@ -18,7 +18,6 @@ angular.module('casablanca.controllers', []).
             return window.atob(output); //polifyll https://github.com/davidchambers/Base64.js
         }
 
-
         $scope.title = "Casablanca";
         $scope.profileID = "";
         $scope.isAuthenticated = false;
@@ -28,9 +27,14 @@ angular.module('casablanca.controllers', []).
         $scope.error = null;
 
         $scope.login = function () {
-            $http
-                .post('/authenticate', $scope.user)
-                .success(function (data, status, headers, config) {
+            hotelBookingFactory.login(LoginService.getUsername(), LoginService.getPassword(), function (err, data) {
+                if (err) {
+                    console.log('Error in loggin in!');
+                    // Erase the token if the user fails to log in
+                    delete $window.sessionStorage.token;
+                    $scope.isAuthenticated = false;
+                    $scope.error = 'You failed to login. Invalid username or password';
+                } else {
                     $window.sessionStorage.token = data.token;
                     $scope.isAuthenticated = true;
                     var encodedProfile = data.token.split('.')[1];
@@ -40,14 +44,11 @@ angular.module('casablanca.controllers', []).
                     $scope.isUser = profile.role == "user";
                     $scope.isSuperAdmin = profile.role == "superadmin";
                     $scope.error = null;
-                })
-                .error(function (data, status, headers, config) {
-                    // Erase the token if the user fails to log in
-                    delete $window.sessionStorage.token;
-                    $scope.isAuthenticated = false;
-
-                    $scope.error = 'You failed to login. Invalid User or Password';
-                });
+                    console.log($scope.profileID);
+                    console.log($scope.isAuthenticated);
+                    $location.path('#/guest/home');
+                }
+            })
         };
 
         $scope.logout = function () {

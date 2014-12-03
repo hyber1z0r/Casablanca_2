@@ -12,19 +12,20 @@
                 <div class="header">
                     <!--TITLE--><h1>Login </h1><!--END TITLE-->
                     <!--DESCRIPTION--><span>Fill out the form below to login.</span><!--END DESCRIPTION-->
+                    <p style="color: #c12e2a">{{error}}</p>
                 </div>
                 <!--END HEADER-->
 
                 <!--CONTENT-->
                 <div class="content">
-                    <!--USERNAME--><input ng-model="user.username"  type="text" class="input username" placeholder="Username" /><!--END USERNAME-->
-                    <!--PASSWORD--><input ng-model="user.password"  type="password" class="input password" placeholder="Password" /><!--END PASSWORD-->
+                    <!--USERNAME--><input ng-model="username"  type="text" class="input username" placeholder="Username" /><!--END USERNAME-->
+                    <!--PASSWORD--><input ng-model="password"  type="password" class="input password" placeholder="Password" /><!--END PASSWORD-->
                 </div>
                 <!--END CONTENT-->
 
                 <!--FOOTER-->
                 <div class="footer">
-                    <!--LOGIN BUTTON--><button ng-click="login()" class="button">Login</button><!--END LOGIN BUTTON-->
+                    <!--LOGIN BUTTON--><button ng-click="login()" id="loginbtn" class="button">Login</button><!--END LOGIN BUTTON-->
                 </div>
                 <!--END FOOTER-->
 

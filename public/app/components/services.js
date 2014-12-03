@@ -9,4 +9,29 @@ angular.module('casablanca.services', [])
         this.getInfo = function () {
             return info;
         }
+    }])
+    .service('LoginService', [function () {
+        var username;
+        var password;
+
+        var setUsername = function (user) {
+            username = user;
+        };
+        var getUsername = function () {
+            return username;
+        };
+
+        var setPassword = function (pass) {
+            password = pass;
+        };
+        var getPassword = function () {
+            return password;
+        };
+
+        return {
+            getUsername: getUsername,
+            getPassword: getPassword,
+            setUsername: setUsername,
+            setPassword: setPassword
+        };
     }]);

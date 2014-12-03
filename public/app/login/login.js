@@ -9,6 +9,10 @@ angular.module('casablanca.login', ['ngRoute'])
         });
     }])
 
-    .controller('LoginCtrl', function ($scope) {
+    .controller('LoginCtrl', function ($scope, LoginService) {
+        $scope.$watchGroup(['username','password'], function () {
+            LoginService.setUsername($scope.username);
+            LoginService.setPassword($scope.password);
+        })
 
     });
