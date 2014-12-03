@@ -2,14 +2,14 @@ doctype html
 html
     head
     img(src='http://webstoremall.com/images/company/80/C_Casa_logo.jpg')
-    h1 Booking informations from Casablanca with booking ID : <b>#{booking.bookingId}</b>
+    h1 Booking informations from Casablanca with booking ID: <b>#{booking._id}</b>
     body
         p Hello <b>#{guests[0].firstName}</b>, this is a confirmation mail for your booking at Casablanca hotel resort.
-        p You have booked roomnumber <b>#{booking.roomId}</b>, on <b>#{booking.startDate}</b> to <b>#{booking.endDate}</b>.
-        p We have created you in our system, so you will get a personal username and password so you can book a facility.
+        p You are booked in at room <b>#{booking.roomId}</b>, on <b>#{booking.startDate}</b> to <b>#{booking.endDate}</b>.
+        p We have set up an account in our system, so you will get a personal username and password so you can book a facility.
         p Your guests include
 
-            each g,index in guests
+            each g, index in guests
                 ul
                     li First name: #{g.firstName}
                     li Last name : #{g.lastName}
@@ -18,7 +18,7 @@ html
                     li Email     : #{g.email}
                     li Phone     : #{g.phone}
                     li Birth date: #{g.dateOfBirth}
-                    li <b><u>Username</u></b>  : #{usernpw[index].userName}
-                    li <b><u>Password</u></b>  : #{usernpw[index].passWord}
-        p We welcome you to the hotel, and are looking forward to you, to come.
-            p Kind reagards, Casablanda Hotel Resort
+                    li <b><u>Username</u></b>  : #{usernpw[index].username}
+                    li <b><u>Password</u></b>  : #{usernpw[index].password}
+        p We welcome you to the hotel, and are looking forward to see you.
+            p Kind regards, Casablanca Hotel Resort
