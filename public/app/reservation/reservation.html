@@ -367,6 +367,7 @@
                             <input type="button" value="Add person" ng-disabled="disableForm" id="addPerson" ng-click="add()"
                                    class="form-control"/>
                         </div>
+                        <!-- Shows which persons have been added to the list-->
                         <div class="col-xs-3" ng-show="persons.length > 0">
                             <script type="text/ng-template" id="myModalContent.html">
                                 <div class="modal-header">
@@ -398,6 +399,25 @@
                 <div class="col-xs-3">
                     <input type="button" value="Submit" id="submitPerson" ng-click="submit()" ng-disabled="(persons.length < 1 && !single) || disableForm" class="form-control" />
                 </div>
+                <!-- Popup module if its successfull submit-->
+                <div class="col-xs-3" ng-show="persons.length > 0">
+                    <script type="text/ng-template" id="MyModalIfSuccess.html">
+                        <div class="modal-header">
+                            <h3 class="modal-title">Your booking was successfull</h3>
+                        </div>
+                        <div class="modal-body" ng-class-even="md-col-4" ng-class-odd="row">
+                            <h5>You will get a confirmation mail in a few minutes</h5>
+                            <ul ng-repeat="guest in persons">
+                                <li>Full name : {{guest.firstName}} {{guest.lastName}}</li>
+                                <li>Address   : {{guest.address}}, {{guest.country}}</li>
+                                <li>Email     : {{guest.email}} Phone {{guest.phone}}</li>
+                                <li>DOB       : {{guest.dateOfBirth | date}}</li>
+                            </ul>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-primary" ng-click="ok()">OK</button>
+                        </div>
+                    </script>
             </div>
         </div>
     </div>
