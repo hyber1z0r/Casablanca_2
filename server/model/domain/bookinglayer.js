@@ -11,7 +11,7 @@ function getBooked(start, slut, callback) {
             {$and: [{startDate: {$lte: start}}, {endDate: {$gte: slut}}]},
             {$and: [{startDate: {$gte: start}}, {endDate: {$lte: slut}}]}
         ]
-    }, '-_id roomId', function (err, results) {
+    }, '-_id room', function (err, results) {
         if (err) {
             callback(err);
         }
@@ -25,7 +25,7 @@ function insertBooking(start, slut, rId, callback) {
     var b = new booking({
         startDate: start,
         endDate: slut,
-        roomId: rId,
+        room: rId,
         regDate: new Date()
     });
 
@@ -39,7 +39,7 @@ function insertBooking(start, slut, rId, callback) {
 }
 
 function getBooking(ID, callback) {
-    booking.findById({_id : ObjectId(ID)}, function (err, guestBooking) {
+    booking.findById({_id : ObjectId(ID)}).populate('roomId').exec(function (err, guestBooking) {
         if(err){
             callback(err)
         }
