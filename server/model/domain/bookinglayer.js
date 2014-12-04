@@ -2,7 +2,10 @@ var mongoose = require('mongoose');
 var booking = mongoose.model('Booking');
 var ObjectId = require('mongoose').Types.ObjectId;
 
-
+/* Finds all bookings that are taken in the period that you search for.
+*  These bookings have the roomnumbers with them, so the roomnumbers
+*  are used to filter which are free.
+* */
 function getBooked(start, slut, callback) {
     booking.find({
         $or: [
@@ -21,6 +24,7 @@ function getBooked(start, slut, callback) {
     });
 }
 
+/* Inserts the new booking you created into the mongoDB, and returns the booking */
 function insertBooking(start, slut, rId, callback) {
     var b = new booking({
         startDate: start,
@@ -38,6 +42,7 @@ function insertBooking(start, slut, rId, callback) {
     });
 }
 
+/* Returns the booking, populated with room info, with the given booking id */
 function getBooking(ID, callback) {
     booking.findById({_id : ObjectId(ID)}).populate('roomId').exec(function (err, guestBooking) {
         if(err){
@@ -47,7 +52,7 @@ function getBooking(ID, callback) {
             callback(null, guestBooking);
         }
     })
-};
+}
 
 module.exports.getBooked = getBooked;
 module.exports.insertBooking = insertBooking;

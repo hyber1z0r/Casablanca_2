@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 var guest = mongoose.model('Guest');
 var request = require('request');
 
+/* Adds the booking id as a property on the guest obj, and then adds them to the database */
 function insertGuests(guests, bId, callback) {
     for (var i = 0; i < guests.length; i++) {
         guests[i].booking = bId;
@@ -15,6 +16,7 @@ function insertGuests(guests, bId, callback) {
     });
 }
 
+/* Gets all guests associated with a specific booking */
 function getGuests(bId, select, callback) {
     guest.find({booking: bId}, select).lean().exec(function (err, docs) {
         if (err) {
@@ -25,6 +27,7 @@ function getGuests(bId, select, callback) {
     });
 }
 
+/* Gets guest with by unique ID */
 function findGuest(gId, callback) {
     guest.findById(gId, function (err, docs) {
         if (err) {
@@ -35,6 +38,7 @@ function findGuest(gId, callback) {
     });
 }
 
+/* Posts the username and password, with their obj ID, to the JPA Server -> Oracle DB */
 function insertUsernames(gs, callback) {
     request.post({
         url: 'http://localhost:4000/user',

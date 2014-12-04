@@ -105,17 +105,32 @@ describe('Bookinglayer', function () {
                 done();
             });
         });
-
-
     });
-    describe("getBooking", function () {
+
+    describe('getBooking', function () {
         it('Should find one booking', function (done) {
-            var bookingID = new ObjectId("547db2df28fcd1341d67fa51");
+            var start = new Date();
+            var slut = new Date();
+            slut.setFullYear(2014, 11, 10);
+            var room = 1;
+            bookinglayer.insertBooking(start, slut, room, function (err1, document) {
+                should.not.exist(err1);
+                bookinglayer.getBooking(document._id, function (err2, booking) {
+                    should.not.exist(err2);
+                    booking._id.toString().should.equal(document._id.toString());
+                    done();
+                });
+            });
+        });
+
+        it('Should return null when not found', function (done) {
+            // invalid made up objectID:
+            var bookingID = new ObjectId("123db2df28fcd1341d67fa99");
             bookinglayer.getBooking(bookingID, function (err, document) {
                 should.not.exist(err);
-                console.log(document);
+                (document === null).should.equal(true);
                 done();
             });
         });
-    })
+    });
 });
