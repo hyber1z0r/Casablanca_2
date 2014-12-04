@@ -21,7 +21,7 @@ router.get('/findguest/:id', function (req, res) {
     if (typeof global.mongo_error !== "undefined") {
         return res.status(500).end('Error: ' + global.mongo_error);
     }
-    datalayer.findGuest(req.param.id, function callback(err, guestInfo) {
+    datalayer.findGuest(req.params.id, function callback(err, guestInfo) {
         if (err) {
             return res.status(500).json({error: err.toString()});
         }
@@ -35,7 +35,7 @@ router.get('/getguests/:id', function (req, res) {
     if (typeof global.mongo_error !== "undefined") {
         return res.status(500).end('Error: ' + global.mongo_error);
     }
-    datalayer.getGuests(req.param.id, function callback(err, allGuests) {
+    datalayer.getGuests(req.params.id, '', function callback(err, allGuests) {
         if (err) {
             return res.status(500).json({error: err.toString()});
         }

@@ -78,7 +78,7 @@ app.factory('authInterceptor', function ($rootScope, $q, $window) {
 app.factory('guestBookingFactory', function ($http) {
 
     var getBooking = function (guestBID, callback) {
-        $http.post('/getBooking', {
+        $http.post('/userApi/getBooking', {
         id: guestBID
         })
             .success(function (data, status, headers, config) {
@@ -92,7 +92,7 @@ app.factory('guestBookingFactory', function ($http) {
     };
 
     var findGuest = function (guestID, callback) {
-        $http.get('/findguest/' + guestID)
+        $http.get('/userApi/findguest/' + guestID)
             .success(function (data, status, headers, config) {
                 // contains the specified guest's info
                 callback(null, data);
@@ -103,7 +103,7 @@ app.factory('guestBookingFactory', function ($http) {
     }
 
     var getGuests = function (guestBID, callback) {
-        $http.get('/getguests/' + guestBID)
+        $http.get('/userApi/getguests/' + guestBID)
             .success(function (data, status, headers, config) {
                 // contains all guests with the specified booking
                 callback(null, data);
