@@ -46,7 +46,11 @@ angular.module('casablanca.controllers', []).
                     $scope.error = null;
                     console.log($scope.profileID);
                     console.log($scope.isAuthenticated);
-                    $location.path('#/guest/home');
+
+                    $location.path('guest/home');
+
+
+                    console.log($location.path());
                 }
             })
         };
@@ -57,7 +61,7 @@ angular.module('casablanca.controllers', []).
             $scope.isUser = false;
             $scope.isSuperAdmin = false;
             delete $window.sessionStorage.token;
-            $location.path("/home");
+            $location.path("#/home");
         }
 
 
