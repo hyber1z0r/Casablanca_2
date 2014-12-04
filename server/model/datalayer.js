@@ -9,3 +9,4 @@ module.exports.getBooking = bookinglayer.getBooking;
 module.exports.insertGuests = guestlayer.insertGuests;
 module.exports.getGuests = guestlayer.getGuests;
 module.exports.insertUsernames = guestlayer.insertUsernames;
+module.exports.findGuest = guestlayer.findGuest;

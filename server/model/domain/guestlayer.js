@@ -22,7 +22,17 @@ function getGuests(bId, select, callback) {
         } else {
             callback(null, docs);
         }
-    })
+    });
+}
+
+function findGuest(gId, callback) {
+    guest.findById(gId, function (err, docs) {
+        if (err) {
+            callback(err);
+        } else {
+            callback(null, docs);
+        }
+    });
 }
 
 function insertUsernames(gs, callback) {
@@ -43,3 +53,4 @@ function insertUsernames(gs, callback) {
 module.exports.insertGuests = insertGuests;
 module.exports.getGuests = getGuests;
 module.exports.insertUsernames = insertUsernames;
+module.exports.findGuest = findGuest;
