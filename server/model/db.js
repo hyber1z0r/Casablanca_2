@@ -55,7 +55,7 @@ var RoomSchema = new mongoose.Schema({
 var BookingSchema = new mongoose.Schema({
     startDate : Date,
     endDate : Date,
-    roomId : Number,
+    room : Number,
     regDate : Date
 });
 
