@@ -118,7 +118,7 @@ app.factory('guestBookingFactory', function ($http) {
             if (err) {
                 callback('Error in find guest: ' + err);
             } else {
-                var user = data;
+                var user = userdoc;
                 getBooking(user.booking, function (err, bookingdoc) {
                     if (err) {
                         callback('Error in get booking: ' + err);
