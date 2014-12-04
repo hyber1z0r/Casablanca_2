@@ -91,9 +91,34 @@ app.factory('guestBookingFactory', function ($http) {
 
     };
 
+    var findGuest = function (guestID, callback) {
+        $http.get('/findguest/' + guestID)
+            .success(function (data, status, headers, config) {
+                // contains the specified guest's info
+                callback(null, data);
+            })
+            .error(function (data, status, headers, config) {
+                callback(data);
+            })
+    }
+
+    var getGuests = function (guestBID, callback) {
+        $http.get('/getguests/' + guestBID)
+            .success(function (data, status, headers, config) {
+                // contains all guests with the specified booking
+                callback(null, data);
+            })
+            .error(function (data, status, headers, config) {
+                callback(data);
+            })
+    }
+
+
 
     return {
-        getBooking: getBooking
+        getBooking: getBooking,
+        findGuest: findGuest,
+        getGuests: getGuests
     }
 });
 

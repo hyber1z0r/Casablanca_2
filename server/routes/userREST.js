@@ -17,4 +17,33 @@ router.post('/getBooking', function (req, res) {
     });
 });
 
+router.get('/findguest/:id', function (req, res) {
+    if (typeof global.mongo_error !== "undefined") {
+        return res.status(500).end('Error: ' + global.mongo_error);
+    }
+    datalayer.findGuest(req.param.id, function callback(err, guestInfo) {
+        if (err) {
+            return res.status(500).json({error: err.toString()});
+        }
+        else {
+            res.json(guestInfo);
+        }
+    });
+});
+
+router.get('/getguests/:id', function (req, res) {
+    if (typeof global.mongo_error !== "undefined") {
+        return res.status(500).end('Error: ' + global.mongo_error);
+    }
+    datalayer.getGuests(req.param.id, function callback(err, allGuests) {
+        if (err) {
+            return res.status(500).json({error: err.toString()});
+        }
+        else {
+            res.json(allGuests);
+        }
+    });
+});
+
+
     module.exports = router;
