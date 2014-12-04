@@ -20,11 +20,11 @@ app.factory('hotelBookingFactory', function ($http) {
             })
     };
 
-    var newBooking = function (start, end, roomId, guests, callback) {
+    var newBooking = function (start, end, room, guests, callback) {
         $http.post('/api/newReservation', {
             start: start,
             end: end,
-            roomId: roomId,
+            room: room,
             guests: guests
         })
             .success(function (data, status, headers, config) {

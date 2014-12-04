@@ -46,7 +46,7 @@ router.post('/freeRooms', function (req, res) {
 function filterIds(array) {
     var result = [];
     for (var i = 0; i < array.length; i++) {
-        result.push(array[i].roomId);
+        result.push(array[i].room);
     }
     return result;
 }
@@ -61,7 +61,7 @@ router.post('/newReservation', function (req, res) {
     var _rowsInserted;
     async.series([
         function (callback) {
-            datalayer.insertBooking(new Date(req.body.start), new Date(req.body.end), req.body.roomId, function (err, booking) {
+            datalayer.insertBooking(new Date(req.body.start), new Date(req.body.end), req.body.room, function (err, booking) {
                 if (err) {
                     callback(err);
                 }

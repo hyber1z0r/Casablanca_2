@@ -85,8 +85,8 @@ describe('Bookinglayer', function () {
             var start = new Date();
             var slut = new Date();
             slut.setFullYear(2014, 11, 10);
-            var roomID = 1;
-            bookinglayer.insertBooking(start, slut, roomID, function (err, document) {
+            var room = 1;
+            bookinglayer.insertBooking(start, slut, room, function (err, document) {
                 should.not.exist(err);
                 done();
             });
@@ -96,11 +96,11 @@ describe('Bookinglayer', function () {
             var start = new Date();
             var slut = new Date();
             slut.setFullYear(2014, 11, 10);
-            var roomID = 1;
-            bookinglayer.insertBooking(start, slut, roomID, function (err, document) {
+            var room = 1;
+            bookinglayer.insertBooking(start, slut, room, function (err, document) {
                 document.should.have.property('startDate');
                 document.should.have.property('endDate');
-                document.should.have.property('roomId');
+                document.should.have.property('room');
                 document.should.have.property('regDate');
                 done();
             });

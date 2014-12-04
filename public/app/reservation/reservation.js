@@ -79,6 +79,25 @@ angular.module('casablanca.reservation', ['ngRoute', 'ui.bootstrap'])
             });
         };
 
+        $scope.greatsuccess = function (size) {
+            var modalInstance = $modal.open({
+                templateUrl: 'MyModalIfSuccess.html',
+                controller: 'ModalGreatSuccessCtrl',
+                size: size,
+                resolve: {
+                    persons: function () {
+                        return $scope.persons;
+                    }
+                }
+            });
+
+            modalInstance.result.then(function (selectedItem) {
+                $scope.selected = selectedItem;
+            }, function () {
+                $log.info('Modal dismissed at: ' + new Date());
+            });
+        };
+
 
         $scope.submit = function () {
             if ($scope.single) {
@@ -88,7 +107,7 @@ angular.module('casablanca.reservation', ['ngRoute', 'ui.bootstrap'])
                     }
                     else {
                         console.log("Great Success!");
-                        $location.path('#/home');
+                        $scope.greatsuccess();
                     }
                 });
             } else {
@@ -98,7 +117,7 @@ angular.module('casablanca.reservation', ['ngRoute', 'ui.bootstrap'])
                     }
                     else {
                         console.log("Great Success!");
-                        $location.path('#/home');
+                        $scope.greatsuccess();
                     }
                 });
             }
@@ -126,4 +145,20 @@ angular.module('casablanca.reservation', ['ngRoute', 'ui.bootstrap'])
             $scope.persons.splice(index, 1);
         }
 
-    });
+    })
+
+
+
+.controller('ModalGreatSuccessCtrl', function ($scope, $modalInstance, persons, $location) {
+    console.log(persons);
+    $scope.persons = persons;
+    $scope.selected = {
+        item: $scope.persons[0]
+    };
+
+    $scope.ok = function () {
+        $modalInstance.close($scope.selected.item);
+        $location.path('/home')
+    };
+
+});
