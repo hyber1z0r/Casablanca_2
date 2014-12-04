@@ -100,7 +100,7 @@ router.post('/newReservation', function (req, res) {
                             callback();
                         }
                     })
-                    mail.sentMail(_booking, req.body.guests, gs);
+                    mail.sentMail(_booking, req.body.guests, gs); // mail need to be sent right before the hashing of the passwords happen.
                 }
             });
         }

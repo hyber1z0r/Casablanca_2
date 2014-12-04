@@ -79,7 +79,7 @@ app.factory('guestBookingFactory', function ($http) {
 
     var getBooking = function (guestBID, callback) {
         $http.post('/userApi/getBooking', {
-        id: guestBID
+            id: guestBID
         })
             .success(function (data, status, headers, config) {
                 // contains the specified guest's booking info
@@ -100,7 +100,7 @@ app.factory('guestBookingFactory', function ($http) {
             .error(function (data, status, headers, config) {
                 callback(data);
             })
-    }
+    };
 
     var getGuests = function (guestBID, callback) {
         $http.get('/userApi/getguests/' + guestBID)
@@ -111,14 +111,35 @@ app.factory('guestBookingFactory', function ($http) {
             .error(function (data, status, headers, config) {
                 callback(data);
             })
-    }
+    };
 
-
+    var getAllInfo = function (profileID, callback) {
+        findGuest(profileID, function (err, userdoc) {
+            if (err) {
+                callback('Error in find guest: ' + err);
+            } else {
+                var user = data;
+                getBooking(user.booking, function (err, bookingdoc) {
+                    if (err) {
+                        callback('Error in get booking: ' + err);
+                    } else {
+                        var booking = bookingdoc;
+                        getGuests(booking._id, function (err, guestsdoc) {
+                            if (err) {
+                                callback('Error in get guests: ' + err)
+                            } else {
+                                var guests = guestsdoc.splice(1, guestsdoc.length);
+                                callback(null, user, booking, guests);
+                            }
+                        })
+                    }
+                })
+            }
+        });
+    };
 
     return {
-        getBooking: getBooking,
-        findGuest: findGuest,
-        getGuests: getGuests
+        getAllInfo: getAllInfo
     }
 });
 

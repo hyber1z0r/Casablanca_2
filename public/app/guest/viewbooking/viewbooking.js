@@ -15,34 +15,13 @@ angular.module('casablanca.viewbooking', ['ngRoute'])
         $scope.bookinginfo = {};
         $scope.firstGuest = {};
 
-        guestBookingFactory.findGuest($scope.profileID, function (err, data) {
-            if(err || data == null){
-                console.log("Error in finding the first guest");
+        guestBookingFactory.getAllInfo($scope.profileID, function (err, user, booking, guests) {
+            if(err) {
+                console.log(err);
+            } else {
+                $scope.firstGuest = user;
+                $scope.bookinginfo = booking;
+                $scope.guests = guests;
             }
-            else {
-                $scope.firstGuest = data;
-              guestBookingFactory.getBooking(data.booking, function (err, booking) {
-                  if(err){
-                      console.log("Error in finding the booking");
-                  }
-                  else {
-                      $scope.bookinginfo = booking;
-                      guestBookingFactory.getGuests(booking._id, function (err, allGuests) {
-                          if(err) {
-                              console.log("Error in finding the guests associated with the booking");
-                          }
-                          else {
-                              console.log(allGuests);
-                              $scope.guests = allGuests;
-                          }
-                      })
-                  }
-              })
-
-            }
-        })
-
-
-
-
+        });
     }]);
