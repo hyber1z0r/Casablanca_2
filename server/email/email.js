@@ -27,7 +27,7 @@ function sentMail(booking, guests, usernpw) {
 
 
 
-    var html = jade.renderFile('/Users/jakobgaardandersen/WebstormProjects/SemesterProject/server/email/emaildetail.jade', details)
+    var html = jade.renderFile('../server/email/emaildetail.jade', details)
 
 // setup e-mail data with unicode symbols
     var mailOptions = {

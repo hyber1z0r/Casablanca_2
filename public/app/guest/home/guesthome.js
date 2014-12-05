@@ -9,5 +9,17 @@ angular.module('casablanca.guesthome', ['ngRoute'])
         });
     }])
 
-    .controller('GuestHomeCtrl', ['$scope', function ($scope) {
+    .controller('GuestHomeCtrl', ['$scope', 'guestBookingFactory', function ($scope, guestBookingFactory) {
+
+
+        $scope.delete = function () {
+            guestBookingFactory.deleteGuest($scope.profileID, function(err, status){
+                if (err) {
+                    callback(err);
+                }
+                else {
+                    console.log(status);
+                }
+            })
+        }
     }]);

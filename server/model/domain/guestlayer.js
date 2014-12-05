@@ -53,8 +53,21 @@ function insertUsernames(gs, callback) {
         }
     });
 }
+/* With mongoose middleware 'remove', we delete any dependencies on the guest and then deletes the guest itself. */
+function deleteBooking(id, callback) {
+  guest.remove({booking: id}, function (err, data) {
+      if (err) {
+          console.log(err);
+          callback(err);
+      }
+      else {
+          callback(null, data);
+      }
+  })
+}
 
 module.exports.insertGuests = insertGuests;
 module.exports.getGuests = getGuests;
 module.exports.insertUsernames = insertUsernames;
 module.exports.findGuest = findGuest;
+module.exports.deleteBooking = deleteBooking;

@@ -59,6 +59,14 @@ var BookingSchema = new mongoose.Schema({
     regDate : Date
 });
 
+GuestSchema.pre('remove', function(next) {
+    // 'this' is the client being removed. Provide callbacks here if you want
+    // to be notified of the calls' result.
+    Booking.remove({_id: this.booking}).exec();
+    next();
+});
+
+
 mongoose.model('Guest', GuestSchema, "guests");
 mongoose.model('Room', RoomSchema, "rooms");
 mongoose.model('Booking', BookingSchema, "bookings");

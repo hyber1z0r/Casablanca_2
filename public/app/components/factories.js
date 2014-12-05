@@ -138,7 +138,27 @@ app.factory('guestBookingFactory', function ($http) {
         });
     };
 
+    var deleteGuest = function (profileID, callback) {
+        findGuest(profileID, function (err, userdoc) {
+            if (err) {
+                callback('Error in find guest (deleteguest) ' + err);
+            }
+            else {
+                var user = userdoc;
+                console.log(user);
+                $http.delete('/userApi/deleteguests/' + user.booking)
+                    .success(function (data, status, headers, config) {
+                        // deletes all guests with the specified booking id
+                        callback(null, status);
+                    })
+                    .error(function (data, status, headers, config) {
+                        callback(data);
+                    })
+            }
+        })
+    }
     return {
+        deleteGuest: deleteGuest,
         getAllInfo: getAllInfo
     }
 });

@@ -57,4 +57,8 @@ describe('GuestLayer', function () {
         // We need to recreated the sample data, to be actual guests that matches a booking. Which they don't at the moment.
 
     })
+
+    describe('deleteGuests', function () {
+      // same as above...
+    })
 });

@@ -45,5 +45,19 @@ router.get('/getguests/:id', function (req, res) {
     });
 });
 
+router.delete('/deleteguests/:id', function (req, res) {
+    if (typeof global.mongo_error !== "undefined") {
+        return res.status(500).end('Error: ' + global.mongo_error);
+    }
+    datalayer.deleteBooking(req.params.id, function callback(err, data) {
+        if (err) {
+            return res.status(500).json({error: err.toString()});
+        }
+        else {
+            res.status(200).json({message: "Guest(s) was successfully deleted"});
+        }
+    })
+})
+
 
     module.exports = router;
