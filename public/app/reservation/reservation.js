@@ -17,10 +17,9 @@ angular.module('casablanca.reservation', ['ngRoute', 'ui.bootstrap'])
          * !!!!!!!!!!
          * ############
          * */
-
         $scope.guest = {
-            firstName: 'Leon',
-            lastName: 'Hansen',
+            firstName: '',
+            lastName: '',
             address: 'Lærkevej 12, 4621 Gadstrup',
             country: 'Denmark',
             email: 'leon@landmand.dk',
@@ -31,6 +30,28 @@ angular.module('casablanca.reservation', ['ngRoute', 'ui.bootstrap'])
          * DELETE ^^^^^^^
          * */
 
+            var local = new Date();
+            local.setMinutes(local.getMinutes() - local.getTimezoneOffset());
+            $scope.today = local;
+            $scope.startDate = angular.copy(local);
+        $scope.$watch('startDate', function () {
+            $scope.tommorrow = addDays($scope.startDate, 1);
+        })
+
+
+
+        var checkoutdate = new Date();
+        checkoutdate.setMinutes(checkoutdate.getMinutes() - checkoutdate.getTimezoneOffset());
+        $scope.endDate = addDays(checkoutdate,7);
+
+        function addDays(date, days) {
+            var result = new Date(date);
+            result.setDate(date.getDate() + days)
+            return result;
+        }
+
+
+        
         var room_id = '';
         $scope.search = function () {
             hotelBookingFactory.getFreeRooms($scope.startDate, $scope.endDate, $scope.roomsize, function (err, data) {
@@ -162,3 +183,5 @@ angular.module('casablanca.reservation', ['ngRoute', 'ui.bootstrap'])
     };
 
 });
+
+

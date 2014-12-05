@@ -4,17 +4,19 @@
             <h2>Make a Reservation</h2>
             <h4 class="roomtype">Please Select Room Type</h4><br><br><br>
 
-            <form action="">
+
                 <input type="radio" id="singleroom" name="rb" value="1" checked="true" ng-model="roomsize"
-                       ng-click="single=true; disableForm=true">
+                       ng-click="single=true; disableForm=true" ng-required="!roomsize">
                 <label for="singleroom">Single Room</label><a href="images/singleroombg.jpg" onclick="javascript:void window.open('images/singleroombg.jpg','1417427479549','width=700,height=500,toolbar=0,menubar=0,location=0,status=1,scrollbars=1,resizable=1,left=0,top=0');return false;">?</a><br>
+
                 <input type="radio" id="doubleroom" name="rb" value="2" ng-model="roomsize"
-                       ng-click="single=false; disableForm=true">
+                       ng-click="single=false; disableForm=true" ng-required="!roomsize">
                 <label for="doubleroom">Double Room</label><a href="images/doubleroombg.jpg" onclick="javascript:void window.open('images/doubleroombg.jpg','1417427479549','width=700,height=500,toolbar=0,menubar=0,location=0,status=1,scrollbars=1,resizable=1,left=0,top=0');return false;">?</a><br>
+
                 <input type="radio" id="familyroom" name="rb" value="5" ng-model="roomsize"
-                       ng-click="single=false; disableForm=true">
+                       ng-click="single=false; disableForm=true" ng-required="!roomsize">
                 <label for="familyroom">Family room</label><a href="images/familyroombg.jpg" onclick="javascript:void window.open('images/familyroombg.jpg','1417427479549','width=700,height=500,toolbar=0,menubar=0,location=0,status=1,scrollbars=1,resizable=1,left=0,top=0');return false;">?</a>
-            </form>
+
             <div id="cancelationpolicy">
                 <h3>Cancelation policy</h3>
                 <ul>
@@ -31,6 +33,7 @@
             </div>
 
         </div>
+        <form name="searchForm">
         <div class="col-md-8">
 
 
@@ -38,34 +41,35 @@
                 <div class="col-xs-5">
                     <div class="input-group check-in">
                         <span class="input-group-addon">Check in</span>
-                        <input type="date" class="form-control" ng-model="startDate" ng-click="disableForm=true">
+                        <input type="date" class="form-control" ng-model="startDate" ng-click="disableForm=true" min="{{today}}">
                     </div>
                 </div>
                 <div class="col-xs-5">
                     <div class="input-group check-out">
                         <span class="input-group-addon">Check out</span>
-                        <input type="date" class="form-control" ng-model="endDate" ng-click="disableForm=true">
+                        <input type="date" class="form-control" ng-model="endDate" ng-click="disableForm=true" min="{{tommorrow}}">
 
                     </div>
                 </div>
                 <div class="col-xs-2">
-                    <input type="button" value="Search" id="searchDateButton" ng-click="search()" class="form-control"/>
+                    <input type="button" value="Search" id="searchDateButton" ng-click="search()" class="form-control" />
                 </div>
             </div>
+            </form>
 
-
-            <div ng-show="showRest" >
+            <form name="signup_form" novalidate>
+            <div ng-show="showRest">
                 <div class="row">
                     <div class="col-xs-5">
-                        <div class="input-group">
+                        <div class="input-group" >
                             <span class="input-group-addon">First name</span>
-                            <input type="text" class="form-control" ng-model="guest.firstName" ng-disabled="disableForm" required>
+                            <input type="text" class="form-control" ng-model="guest.firstName" name="name" ng-disabled="disableForm" required ng-minlength=2>
                         </div>
                     </div>
                     <div class="col-xs-5">
                         <div class="input-group">
                             <span class="input-group-addon">Last name</span>
-                            <input type="text" class="form-control" ng-model="guest.lastName" ng-disabled="disableForm" required>
+                            <input type="text" class="form-control" ng-model="guest.lastName" ng-disabled="disableForm" required ng-minlength=3>
 
                         </div>
                     </div>
@@ -75,14 +79,14 @@
                     <div class="col-xs-5">
                         <div class="input-group">
                             <span class="input-group-addon">Address</span>
-                            <input type="text" class="form-control" ng-disabled="disableForm" ng-model="guest.address">
+                            <input type="text" class="form-control" ng-disabled="disableForm" ng-model="guest.address" required ng-minlength=3>
                         </div>
                     </div>
                     <div class="col-xs-5">
                         <div class="input-group">
                             <span class="input-group-addon">Country</span>
-                            <select class="form-control" id="dropdownmenu">
-                            <option> </option>
+                            <select class="form-control" id="dropdownmenu" required ng-minlength=3>
+                            <option>..</option>
                             <option value="AF">Afghanistan</option>
                             <option value="AX">Åland Islands</option>
                             <option value="AL">Albania</option>
@@ -343,13 +347,13 @@
                     <div class="col-xs-5">
                         <div class="input-group">
                             <span class="input-group-addon">Email</span>
-                            <input type="email" class="form-control" ng-disabled="disableForm" ng-model="guest.email">
+                            <input type="email" class="form-control" ng-disabled="disableForm" ng-model="guest.email" required ng-minlength=3>
                         </div>
                     </div>
                     <div class="col-xs-5">
                         <div class="input-group">
                             <span class="input-group-addon">Phone</span>
-                            <input type="number" class="form-control" ng-disabled="disableForm" ng-model="guest.phone">
+                            <input type="number" class="form-control" ng-disabled="disableForm" ng-model="guest.phone" required ng-minlength=6>
 
                         </div>
                     </div>
@@ -359,7 +363,7 @@
                     <div class="col-xs-5">
                         <div class="input-group">
                             <span class="input-group-addon">DOB</span>
-                            <input type="date" class="form-control" ng-disabled="disableForm" ng-model="guest.dateOfBirth">
+                            <input type="date" class="form-control" ng-disabled="disableForm" ng-model="guest.dateOfBirth" required min="1900-01-01">
                         </div>
                     </div>
                     <div ng-hide="single">
@@ -397,10 +401,11 @@
                           placeholder="If you have some wishes, write them here"></textarea>
 
                 <div class="col-xs-3">
-                    <input type="button" value="Submit" id="submitPerson" ng-click="submit()" ng-disabled="(persons.length < 1 && !single) || disableForm" class="form-control" />
+                    <input type="button" value="Submit" id="submitPerson" ng-click="submit()" ng-disabled="(persons.length < 1 && !single) || disableForm || signup_form.$error" class="form-control" />
                 </div>
+
                 <!-- Popup module if its successfull submit-->
-                <div class="col-xs-3" ng-show="persons.length > 0">
+                <div class="col-xs-3">
                     <script type="text/ng-template" id="MyModalIfSuccess.html">
                         <div class="modal-header">
                             <h3 class="modal-title">Your booking was successfull</h3>
@@ -420,5 +425,7 @@
                     </script>
             </div>
         </div>
+     </form>
     </div>
+</div>
 </div>

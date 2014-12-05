@@ -551,3 +551,13 @@ DROPDOWNMENU FOR RESERVATION
     overflow: auto;
 
 }
+
+/********************
+Reservation invalid or valid inputs
+*********************/
+input.ng-invalid {
+    border: 1px solid red;
+}
+input.ng-valid {
+    border: 1px inherit;
+}
