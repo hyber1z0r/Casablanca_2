@@ -1,8 +1,8 @@
 'use strict';
 
-describe('myAppRename.services', function () {
+describe('casablanca.services', function () {
 
-    beforeEach(module('myAppRename.services'));
+    beforeEach(module('casablanca.services'));
 
     describe('InfoService', function () {
 
@@ -11,9 +11,9 @@ describe('myAppRename.services', function () {
             infoService = _InfoService_;
         }));
 
-        it('Should be Hello World from a Service', function () {
-            expect(infoService.getInfo()).toBe("Hello World from a Service");
-        });
+        //it('Should be Hello World from a Service', function () {
+        //    expect(infoService.getInfo()).toBe("Hello World from a Service");
+        //});
     });
 
 

@@ -7,11 +7,11 @@ module.exports = function (config) {
             'public/vendor/angular/angular.js',
             'public/vendor/angular-route/angular-route.js',
             'public/vendor/angular-mocks/angular-mocks.js',
+            'public/vendor/angular-animate/angular-animate.js',
+            'public/vendor/angular-loader/angular-loader.js',
             'public/app/*.js',
             'public/app/components/**/*.js',
             'public/app/components/*.js',
-            'public/app/view*/**/*.js',
-            'test/karma-tests/app/view*/**/*.js',
             'test/karma-tests/app/components/*.js'
         ],
 
