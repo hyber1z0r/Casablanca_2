@@ -62,7 +62,7 @@ var BookingSchema = new mongoose.Schema({
 GuestSchema.pre('remove', function(next) {
     // 'this' is the client being removed. Provide callbacks here if you want
     // to be notified of the calls' result.
-    Booking.remove({_id: this.booking}).exec();
+    Booking.remove({_id: this.booking}).exec(); // get the model, wtf is Booking? :pPpP
     next();
 });
 
