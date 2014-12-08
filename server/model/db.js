@@ -81,20 +81,12 @@ mongoose.model('Facility', FacilitySchema, "facility");
 var FacilityBookingSchema = new mongoose.Schema({
     startDate: Date,
     endDate: Date,
-    fID: mongoose.Schema.Types.ObjectId,
+    fID: {type: mongoose.Schema.Types.ObjectId, ref: 'Facility'},
+    guest: mongoose.Schema.Types.ObjectId,
     regDate: Date
 });
 mongoose.model('FacilityBooking', FacilityBookingSchema, "facilitybooking");
 
-
-/* FacilityBookingDetailsSchema*/
-var FacilityBookingDetailsSchema = new mongoose.Schema({
-    guest: mongoose.Schema.Types.ObjectId,
-    fID: mongoose.Schema.Types.ObjectId
-
-});
-
-mongoose.model('FacilityBookingDetails', FacilityBookingDetailsSchema, "facilitybookingdetails");
 
 
 GuestSchema.pre('remove', function (next) {
