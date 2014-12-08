@@ -3,7 +3,7 @@ var router = express.Router();
 var datalayer = require('../model/datalayer');
 
 
-router.post('/getBooking', function (req, res) {
+router.get('/getBooking/:id', function (req, res) {
     if (typeof global.mongo_error !== "undefined") {
         return res.status(500).end('Error: ' + global.mongo_error);
     }
