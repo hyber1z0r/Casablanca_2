@@ -11,3 +11,4 @@ module.exports.getGuests = guestlayer.getGuests;
 module.exports.insertUsernames = guestlayer.insertUsernames;
 module.exports.findGuest = guestlayer.findGuest;
 module.exports.deleteBooking = guestlayer.deleteBooking;
+module.exports.deleteLogin = guestlayer.deleteLogin;

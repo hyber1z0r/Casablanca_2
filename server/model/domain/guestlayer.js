@@ -79,14 +79,9 @@ function deleteBooking(id, callback) {
 
 
 function deleteLogin(username, callback) {
-    request.delete('http://localhost:5000/user/' + username, function (err, response, body) {
-        if (err) {
-            console.log(err);
-            callback(err);
-        } else {
-            callback(null, body);
-        }
-    })
+    console.log('Calling request delete:');
+    request.del('http://localhost:5000/user/' + username);
+    callback(null, 'Wuhu');
 }
 
 module.exports.insertGuests = insertGuests;

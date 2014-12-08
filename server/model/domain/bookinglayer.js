@@ -46,7 +46,8 @@ function insertBooking(start, slut, rId, callback) {
 function getBooking(ID, callback) {
     booking.findById({_id : ObjectId(ID)}).populate('room').exec(function (err, guestBooking) {
         if(err){
-            callback(err)
+            console.log(err);
+            callback(err);
         }
         else {
             callback(null, guestBooking);

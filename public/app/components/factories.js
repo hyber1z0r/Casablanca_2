@@ -156,8 +156,7 @@ app.factory('guestBookingFactory', function ($http) {
         })
     };
 
-    var deleteLogin = function (callback) {
-        var username = LoginService.getUsername();
+    var deleteLogin = function (username, callback) {
         $http.delete('/userApi/deleteLogin/' + username)
             .success(function (data, status, headers, config) {
                 callback(null, status);
