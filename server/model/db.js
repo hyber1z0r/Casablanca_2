@@ -59,32 +59,16 @@ var BookingSchema = new mongoose.Schema({
     regDate : Date
 });
 
-/* FacilitySchema */
-var FacilitySchema = new mongoose.Schema ({
-   name : String,
-   courts : Number,
-   players : Number
-});
-
- /* FacilityBookingSchema */
-var FacilityBookingSchema = new mongoose.Schema ({
-   startDate : Date,
-   endDate : Date,
-   fID : mongoose.Schema.Types.ObjectId,
-   regDate : Date
-});
-
- /* FacilityBookingDetailsSchema*/
-var FacilityBookingDetailsSchema = new mongoose.Schema ({
-   guest : mongoose.Schema.Types.ObjectId,
-   fID :  mongoose.Schema.Types.ObjectId
-
-});
-
 GuestSchema.pre('remove', function(next) {
     // 'this' is the client being removed. Provide callbacks here if you want
     // to be notified of the calls' result.
-    mongoose.model('Booking').findOne({_id: this.booking}).remove().exec();
+    console.log('The booking ID to be removed, according to pre.remove\n');
+    console.log(this.booking);
+    mongoose.model('Booking').remove({_id: this.booking}, function (err) {
+        if(err) {
+            next(err);
+        }
+    });
     next();
 });
 
@@ -92,8 +76,4 @@ GuestSchema.pre('remove', function(next) {
 mongoose.model('Guest', GuestSchema, "guests");
 mongoose.model('Room', RoomSchema, "rooms");
 mongoose.model('Booking', BookingSchema, "bookings");
-mongoose.model('Facility', FacilitySchema, "facility");
-mongoose.model('FacilityBooking', FacilityBookingSchema, "facilitybooking");
-mongoose.model('FacilityBookingDetails', FacilityBookingDetailsSchema, "facilitybookingdetails");
-
 

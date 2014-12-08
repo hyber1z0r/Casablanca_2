@@ -54,16 +54,27 @@ function insertUsernames(gs, callback) {
     });
 }
 /* With mongoose middleware 'remove', we delete any dependencies on the guest and then deletes the guest itself. */
+/* Unfortunately you need to query the guests first to trigger the pre.remove. */
 function deleteBooking(id, callback) {
-  guest.remove({booking: id}, function (err, data) {
-      if (err) {
-          console.log(err);
-          callback(err);
-      }
-      else {
-          callback(null, data);
-      }
-  })
+    guest.find({booking: id}, function (err, docs) {
+        if (err) {
+            console.log(err);
+            callback(err);
+        }
+        else {
+            for(var i = 0; i < docs.length; i++){
+                docs[i].remove(function (err) {
+                    if (err) {
+                        console.log(err);
+                        callback(err);
+                    }
+                    else {
+                        callback(null, docs);
+                    }
+                });
+            }
+        }
+    });
 }
 
 module.exports.insertGuests = insertGuests;
