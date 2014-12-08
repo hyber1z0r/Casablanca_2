@@ -12,4 +12,12 @@ angular.module('casablanca.directives', []).
             '<li><a href="http://weblogs.asp.net/dwahlin/creating-custom-angularjs-directives-part-i-the-fundamentals">Creating Custom Directives</a></li>' +
             '</ul>'
         };
-    });
+    })
+
+.directive('guestSideBar', function () {
+        return{
+            restrict: 'AE',
+            replace: 'true',
+            templateUrl: '/app/components/htmltemplates/guestSideBar.html'
+        }
+    })

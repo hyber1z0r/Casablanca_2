@@ -9,8 +9,10 @@ angular.module('casablanca.guesthome', ['ngRoute'])
         });
     }])
 
-    .controller('GuestHomeCtrl', ['$scope', 'guestBookingFactory', function ($scope, guestBookingFactory) {
-
+    .controller('GuestHomeCtrl', ['$scope', 'guestBookingFactory', '$location', function ($scope, guestBookingFactory, $location) {
+        if (!$scope.isAuthenticated){
+            $location.path('/home')
+        }
 
         $scope.delete = function () {
             guestBookingFactory.deleteGuest($scope.profileID, function(err, status){

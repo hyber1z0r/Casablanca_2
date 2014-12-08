@@ -9,7 +9,11 @@ angular.module('casablanca.viewbooking', ['ngRoute'])
         });
     }])
 
-    .controller('GuestViewBookingCtrl', ['$scope','guestBookingFactory', function ($scope, guestBookingFactory) {
+    .controller('GuestViewBookingCtrl', ['$scope','guestBookingFactory', '$location', function ($scope, guestBookingFactory, $location) {
+
+        if (!$scope.isAuthenticated){
+            $location.path('/home')
+        }
 
         $scope.guests = [];
         $scope.bookinginfo = {};

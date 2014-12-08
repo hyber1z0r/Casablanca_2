@@ -9,5 +9,8 @@ angular.module('casablanca.guestbookfacility', ['ngRoute'])
         });
     }])
 
-    .controller('GuestBookFacilityCtrl', ['$scope', function ($scope) {
+    .controller('GuestBookFacilityCtrl', ['$scope', '$location', function ($scope, $location) {
+        if (!$scope.isAuthenticated){
+            $location.path('/home')
+        }
     }]);

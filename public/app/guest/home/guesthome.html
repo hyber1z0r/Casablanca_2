@@ -1,17 +1,5 @@
-<div id="main_wrap">
-    <div id="sidebar">
-        <div id="insidesidebar">
-            <h3>Categories</h3>
-            <h4><a href="#/guest/home" class="active">Home</a></h4>
-            <h4><a href="#/guest/bookfacility">Book facility</a></h4>
-            <h4><a href="#/guest/viewbooking">View booking</a></h4>
-            <h4 id="deletebutton"><a ng-click="delete()">Delete booking</a></h4>
-            <h4 id="logoutbutton"><a ng-click="logout()">Log out</a></h4>
-
-        </div>
-
-
-    </div>
+<div id="main_wrap" ng-show="isAuthenticated">
+    <guest-side-bar></guest-side-bar>
     <!--
     **************
     CONTENT!

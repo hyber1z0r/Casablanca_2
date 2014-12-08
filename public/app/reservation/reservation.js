@@ -17,14 +17,17 @@ angular.module('casablanca.reservation', ['ngRoute', 'ui.bootstrap'])
          * !!!!!!!!!!
          * ############
          * */
+
+
+        /*
         $scope.guest = {
-            firstName: '',
-            lastName: '',
+            firstName: 'Leon',
+            lastName: 'Hansen',
             address: 'Lærkevej 12, 4621 Gadstrup',
-            country: 'Denmark',
-            email: 'leon@landmand.dk',
+            country: 'DK',
+            email: 'messikrkic@gmail.com',
             phone: 38383060,
-            dateOfBirth: new Date(1956, 4, 23)
+            dateOfBirth: new Date(1993, 6, 23)
         };
         /*
          * DELETE ^^^^^^^
@@ -73,6 +76,7 @@ angular.module('casablanca.reservation', ['ngRoute', 'ui.bootstrap'])
         $scope.persons = [];
 
         $scope.add = function () {
+
             $scope.persons.push(angular.copy($scope.guest));
             $scope.guest.firstName = '';
             $scope.guest.email = '';
@@ -106,6 +110,12 @@ angular.module('casablanca.reservation', ['ngRoute', 'ui.bootstrap'])
                 controller: 'ModalGreatSuccessCtrl',
                 size: size,
                 resolve: {
+                    person: function () {
+                        return $scope.guest;
+                    },
+                    single: function () {
+                        return $scope.single;
+                    },
                     persons: function () {
                         return $scope.persons;
                     }
@@ -147,7 +157,6 @@ angular.module('casablanca.reservation', ['ngRoute', 'ui.bootstrap'])
 
     })
     .controller('ModalInstanceCtrl', function ($scope, $modalInstance, persons) {
-        console.log(persons);
         $scope.persons = persons;
         $scope.selected = {
             item: $scope.persons[0]
@@ -170,15 +179,13 @@ angular.module('casablanca.reservation', ['ngRoute', 'ui.bootstrap'])
 
 
 
-.controller('ModalGreatSuccessCtrl', function ($scope, $modalInstance, persons, $location) {
-    console.log(persons);
+.controller('ModalGreatSuccessCtrl', function ($scope, $modalInstance, $location, person, single, persons) {
+    $scope.person = person;
+    $scope.single = single;
     $scope.persons = persons;
-    $scope.selected = {
-        item: $scope.persons[0]
-    };
 
     $scope.ok = function () {
-        $modalInstance.close($scope.selected.item);
+        $modalInstance.close();
         $location.path('/home')
     };
 

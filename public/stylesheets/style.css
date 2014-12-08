@@ -555,6 +555,14 @@ DROPDOWNMENU FOR RESERVATION
 /********************
 Reservation invalid or valid inputs
 *********************/
+
+select.ng-invalid {
+    border: 1px solid red;
+}
+select.ng-valid {
+    border: 1px inherit;
+}
+
 input.ng-invalid {
     border: 1px solid red;
 }
