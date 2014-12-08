@@ -4,7 +4,7 @@
 
 var app = angular.module('casablanca.factories', []);
 
-app.factory('hotelBookingFactory', function ($http) {
+app.factory('hotelBookingFactory', function ($http, LoginService) {
 
     var getFreeRooms = function (start, end, roomsize, callback) {
         $http.post('/api/freeRooms', {
@@ -154,10 +154,23 @@ app.factory('guestBookingFactory', function ($http) {
                     })
             }
         })
-    }
+    };
+
+    var deleteLogin = function (callback) {
+        var username = LoginService.getUsername();
+        $http.delete('/userApi/deleteLogin/' + username)
+            .success(function (data, status, headers, config) {
+                callback(null, status);
+            })
+            .error(function (data, status, headers, config) {
+                callback(data);
+            })
+    };
+
     return {
         deleteGuest: deleteGuest,
-        getAllInfo: getAllInfo
+        getAllInfo: getAllInfo,
+        deleteLogin: deleteLogin
     }
 });
 

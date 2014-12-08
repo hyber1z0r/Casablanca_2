@@ -62,7 +62,7 @@ function deleteBooking(id, callback) {
             callback(err);
         }
         else {
-            for(var i = 0; i < docs.length; i++){
+            for (var i = 0; i < docs.length; i++) {
                 docs[i].remove(function (err) {
                     if (err) {
                         console.log(err);
@@ -77,8 +77,21 @@ function deleteBooking(id, callback) {
     });
 }
 
+
+function deleteLogin(username, callback) {
+    request.delete('http://localhost:5000/user/' + username, function (err, response, body) {
+        if (err) {
+            console.log(err);
+            callback(err);
+        } else {
+            callback(null, body);
+        }
+    })
+}
+
 module.exports.insertGuests = insertGuests;
 module.exports.getGuests = getGuests;
 module.exports.insertUsernames = insertUsernames;
 module.exports.findGuest = findGuest;
 module.exports.deleteBooking = deleteBooking;
+module.exports.deleteLogin = deleteLogin;
