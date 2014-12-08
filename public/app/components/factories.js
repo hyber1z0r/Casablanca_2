@@ -78,9 +78,7 @@ app.factory('authInterceptor', function ($rootScope, $q, $window) {
 app.factory('guestBookingFactory', function ($http) {
 
     var getBooking = function (guestBID, callback) {
-        $http.post('/userApi/getBooking', {
-            id: guestBID
-        })
+        $http.get('/userApi/getBooking/' + guestBID)
             .success(function (data, status, headers, config) {
                 // contains the specified guest's booking info
                 callback(null, data);
