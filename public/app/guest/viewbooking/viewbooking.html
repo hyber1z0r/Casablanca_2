@@ -9,27 +9,34 @@
     <div id="homecontent" class="section group">
 
         <div class="col span_1_of_2">
-        <h1 id="welcome">Welcome{{firstGuest.firstName}}</h1>
+        <h1 id="welcome">Welcome {{firstGuest.firstName}}</h1>
         '
 
-        <h3>This is your booking</h3>
+            <h3>This is your booking</h3>
         <ul>
             <li>Start date: {{bookinginfo.startDate | date}}</li>
             <li>End date  : {{bookinginfo.endDate | date}}</li>
-            <li>Roomnumber: {{bookinginfo.room}}</li>
-            <li>Roomsize  : {{bookinginfo.roomSize}}</li>
-            <li ng-show="bookinginfo.roomSize == 1">Picture   :<img src="images/singleroombg.jpg" alt="singleroom"/></li>
-            <li ng-show="bookinginfo.roomSize == 2">Picture   :<img src="images/doubleroombg.jpg" alt="doubleroom"/></li>
-            <li ng-show="bookinginfo.roomSize == 5">Picture   :<img src="images/familyroombg.jpg" alt="familyroom"/></li>
-        </ul>
+            <li>Roomnumber: {{bookinginfo.room._id}}</li>
+            <li>Roomsize  : {{bookinginfo.room.roomSize}}</li>
+           </ul>
         </div>
 
         <div class="col span_1_of_2">
-        <h3>This is your roommates</h3>
-        <ul ng-repeat="guest in guests">
-            <li>Full name : {{guest.firstName}} {{guest.lastName}}</li>
-            <li>Username  : {{guest.userName}} Password {{guest.password}}</li>
-        </ul>
+        <h3>This is your room</h3>
+
+           <img src="images/singleroombg.jpg" ng-show="bookinginfo.room.roomSize == 1" alt="singleroom" width="500px" height="300px"/></li>
+           <img src="images/doubleroombg.jpg" ng-show="bookinginfo.room.roomSize == 2" alt="singleroom" width="500px" height="300px"/></li>
+           <img src="images/familyroombg.jpg" ng-show="bookinginfo.room.roomSize == 5" alt="singleroom" width="500px" height="300px"/></li>
+
+
+            <div class="col-xs-3">
+                <input type="button" value="Delete Booking" id="deleteBookingButton" class="form-control" ng-click="delete()"/>
+            </div>
+
+            <div class="col-xs-3">
+                <input type="button" value="Delete Facility" id="deleteFacilityButton" class="form-control"/>
+            </div>
+
         </div>
 
     </div>

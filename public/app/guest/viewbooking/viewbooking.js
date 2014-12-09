@@ -28,4 +28,23 @@ angular.module('casablanca.viewbooking', ['ngRoute'])
                 $scope.guests = guests;
             }
         });
+
+        $scope.delete = function () {
+            guestBookingFactory.deleteGuest($scope.profileID, function(err, status){
+                if (err) {
+                    console.log('There was an error in deleting the guest!');
+                }
+                else {
+                    var username = LoginService.getUsername();
+                    guestBookingFactory.deleteLogin(username, function (err, status) {
+                        if (err) {
+                            console.log('There was an error in deleting the login!');
+                        }
+                        else {
+                            console.log(status);
+                        }
+                    })
+                }
+            })
+        }
     }]);

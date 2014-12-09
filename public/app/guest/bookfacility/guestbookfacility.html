@@ -1,6 +1,6 @@
 
 
-<div id="main_wrap" ng-show="isAuthenticated">
+ <!--<div id="main_wrap" ng-show="isAuthenticated"> -->
 
     <guest-side-bar></guest-side-bar>
     <!--
@@ -21,7 +21,7 @@
 
             <div class="row">
                 <div class="col-xs-5">
-                    <div class="input-group check-in">
+                    <div class="input-group bookfacility">
                         <span class="input-group-addon">Choose facility</span>
                         <select name="facilities" class="form-control">
                             <option value="swimming">Swimming</option>
@@ -31,7 +31,6 @@
                             <option value="handball">Handball</option>
                             <option value="internetcafe">Internet cafe</option>
                         </select>
-
                     </div>
                 </div>
                 <div class="col-xs-5">
@@ -45,5 +44,48 @@
                     <input type="button" value="Search" id="searchDateButton" ng-click="search()" class="form-control"/>
                 </div>
             </div>
+            <div id="picktimefacility">
+              <!--  <div ng-show="showRest"> -->
+
+                    <table style="width:100%" class="tableid">
+
+
+                        <tr>
+                            <td id="10"><a ng-click="selected.time = '10-11'">10-11</a></td>
+                            <td id="11"><a ng-click="selected.time = '11-12'">11-12</a></td>
+                            <td id="12"><a ng-click="selected.time = '12-13'">12-13</a></td>
+                        </tr>
+                        <tr>
+                            <td id="13"><a ng-click="selected.time = '13-14'">13-14</a></td>
+                            <td id="14"><a ng-click="selected.time = '14-15'">14-15</a></td>
+                            <td id="15"><a ng-click="selected.time = '15-16'">15-16</a></td>
+                        </tr>
+                        <tr>
+                            <td id="16"><a ng-click="selected.time = '16-17'">16-17</a></td>
+                            <td id="17"><a ng-click="selected.time = '17-18'">17-18</a></td>
+                            <td id="18"><a ng-click="selected.time = '18-19'">18-19</a></td>
+                        </tr>
+                        <tr>
+                            <td id="19"><a ng-click="selected.time = '19-20'">19-20</a></td>
+                            <td id="20"><a ng-click="selected.time = '20-21'">20-21</a></td>
+                            <td id="21"><a ng-click="selected.time = '21-22'">21-22</a></td>
+                        </tr>
+                    </table>
+
+
+                <div ng-show="selected"> <p id="showSelectedTime">You have chosen the time at {{selected.time}} clock. Do you want to book this time?</p></div>
+
+
+                    <div class="col-xs-2">
+                        <input ng-show="selected" type="button" value="Book" id="bookFacilityButton" class="form-control"/>
+                    </div>
+
+
+            </div>
+
+        </div>
     </div>
+
+</div>
+         <!--
 </div>
