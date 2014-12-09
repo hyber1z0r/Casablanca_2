@@ -24,7 +24,7 @@ describe('casablanca.factories', function () {
                 expect(err).toBe(null);
                 expect('Sort').toBe('Hvid');
             });
-
+            console.log('Get free rooms called');
         });
 
     });

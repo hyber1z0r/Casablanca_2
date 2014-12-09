@@ -4,7 +4,7 @@
 
 var app = angular.module('casablanca.factories', []);
 
-app.factory('hotelBookingFactory', function ($http, LoginService) {
+app.factory('hotelBookingFactory', function ($http) {
 
     var getFreeRooms = function (start, end, roomsize, callback) {
         $http.post('/api/freeRooms', {
@@ -166,10 +166,79 @@ app.factory('guestBookingFactory', function ($http) {
             })
     };
 
+    var getFreeTimes = function (startDate, endDate, facility, callback) {
+        $http.post('/userApi/getFreeTimes', {
+            startDate: startDate,
+            endDate: endDate,
+            facility: facility
+        })
+            .success(function (data, status, headers, config) {
+                callback(null, data);
+            })
+            .error(function (data, status, headers, config) {
+                callback(data);
+            })
+    };
+
+    var getFacility = function (name, callback) {
+        $http.get('/userApi/getFacility/' + name)
+            .success(function (data, status, headers, config) {
+                callback(null, data);
+            })
+            .error(function (data, status, headers, config) {
+                callback(data);
+            })
+    };
+
+    var bookFacility = function (name, startDate, endDate, gID, callback) {
+        getFacility(name, function (err, data) {
+            if (err) {
+                callback(err);
+            } else {
+                $http.post('/bookFacility', {
+                    startDate: startDate,
+                    endDate: endDate,
+                    fID: data._id,
+                    gID: gID
+                })
+                    .success(function (data, status, headers, config) {
+                        callback(null, data);
+                    })
+                    .error(function (data, status, headers, config) {
+                        callback(data);
+                    })
+            }
+        });
+    };
+
+    var getFacilityBooking = function (fBId, callback) {
+        $http.get('/userApi/' + fBId)
+            .success(function (data, status, headers, config) {
+                callback(null, data);
+            })
+            .error(function (data, status, headers, config) {
+                callback(data);
+            })
+    };
+
+    var getAllFacilityBookings = function (gId, callback) {
+        $http.get('/userApi/' + gId)
+            .success(function (data, status, headers, config) {
+                callback(null, data);
+            })
+            .error(function (data, status, headers, config) {
+                callback(data);
+            })
+    };
+
     return {
         deleteGuest: deleteGuest,
         getAllInfo: getAllInfo,
-        deleteLogin: deleteLogin
+        deleteLogin: deleteLogin,
+        getFreeTimes: getFreeTimes,
+        bookFacility: bookFacility,
+        getFacilityBooking: getFacilityBooking,
+        getAllFacilityBookings: getAllFacilityBookings
     }
 });
 
