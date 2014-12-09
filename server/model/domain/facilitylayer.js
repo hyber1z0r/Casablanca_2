@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
-var facility = mongoose.model('facility');
-var facilitybooking = mongoose.model('facilitybooking');
+var facility = mongoose.model('Facility');
+var facilitybooking = mongoose.model('FacilityBooking');
 var ObjectId = require('mongoose').Types.ObjectId;
 
 
