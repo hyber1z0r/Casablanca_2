@@ -9,7 +9,7 @@ angular.module('casablanca.guesthome', ['ngRoute'])
         });
     }])
 
-    .controller('GuestHomeCtrl', ['$scope', 'guestBookingFactory', '$location', 'LoginService', function ($scope, guestBookingFactory, $location, LoginService) {
+    .controller('GuestHomeCtrl', ['$scope', 'guestBookingFactory', '$location', function ($scope, guestBookingFactory, $location, LoginService) {
         if (!$scope.isAuthenticated){
             $location.path('/home')
         }

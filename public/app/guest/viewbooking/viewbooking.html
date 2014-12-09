@@ -25,12 +25,28 @@
         <h3>This is your room</h3>
 
            <img src="images/singleroombg.jpg" ng-show="bookinginfo.room.roomSize == 1" alt="singleroom" width="500px" height="300px"/></li>
-           <img src="images/doubleroombg.jpg" ng-show="bookinginfo.room.roomSize == 2" alt="singleroom" width="500px" height="300px"/></li>
-           <img src="images/familyroombg.jpg" ng-show="bookinginfo.room.roomSize == 5" alt="singleroom" width="500px" height="300px"/></li>
+           <img src="images/doubleroombg.jpg" ng-show="bookinginfo.room.roomSize == 2" alt="doubleroom" width="500px" height="300px"/></li>
+           <img src="images/familyroombg.jpg" ng-show="bookinginfo.room.roomSize == 5" alt="familyroom" width="500px" height="300px"/></li>
 
 
             <div class="col-xs-3">
-                <input type="button" value="Delete Booking" id="deleteBookingButton" class="form-control" ng-click="delete()"/>
+                <input type="button" value="Delete Booking" id="deleteBookingButton" class="form-control" ng-click="open()"/>
+            </div>
+            <!-- OPENS MODUL IF YOU WANT TO DELETE BOOKING-->
+            <div class="col-xs-3">
+                <script type="text/ng-template" id="MyModalDeleteBooking.html">
+                    <div class="modal-header">
+                        <h3 class="modal-title">It will delete everything!</h3>
+                    </div>
+                    <div class="modal-body" ng-class-even="md-col-4" ng-class-odd="row">
+                        <h5>Are you sure you want to delete your booking?</h5>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-danger" ng-click="ok()">OK</button>
+                        <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+                    </div>
+                </script>
             </div>
 
             <div class="col-xs-3">
