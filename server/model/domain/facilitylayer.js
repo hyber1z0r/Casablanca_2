@@ -87,3 +87,4 @@ module.exports.getFreeFacilityTimes = getFreeFacilityTimes;
 module.exports.getFacility = getFacility;
 module.exports.getFacilityBooking = getFacilityBooking;
 module.exports.getAllFacilityBookings = getAllFacilityBookings;
+module.exports.createFacilityBooking = createFacilityBooking;

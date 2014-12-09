@@ -18,3 +18,4 @@ module.exports.getFreeFacilityTimes = facilitylayer.getFreeFacilityTimes;
 module.exports.getFacility = facilitylayer.getFacility;
 module.exports.getFacilityBooking = facilitylayer.getFacilityBooking;
 module.exports.getAllFacilityBookings = facilitylayer.getAllFacilityBookings;
+module.exports.createFacilityBooking = facilitylayer.createFacilityBooking;
