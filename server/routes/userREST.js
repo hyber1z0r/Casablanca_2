@@ -59,7 +59,7 @@ router.delete('/deleteguests/:bookingId', function (req, res) {
     })
 });
 
-router.delete('/deleteLogin/:username', function(req, res) {
+router.delete('/deleteLogin/:username', function (req, res) {
     if (typeof global.mongo_error !== "undefined") {
         return res.status(500).end('Error: ' + global.mongo_error);
     }
@@ -73,5 +73,25 @@ router.delete('/deleteLogin/:username', function(req, res) {
     })
 });
 
+
+router.post('/getFreeTimes', function (req, res) {
+    if (typeof global.mongo_error !== "undefined") {
+        return res.status(500).end('Error: ' + global.mongo_error);
+    }
+    datalayer.getFacilityBooked(req.body.startDate, req.body.endDate, function callback(err, bookedFID) {
+        if (err) {
+            return res.status(500).json({error: err.toString()});
+        }
+        else {
+            datalayer.getFreeFacilityTimes(bookedFID, req.body.facility, function (err, freeTimes) {
+                if (err) {
+                    return res.status(500).json({error: err.toString()});
+                } else {
+                    res.json(freeTimes);
+                }
+            });
+        }
+    });
+});
 
 module.exports = router;

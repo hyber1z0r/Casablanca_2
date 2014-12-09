@@ -166,10 +166,26 @@ app.factory('guestBookingFactory', function ($http) {
             })
     };
 
+    var getFreeTimes = function (startDate, endDate, facility, callback) {
+        $http.post('/userApi/getFreeTimes', {
+            startDate: startDate,
+            endDate: endDate,
+            facility: facility
+        })
+            .success(function (data, status, headers, config) {
+                callback(null, data);
+            })
+            .error(function (data, status, headers, config) {
+                callback(data);
+            })
+    };
+
+
     return {
         deleteGuest: deleteGuest,
         getAllInfo: getAllInfo,
-        deleteLogin: deleteLogin
+        deleteLogin: deleteLogin,
+        getFreeTimes: getFreeTimes
     }
 });
 
