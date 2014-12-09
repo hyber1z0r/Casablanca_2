@@ -54,7 +54,7 @@ router.delete('/deleteguests/:bookingId', function (req, res) {
             return res.status(500).json({error: err.toString()});
         }
         else {
-            res.status(200).json({message: "Guest(s) was successfully deleted"});
+             res.json({message: "Guest(s) was successfully deleted"});
         }
     })
 });
@@ -68,7 +68,7 @@ router.delete('/deleteLogin/:username', function (req, res) {
             return res.status(500).json({error: err.toString()});
         }
         else {
-            res.status(200).json(data);
+            res.json(data);
         }
     })
 });
