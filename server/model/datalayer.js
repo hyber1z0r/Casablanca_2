@@ -16,3 +16,5 @@ module.exports.deleteLogin = guestlayer.deleteLogin;
 module.exports.getFacilityBooked = facilitylayer.getFacilityBooked;
 module.exports.getFreeFacilityTimes = facilitylayer.getFreeFacilityTimes;
 module.exports.getFacility = facilitylayer.getFacility;
+module.exports.getFacilityBooking = facilitylayer.getFacilityBooking;
+module.exports.getAllFacilityBookings = facilitylayer.getAllFacilityBookings;

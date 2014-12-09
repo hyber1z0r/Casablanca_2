@@ -4,7 +4,7 @@
 
 var app = angular.module('casablanca.factories', []);
 
-app.factory('hotelBookingFactory', function ($http, LoginService) {
+app.factory('hotelBookingFactory', function ($http) {
 
     var getFreeRooms = function (start, end, roomsize, callback) {
         $http.post('/api/freeRooms', {
@@ -208,7 +208,27 @@ app.factory('guestBookingFactory', function ($http) {
                         callback(data);
                     })
             }
-        })
+        });
+    };
+
+    var getFacilityBooking = function (fBId, callback) {
+        $http.get('/userApi/' + fBId)
+            .success(function (data, status, headers, config) {
+                callback(null, data);
+            })
+            .error(function (data, status, headers, config) {
+                callback(data);
+            })
+    };
+
+    var getAllFacilityBookings = function (gId, callback) {
+        $http.get('/userApi/' + gId)
+            .success(function (data, status, headers, config) {
+                callback(null, data);
+            })
+            .error(function (data, status, headers, config) {
+                callback(data);
+            })
     };
 
     return {
@@ -216,7 +236,9 @@ app.factory('guestBookingFactory', function ($http) {
         getAllInfo: getAllInfo,
         deleteLogin: deleteLogin,
         getFreeTimes: getFreeTimes,
-        bookFacility: bookFacility
+        bookFacility: bookFacility,
+        getFacilityBooking: getFacilityBooking,
+        getAllFacilityBookings: getAllFacilityBookings
     }
 });
 

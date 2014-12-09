@@ -120,4 +120,31 @@ router.post('/bookFacility', function(req, res) {
     })
 });
 
+router.get('/facilityBooking/:fBId', function(req, res) {
+    if (typeof global.mongo_error !== "undefined") {
+        return res.status(500).end('Error: ' + global.mongo_error);
+    }
+    datalayer.getFacilityBooking(req.params.fBId, function (err, data) {
+        if(err){
+            res.status(500).json({error: err.toString()});
+        } else {
+            res.json(data);
+        }
+    })
+});
+
+router.get('/getAllFacilityBookings/:gId', function(req, res) {
+    if (typeof global.mongo_error !== "undefined") {
+        return res.status(500).end('Error: ' + global.mongo_error);
+    }
+    datalayer.getAllFacilityBookings(req.params.gId, function (err, data) {
+        if(err){
+            res.status(500).json({error: err.toString()});
+        } else {
+            res.json(data);
+        }
+    })
+});
+
+
 module.exports = router;
