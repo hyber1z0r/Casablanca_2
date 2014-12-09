@@ -82,7 +82,7 @@ var FacilityBookingSchema = new mongoose.Schema({
     startDate: Date,
     endDate: Date,
     fID: {type: mongoose.Schema.Types.ObjectId, ref: 'Facility'},
-    guest: mongoose.Schema.Types.ObjectId,
+    guest: {type: mongoose.Schema.Types.ObjectId, ref: 'Guest'},
     regDate: Date
 });
 mongoose.model('FacilityBooking', FacilityBookingSchema, "facilitybooking");
