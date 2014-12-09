@@ -180,12 +180,43 @@ app.factory('guestBookingFactory', function ($http) {
             })
     };
 
+    var getFacility = function (name, callback) {
+        $http.get('/userApi/getFacility/' + name)
+            .success(function (data, status, headers, config) {
+                callback(null, data);
+            })
+            .error(function (data, status, headers, config) {
+                callback(data);
+            })
+    };
+
+    var bookFacility = function (name, startDate, endDate, gID, callback) {
+        getFacility(name, function (err, data) {
+            if (err) {
+                callback(err);
+            } else {
+                $http.post('/bookFacility', {
+                    startDate: startDate,
+                    endDate: endDate,
+                    fID: data._id,
+                    gID: gID
+                })
+                    .success(function (data, status, headers, config) {
+                        callback(null, data);
+                    })
+                    .error(function (data, status, headers, config) {
+                        callback(data);
+                    })
+            }
+        })
+    };
 
     return {
         deleteGuest: deleteGuest,
         getAllInfo: getAllInfo,
         deleteLogin: deleteLogin,
-        getFreeTimes: getFreeTimes
+        getFreeTimes: getFreeTimes,
+        bookFacility: bookFacility
     }
 });
 

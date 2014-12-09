@@ -94,4 +94,30 @@ router.post('/getFreeTimes', function (req, res) {
     });
 });
 
+router.get('/getFacility/:name', function(req, res) {
+    if (typeof global.mongo_error !== "undefined") {
+        return res.status(500).end('Error: ' + global.mongo_error);
+    }
+    datalayer.getFacility(req.params.name, function (err, facility) {
+        if(err){
+            res.status(500).json({error: err.toString()});
+        } else {
+            res.json(facility);
+        }
+    })
+});
+
+router.post('/bookFacility', function(req, res) {
+    if (typeof global.mongo_error !== "undefined") {
+        return res.status(500).end('Error: ' + global.mongo_error);
+    }
+    datalayer.createFacilityBooking(req.body.startDate, req.body.endDate, req.body.fID, req.body.gID, function callback(err, data){
+        if(err){
+            res.status(500).json({error: err.toString()});
+        } else {
+            res.json(data);
+        }
+    })
+});
+
 module.exports = router;

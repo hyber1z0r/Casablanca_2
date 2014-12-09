@@ -34,5 +34,16 @@ function getFreeFacilityTimes(ids, facility, callback) {
     });
 }
 
+function getFacility(name, callback){
+    facility.find({name: name}, function (err, facility) {
+        if(err) {
+            callback(err);
+        } else {
+            callback(null, facility);
+        }
+    })
+}
+
 module.exports.getFacilityBooked = getFacilityBooked;
 module.exports.getFreeFacilityTimes = getFreeFacilityTimes;
+module.exports.getFacility = getFacility;
