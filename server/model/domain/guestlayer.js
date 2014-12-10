@@ -41,7 +41,7 @@ function findGuest(gId, callback) {
 /* Posts the username and password, with their obj ID, to the JPA Server -> Oracle DB */
 function insertUsernames(gs, callback) {
     request.post({
-        url: 'http://localhost:5000/user',
+        url: 'http://http://ohnana.cloudapp.net/',
         body: gs,
         json: true
     }, function optionalCallback(err, httpResponse, body) {
@@ -80,7 +80,7 @@ function deleteBooking(id, callback) {
 
 function deleteLogin(username, callback) {
     console.log('Calling request delete:');
-    request.del('http://localhost:5000/user/' + username);
+    request.del('http://http://ohnana.cloudapp.net/' + username);
     callback(null, 'Wuhu');
 }
 
