@@ -14,6 +14,10 @@ function hashPw(guest) {
 function verify(password, hashed) {
     return passwordHash.verify(password, hashed);
 }
+
+function hashOnlyPassword(pw){
+    return passwordHash.generate(pw);
+}
 //
 //var test = {
 //    name: 'Lars',
@@ -24,6 +28,18 @@ function verify(password, hashed) {
 //hashPw(test);
 //console.log(test);
 
+var password = 'testest';
+var password2 = 'testest';
+
+var pw1hashed = hashOnlyPassword(password);
+var pw2hashed = hashOnlyPassword(password2);
+
+console.log(pw1hashed + '  ###  ' + pw2hashed);
+
+var bool = verify(password2, pw1hashed);
+console.log(bool);
+
 module.exports.generate = generateUserPw;
 module.exports.hash = hashPw;
 module.exports.verify = verify;
+module.exports.hashPW = hashOnlyPassword;

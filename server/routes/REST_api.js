@@ -91,16 +91,18 @@ router.post('/newReservation', function (req, res) {
                 } else {
                     for (var i = 0; i < gs.length; i++) {
                         security.generate(gs[i]); // we also set the role to user here!
-                        //security.hash(gs[i]); disabled right now for testing login! We cant guess the password from the hash
                     }
+                    mail.sentMail(_booking, req.body.guests, gs); // mail need to be sent right before the hashing of the passwords happen.
+                    //for (var j = 0; j < gs.length; j++){
+                    //    security.hash(gs[j]); //disabled right now for testing login! We cant guess the password from the hash
+                    //} // Problems with hashing password and comparing with hashed password in db. ???
                     datalayer.insertUsernames(gs, function (err, response) {
                         if(err) {
                             callback(err)
                         } else {
                             callback();
                         }
-                    })
-                    mail.sentMail(_booking, req.body.guests, gs); // mail need to be sent right before the hashing of the passwords happen.
+                    });
                 }
             });
         }
