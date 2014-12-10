@@ -9,43 +9,39 @@ angular.module('casablanca.reservation', ['ngRoute', 'ui.bootstrap'])
         });
     }])
 
-    .controller('ReservationCtrl', function ($scope, hotelBookingFactory, $location, $modal, $log) {
-
-        /*
-         *
-         * ONLY FOR TESTING, AND NOT HAVE TO ENTER A GUEST EVERY DAMN TIME!!!
-         * !!!!!!!!!!
-         * ############
-         * */
+    .controller('ReservationCtrl', function ($scope, hotelBookingFactory, $location, $modal, $log, randomFac) {
 
 
         /*
-        $scope.guest = {
-            firstName: 'Leon',
-            lastName: 'Hansen',
-            address: 'Lærkevej 12, 4621 Gadstrup',
-            country: 'DK',
-            email: 'messikrkic@gmail.com',
-            phone: 38383060,
-            dateOfBirth: new Date(1993, 6, 23)
+         $scope.guest = {
+         firstName: 'Leon',
+         lastName: 'Hansen',
+         address: 'Lærkevej 12, 4621 Gadstrup',
+         country: 'DK',
+         email: 'messikrkic@gmail.com',
+         phone: 38383060,
+         dateOfBirth: new Date(1993, 6, 23)
+         };
+         */
+
+        $scope.setFieldsWithRandom = function () {
+            randomFac.getRandom(function (err, g) {
+                $scope.guest = g;
+            })
         };
-        /*
-         * DELETE ^^^^^^^
-         * */
 
-            var local = new Date();
-            local.setMinutes(local.getMinutes() - local.getTimezoneOffset());
-            $scope.today = local;
-            $scope.startDate = angular.copy(local);
+        var local = new Date();
+        local.setMinutes(local.getMinutes() - local.getTimezoneOffset());
+        $scope.today = local;
+        $scope.startDate = angular.copy(local);
         $scope.$watch('startDate', function () {
             $scope.tommorrow = addDays($scope.startDate, 1);
         })
 
 
-
         var checkoutdate = new Date();
         checkoutdate.setMinutes(checkoutdate.getMinutes() - checkoutdate.getTimezoneOffset());
-        $scope.endDate = addDays(checkoutdate,7);
+        $scope.endDate = addDays(checkoutdate, 7);
 
         function addDays(date, days) {
             var result = new Date(date);
@@ -54,7 +50,6 @@ angular.module('casablanca.reservation', ['ngRoute', 'ui.bootstrap'])
         }
 
 
-        
         var room_id = '';
         $scope.search = function () {
             hotelBookingFactory.getFreeRooms($scope.startDate, $scope.endDate, $scope.roomsize, function (err, data) {
@@ -178,17 +173,16 @@ angular.module('casablanca.reservation', ['ngRoute', 'ui.bootstrap'])
     })
 
 
+    .controller('ModalGreatSuccessCtrl', function ($scope, $modalInstance, $location, person, single, persons) {
+        $scope.person = person;
+        $scope.single = single;
+        $scope.persons = persons;
 
-.controller('ModalGreatSuccessCtrl', function ($scope, $modalInstance, $location, person, single, persons) {
-    $scope.person = person;
-    $scope.single = single;
-    $scope.persons = persons;
+        $scope.ok = function () {
+            $modalInstance.close();
+            $location.path('/home')
+        };
 
-    $scope.ok = function () {
-        $modalInstance.close();
-        $location.path('/home')
-    };
-
-});
+    });
 
 

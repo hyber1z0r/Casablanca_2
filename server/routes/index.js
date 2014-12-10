@@ -3,10 +3,17 @@ var router = express.Router();
 var jwt = require('jsonwebtoken');
 var request = require('request');
 var security = require('../security/security');
+var persons = require('../model/sampledata/guests.json');
 
 /* GET home page. */
 router.get('/', function (req, res) {
     res.redirect("app/index.html")
+});
+
+router.get('/random', function(req, res) {
+    var array = persons;
+    var randomperson = array[Math.floor(Math.random()*array.length)];
+    res.json(randomperson);
 });
 
 router.post('/authenticate', function (req, res) {
@@ -14,7 +21,7 @@ router.post('/authenticate', function (req, res) {
     var profile;
 
     // removed hashing the password before validating, because we have test passwords that are non hashed for testing.
-    //request.post({url: 'http://localhost:4000/login', data: {username: req.body.username, password: security.hash(req.body.password)}},
+    //request.post({url: 'http://localhost:5000/login', body: {username: req.body.username, password: security.hash(req.body.password)}, json: true},
     request.post({url: 'http://localhost:5000/login', body: {username: req.body.username, password: req.body.password}, json: true},
         function callback(err, httpResponse, body) {
             if  (err) {

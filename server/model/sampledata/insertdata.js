@@ -31,12 +31,13 @@ function insertGuests(done) {
     });
 }
 
-insertBookings(function () {
-    console.log('Inserted bookings');
-    insertRooms(function () {
-        console.log('Inserted rooms');
-        insertGuests(function () {
-            console.log('Inserted guests');
-        })
-    });
-});
+//insertBookings(function () {
+//    console.log('Inserted bookings');
+//    insertRooms(function () {
+//        console.log('Inserted rooms');
+//        insertGuests(function () {
+//            console.log('Inserted guests');
+//process.exit(0);
+//        })
+//    });
+//});

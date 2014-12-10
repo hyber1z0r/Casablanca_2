@@ -242,3 +242,19 @@ app.factory('guestBookingFactory', function ($http) {
     }
 });
 
+app.factory('randomFac', function ($http) {
+    var getRandom = function (callback) {
+        $http.get('/random')
+            .success(function (data) {
+                callback(null, data);
+            })
+            .error(function (err) {
+                callback(err);
+            })
+    };
+
+    return {
+        getRandom: getRandom
+    }
+});
+

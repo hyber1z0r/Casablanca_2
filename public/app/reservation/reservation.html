@@ -64,6 +64,8 @@
 
 </form>
 
+    <button class="btn btn-default" ng-click="setFieldsWithRandom()">RAND</button>
+
 <form name="signup_form" novalidate>
 <div ng-show="showRest">
 <div class="row">
@@ -363,7 +365,8 @@
     <div class="col-xs-5">
         <div class="input-group">
             <span class="input-group-addon">Phone</span>
-            <input type="number" class="form-control" ng-disabled="disableForm" ng-model="guest.phone" required
+            <!-- Remember to set to number!-->
+            <input type="text" class="form-control" ng-disabled="disableForm" ng-model="guest.phone" required
                    ng-minlength=6>
 
         </div>
