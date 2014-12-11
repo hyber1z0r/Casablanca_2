@@ -28,16 +28,7 @@ function hashOnlyPassword(pw){
 //hashPw(test);
 //console.log(test);
 
-var password = 'testest';
-var password2 = 'testest';
 
-var pw1hashed = hashOnlyPassword(password);
-var pw2hashed = hashOnlyPassword(password2);
-
-console.log(pw1hashed + '  ###  ' + pw2hashed);
-
-var bool = verify(password2, pw1hashed);
-console.log(bool);
 
 module.exports.generate = generateUserPw;
 module.exports.hash = hashPw;

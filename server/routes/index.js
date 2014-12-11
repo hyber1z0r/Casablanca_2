@@ -17,7 +17,7 @@ router.get('/random', function(req, res) {
 });
 
 router.post('/authenticate', function (req, res) {
-
+    console.log('Calling authenticate!');
     var profile;
     request.post({url: 'http://ohnana.cloudapp.net/login', body: {username: req.body.username, password: req.body.password}, json: true},
         function callback(err, httpResponse, body) {
