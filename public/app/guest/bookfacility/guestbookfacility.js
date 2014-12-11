@@ -21,6 +21,7 @@ angular.module('casablanca.guestbookfacility', ['ngRoute'])
             var endDate = angular.copy(startDate);
             endDate.setHours(hours[1]);
 
+            console.log($scope.facility);
             guestBookingFactory.bookFacility($scope.facility, startDate, endDate, $scope.profileID, function (err, res) {
                 if(err) {
                     console.log('Sorry there was an error making your booking, nigguh!');

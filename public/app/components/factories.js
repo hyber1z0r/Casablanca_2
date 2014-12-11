@@ -127,11 +127,18 @@ app.factory('guestBookingFactory', function ($http) {
                                 callback('Error in get guests: ' + err)
                             } else {
                                 var guests = guestsdoc.splice(1, guestsdoc.length);
-                                callback(null, user, booking, guests);
+                                getAllFacilityBookings(user._id, function (err, fbookingdoc) {
+                                    if (err) {
+                                        callback('Error in getAllFacilityBookings: ' + err)
+                                    } else {
+                                        var fbooking = fbookingdoc;
+                                        callback(null, user, booking, guests, fbooking);
+                                    }
+                                });
                             }
-                        })
+                        });
                     }
-                })
+                });
             }
         });
     };
@@ -191,14 +198,15 @@ app.factory('guestBookingFactory', function ($http) {
     };
 
     var bookFacility = function (name, startDate, endDate, gID, callback) {
-        getFacility(name, function (err, data) {
+        getFacility(name, function (err, facility) {
             if (err) {
                 callback(err);
             } else {
+                console.log(facility);
                 $http.post('/userApi/bookFacility', {
                     startDate: startDate,
                     endDate: endDate,
-                    fID: data._id,
+                    fID: facility._id,
                     gID: gID
                 })
                     .success(function (data, status, headers, config) {
@@ -212,7 +220,7 @@ app.factory('guestBookingFactory', function ($http) {
     };
 
     var getFacilityBooking = function (fBId, callback) {
-        $http.get('/userApi/' + fBId)
+        $http.get('/userApi/facilityBooking/' + fBId)
             .success(function (data, status, headers, config) {
                 callback(null, data);
             })
@@ -222,7 +230,7 @@ app.factory('guestBookingFactory', function ($http) {
     };
 
     var getAllFacilityBookings = function (gId, callback) {
-        $http.get('/userApi/' + gId)
+        $http.get('/userApi/getAllFacilityBookings/' + gId)
             .success(function (data, status, headers, config) {
                 callback(null, data);
             })

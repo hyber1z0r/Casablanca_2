@@ -31,13 +31,14 @@ angular.module('casablanca.viewbooking', ['ngRoute'])
         $scope.bookinginfo = {};
         $scope.firstGuest = {};
 
-        guestBookingFactory.getAllInfo($scope.profileID, function (err, user, booking, guests) {
+        guestBookingFactory.getAllInfo($scope.profileID, function (err, user, booking, guests, fbooking) {
             if(err) {
                 console.log(err);
             } else {
                 $scope.firstGuest = user;
                 $scope.bookinginfo = booking;
                 $scope.guests = guests;
+                $scope.fbookinginfo = fbooking;
             }
         });
 

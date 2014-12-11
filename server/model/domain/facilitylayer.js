@@ -35,7 +35,7 @@ function getFreeFacilityTimes(ids, facility, callback) {
 }
 
 function getFacility(name, callback) {
-    facility.find({name: name}, function (err, facility) {
+    facility.findOne({name: name}, function (err, facility) {
         if (err) {
             callback(err);
         } else {
@@ -45,7 +45,7 @@ function getFacility(name, callback) {
 }
 
 function getFacilityBooking(id, callback) {
-    facility.findById(id, function (err, doc) {
+    facilitybooking.findById(id, function (err, doc) {
         if (err) {
             callback(err);
         } else {
@@ -55,7 +55,7 @@ function getFacilityBooking(id, callback) {
 }
 
 function getAllFacilityBookings(gId, callback) {
-    facility.find({guest: gId}, function (err, docs) {
+    facilitybooking.find({guest: gId}).populate('fID').exec(function (err, docs) {
         if (err) {
             callback(err);
         } else {
@@ -64,11 +64,11 @@ function getAllFacilityBookings(gId, callback) {
     })
 }
 
-function createFacilityBooking(start, slut, fID, gID, callback) {
+function createFacilityBooking(start, slut, facilityID, gID, callback) {
     var fb = new facilitybooking({
         startDate: start,
         endDate: slut,
-        fID: fID,
+        fID: facilityID,
         guest: gID,
         regDate: new Date()
     });

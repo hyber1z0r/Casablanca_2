@@ -1,4 +1,4 @@
-<div id="main_wrap"  ng-show="isAuthenticated" >
+<div id="main_wrap" ng-show="isAuthenticated">
     <guest-side-bar></guest-side-bar>
     <!--
     **************
@@ -9,28 +9,41 @@
     <div id="homecontent" class="section group">
 
         <div class="col span_1_of_2">
-        <h1 id="welcome">Welcome {{firstGuest.firstName}}</h1>
-        '
+            <h1 id="welcome">Welcome {{firstGuest.firstName}}</h1>
 
             <h3>This is your booking</h3>
-        <ul>
-            <li>Start date: {{bookinginfo.startDate | date}}</li>
-            <li>End date  : {{bookinginfo.endDate | date}}</li>
-            <li>Roomnumber: {{bookinginfo.room._id}}</li>
-            <li>Roomsize  : {{bookinginfo.room.roomSize}}</li>
-           </ul>
+            <ul>
+                <li>Start date: {{bookinginfo.startDate | date}}</li>
+                <li>End date : {{bookinginfo.endDate | date}}</li>
+                <li>Roomnumber: {{bookinginfo.room._id}}</li>
+                <li>Roomsize : {{bookinginfo.room.roomSize}}</li>
+            </ul>
+            <div id="facilitybooking" ng-show="true">
+                <h3>This is your facility bookings</h3>
+                <ul ng-repeat="fb in fbookinginfo">
+                    <li>Facility: {{fb.fID.name}}</li>
+                    <li>Date: {{fb.startDate | date}}</li>
+                    <li>Time: {{fb.startDate | date:'shortTime'}} - {{fb.endDate | date:'shortTime'}}</li>
+                    <li>Signed up: {{fb.regDate | date:'short'}}</li>
+                </ul>
+            </div>
         </div>
 
-        <div class="col span_1_of_2">
-        <h3>This is your room</h3>
 
-           <img src="images/singleroombg.jpg" ng-show="bookinginfo.room.roomSize == 1" alt="singleroom" width="500px" height="300px"/></li>
-           <img src="images/doubleroombg.jpg" ng-show="bookinginfo.room.roomSize == 2" alt="doubleroom" width="500px" height="300px"/></li>
-           <img src="images/familyroombg.jpg" ng-show="bookinginfo.room.roomSize == 5" alt="familyroom" width="500px" height="300px"/></li>
+        <div class="col span_1_of_2">
+            <h3>This is your room</h3>
+
+            <img src="images/singleroombg.jpg" ng-show="bookinginfo.room.roomSize == 1" alt="singleroom" width="500px"
+                 height="300px"/></li>
+            <img src="images/doubleroombg.jpg" ng-show="bookinginfo.room.roomSize == 2" alt="doubleroom" width="500px"
+                 height="300px"/></li>
+            <img src="images/familyroombg.jpg" ng-show="bookinginfo.room.roomSize == 5" alt="familyroom" width="500px"
+                 height="300px"/></li>
 
 
             <div class="col-xs-3">
-                <input type="button" value="Delete Booking" id="deleteBookingButton" class="form-control" ng-click="open()"/>
+                <input type="button" value="Delete Booking" id="deleteBookingButton" class="form-control"
+                       ng-click="open()"/>
             </div>
             <!-- OPENS MODUL IF YOU WANT TO DELETE BOOKING-->
             <div class="col-xs-3">
