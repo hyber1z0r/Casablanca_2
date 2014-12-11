@@ -195,7 +195,7 @@ app.factory('guestBookingFactory', function ($http) {
             if (err) {
                 callback(err);
             } else {
-                $http.post('/bookFacility', {
+                $http.post('/userApi/bookFacility', {
                     startDate: startDate,
                     endDate: endDate,
                     fID: data._id,

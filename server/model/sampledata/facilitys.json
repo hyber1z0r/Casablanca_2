@@ -1,8 +1,37 @@
 [
     {
-        "_id": "54804ebc1cf816f40ee42576",
         "name": "Tennis",
         "courts": 1,
         "players": 4
+    },
+    {
+        "name": "Swimming",
+        "courts": 1,
+        "players": 6
+    },
+    {
+        "name": "Golf",
+        "courts": 1,
+        "players": 8
+    },
+    {
+        "name": "Ping pong",
+        "courts": 3,
+        "players": 4
+    },
+    {
+        "name": "Gym",
+        "courts": 1,
+        "players": 20
+    },
+    {
+        "name": "Handball",
+        "courts": 1,
+        "players": 18
+    },
+    {
+        "name": "Beachvolley",
+        "courts": 2,
+        "players": 14
     }
 ]
