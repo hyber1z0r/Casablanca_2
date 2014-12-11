@@ -39,6 +39,7 @@ function insertFacilitys(done) {
     facility.remove({}, function () {
         facility.create(facilityArray, function (err) {
             done();
+
         })
     })
 }

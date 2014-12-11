@@ -73,7 +73,7 @@ router.delete('/deleteLogin/:username', function (req, res) {
     })
 });
 
-
+/* FACILITY BOOKING */
 router.post('/getFreeTimes', function (req, res) {
     if (typeof global.mongo_error !== "undefined") {
         return res.status(500).end('Error: ' + global.mongo_error);
