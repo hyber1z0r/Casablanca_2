@@ -13,7 +13,6 @@ var superadminRest = require('./routes/superadminREST');
 var expressJwt = require('express-jwt');
 
 var app = express();
-global.SKIP_AUTHENTICATION = true;
 //We can skip Authentication from our Unit Tests, but NEVER in production
 if (process.env.NODE_ENV || typeof global.SKIP_AUTHENTICATION == "undefined") {
 // Protected Routes (via /api routes with JWT)

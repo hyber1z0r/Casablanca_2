@@ -1,6 +1,4 @@
-
-
- <!--<div id="main_wrap" ng-show="isAuthenticated"> -->
+<div id="main_wrap" ng-show="isAuthenticated">
 
     <guest-side-bar></guest-side-bar>
     <!--
@@ -12,8 +10,7 @@
     <div id="homecontent">
 
 
-      <h1 id="welcome">Book a facility, {{guest.firstName}}</h1>
-
+        <h1 id="welcome">Book a facility, {{guest.firstName}}</h1>
 
 
         <div class="col-md-8">
@@ -46,7 +43,7 @@
                 </div>
             </div>
             <div id="picktimefacility">
-              <!--  <div ng-show="showRest"> -->
+                <div ng-show="showRest">
 
                     <table style="width:100%" class="tableid">
 
@@ -74,19 +71,21 @@
                     </table>
 
 
-                <div ng-show="selected"> <p id="showSelectedTime">You have chosen the time at {{selected.time}} clock. Do you want to book this time?</p></div>
+                    <div ng-show="selected"><p id="showSelectedTime">You have chosen the time at {{selected.time}}
+                        clock. Do
+                        you want to book this time?</p></div>
 
 
                     <div class="col-xs-2">
-                        <input ng-show="selected" type="button" value="Book" id="bookFacilityButton" ng-click="bookFacility()" class="form-control"/>
+                        <input ng-show="selected" type="button" value="Book" id="bookFacilityButton"
+                               ng-click="bookFacility()" class="form-control"/>
                     </div>
 
 
+                </div>
+
             </div>
-
         </div>
-    </div>
 
-</div>
-         <!--
+    </div>
 </div>

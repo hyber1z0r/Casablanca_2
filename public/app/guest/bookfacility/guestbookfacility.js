@@ -10,9 +10,13 @@ angular.module('casablanca.guestbookfacility', ['ngRoute'])
     }])
 
     .controller('GuestBookFacilityCtrl', ['$scope', '$location', 'guestBookingFactory', function ($scope, $location, guestBookingFactory) {
-        /* if (!$scope.isAuthenticated){
-         $location.path('/home')
-         } */
+        if (!$scope.isAuthenticated) {
+            $location.path('/home')
+        }
+
+        $scope.search = function () {
+            $scope.showRest = true;
+        };
 
         $scope.bookFacility = function () {
             var startDate = $scope.dateFacility;
@@ -21,9 +25,8 @@ angular.module('casablanca.guestbookfacility', ['ngRoute'])
             var endDate = angular.copy(startDate);
             endDate.setHours(hours[1]);
 
-            console.log($scope.facility);
             guestBookingFactory.bookFacility($scope.facility, startDate, endDate, $scope.profileID, function (err, res) {
-                if(err) {
+                if (err) {
                     console.log('Sorry there was an error making your booking, nigguh!');
                 } else {
                     console.log('Yay, great success, this is your booking:');
@@ -32,8 +35,6 @@ angular.module('casablanca.guestbookfacility', ['ngRoute'])
                 }
             })
         }
-
-
 
 
     }]);
