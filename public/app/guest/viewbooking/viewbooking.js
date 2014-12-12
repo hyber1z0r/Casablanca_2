@@ -9,7 +9,7 @@ angular.module('casablanca.viewbooking', ['ngRoute'])
         });
     }])
 
-    .controller('ModalInstanceCtrl', function ($scope, $modalInstance, deleteBooking) {
+    .controller('ModalDeleteCtrl', function ($scope, $modalInstance, deleteBooking) {
 
         $scope.ok = function () {
             deleteBooking();
@@ -68,7 +68,7 @@ angular.module('casablanca.viewbooking', ['ngRoute'])
         $scope.open = function (size) {
             var modalInstance = $modal.open({
                 templateUrl: 'MyModalDeleteBooking.html',
-                controller: 'ModalInstanceCtrl',
+                controller: 'ModalDeleteCtrl',
                 size: size,
                 resolve: {
                     deleteBooking: function () {
