@@ -19,3 +19,4 @@ module.exports.getFacility = facilitylayer.getFacility;
 module.exports.getFacilityBooking = facilitylayer.getFacilityBooking;
 module.exports.getAllFacilityBookings = facilitylayer.getAllFacilityBookings;
 module.exports.createFacilityBooking = facilitylayer.createFacilityBooking;
+module.exports.deleteFacilityBooking = facilitylayer.deleteFacilityBooking;

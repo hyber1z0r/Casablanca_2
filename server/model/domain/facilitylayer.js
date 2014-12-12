@@ -82,9 +82,22 @@ function createFacilityBooking(start, slut, facilityID, gID, callback) {
     });
 }
 
+function deleteFacilityBooking(id, callback) {
+    facilitybooking.remove({_id: id}, function (err, doc) {
+        if(err) {
+            callback(err)
+        }
+        else {
+            callback(null, doc);
+        }
+    })
+};
+
 module.exports.getFacilityBooked = getFacilityBooked;
 module.exports.getFreeFacilityTimes = getFreeFacilityTimes;
 module.exports.getFacility = getFacility;
 module.exports.getFacilityBooking = getFacilityBooking;
 module.exports.getAllFacilityBookings = getAllFacilityBookings;
 module.exports.createFacilityBooking = createFacilityBooking;
+module.exports.deleteFacilityBooking = deleteFacilityBooking;
+

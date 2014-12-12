@@ -19,15 +19,6 @@
                 <li>Roomnumber: {{bookinginfo.room._id}}</li>
                 <li>Roomsize : {{bookinginfo.room.roomSize}}</li>
             </ul>
-            <div id="facilitybooking" ng-show="true">
-                <h3>This is your facility bookings</h3>
-                <ul ng-repeat="fb in fbookinginfo">
-                    <li>Facility: {{fb.fID.name}}</li>
-                    <li>Date: {{fb.startDate | date}}</li>
-                    <li>Time: {{fb.startDate | date:'shortTime'}} - {{fb.endDate | date:'shortTime'}}</li>
-                    <li>Signed up: {{fb.regDate | date:'short'}}</li>
-                </ul>
-            </div>
         </div>
 
 
@@ -64,7 +55,27 @@
             </div>
 
             <div class="col-xs-3">
-                <input type="button" value="Delete Facility" id="deleteFacilityButton" class="form-control"/>
+                <input type="button" value="View Facilitybookings" id="deleteFacilityButton" class="form-control" ng-click="open2()"/>
+                    <script type="text/ng-template" id="myModalDeleteFacilityBooking.html">
+                        <div class="modal-header">
+                            <h3 class="modal-title">This is your facility bookings</h3>
+                        </div>
+                        <div class="modal-body" id="facilitybooking" ng-class-even="md-col-4" ng-class-odd="row">
+                            <ul ng-repeat="fb in fbooking1">
+                                <li>Facility: {{fb.fID.name}}<a class="glyphicon glyphicon-trash"
+                                                                ng-click="deleteFacilityBooking($index)"></a></li>
+                                <li>Date: {{fb.startDate | date}}</li>
+                                <li>Time: {{fb.startDate | date:'shortTime'}} - {{fb.endDate | date:'shortTime'}}</li>
+                                <li>Signed up: {{fb.regDate | date:'short'}}</li>
+                            </ul>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-primary" ng-click="ok()">OK</button>
+                            <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+                        </div>
+                    </script>
+                </div>
+            </div>
             </div>
 
         </div>

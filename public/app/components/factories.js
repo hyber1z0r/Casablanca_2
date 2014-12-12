@@ -239,6 +239,17 @@ app.factory('guestBookingFactory', function ($http) {
             })
     };
 
+    var deleteFacilityBooking = function (id, callback) {
+       $http.delete('/userApi/deleteLogin/' + id)
+           .success(function (data, status, headers, config) {
+               callback(null, status);
+           })
+           .error(function (data, status, headers, config) {
+               callback(data);
+           })
+
+    }
+
     return {
         deleteGuest: deleteGuest,
         getAllInfo: getAllInfo,
@@ -246,7 +257,8 @@ app.factory('guestBookingFactory', function ($http) {
         getFreeTimes: getFreeTimes,
         bookFacility: bookFacility,
         getFacilityBooking: getFacilityBooking,
-        getAllFacilityBookings: getAllFacilityBookings
+        getAllFacilityBookings: getAllFacilityBookings,
+        deleteFacilityBooking: deleteFacilityBooking
     }
 });
 

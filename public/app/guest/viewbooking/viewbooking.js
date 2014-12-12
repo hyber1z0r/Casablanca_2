@@ -20,6 +20,18 @@ angular.module('casablanca.viewbooking', ['ngRoute'])
             $modalInstance.dismiss('cancel');
         };
     })
+    .controller('ModalDeleteCtrl2', function ($scope, $modalInstance, fbooking) {
+
+        $scope.fbooking1 = fbooking;
+
+        $scope.ok = function () {
+            $modalInstance.close();
+        };
+
+        $scope.cancel = function () {
+            $modalInstance.dismiss('cancel');
+        };
+    })
 
     .controller('GuestViewBookingCtrl', ['$scope','guestBookingFactory', '$location', 'LoginService','$modal','$window', function ($scope, guestBookingFactory, $location, LoginService, $modal, $window) {
 
@@ -41,6 +53,19 @@ angular.module('casablanca.viewbooking', ['ngRoute'])
                 $scope.fbookinginfo = fbooking;
             }
         });
+
+        $scope.deleteFacilityBooking = function (index) {
+            guestBookingFactory.deleteFacilityBooking($scope.fbookinginfo[index]._id, function (err, status) {
+                if (err) {
+                    console.log('There was an error in deleting the facilitybooking');
+                    status(500);
+                }
+                else {
+                    console.log('Great success! Facilitybooking is deleted!');
+                    status(200);
+                }
+            })
+        }
 
 
         var deleteBooking = function () {
@@ -83,6 +108,24 @@ angular.module('casablanca.viewbooking', ['ngRoute'])
 
             });
           }
+        $scope.open2 = function (size) {
+            var modalInstance = $modal.open({
+                templateUrl: 'myModalDeleteFacilityBooking.html',
+                controller: 'ModalDeleteCtrl2',
+                size: size,
+                resolve: {
+                    fbooking: function () {
+                        return $scope.fbookinginfo;
+                    }
+                }
+            });
+
+            modalInstance.result.then(function (selectedItem) {
+                $scope.selected = selectedItem;
+            }, function () {
+
+            });
+        }
 
 
 

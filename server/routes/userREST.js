@@ -147,4 +147,19 @@ router.get('/getAllFacilityBookings/:gId', function(req, res) {
 });
 
 
+router.delete('/deleteFacilityBooking/:id', function (req, res) {
+    if (typeof global.mongo_error !== "undefined") {
+        return res.status(500).end('Error: ' + global.mongo_error);
+    }
+    datalayer.deleteFacilityBooking(req.params.id, function callback(err, data) {
+        if (err) {
+            return res.status(500).json({error: err.toString()});
+        }
+        else {
+            res.json(data);
+        }
+    })
+});
+
+
 module.exports = router;
