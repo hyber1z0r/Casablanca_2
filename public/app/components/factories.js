@@ -250,6 +250,19 @@ app.factory('guestBookingFactory', function ($http) {
 
     }
 
+    var counterFacilityBooking = function (start, callback) {
+      $http.post('/userApi/counterFacilityBooking', {
+          startDato: start
+      })
+          .success(function (data) {
+              callback(null,data)
+          })
+          .error(function (data) {
+              callback(data)
+          })
+    
+    }
+
     return {
         deleteGuest: deleteGuest,
         getAllInfo: getAllInfo,
@@ -258,7 +271,8 @@ app.factory('guestBookingFactory', function ($http) {
         bookFacility: bookFacility,
         getFacilityBooking: getFacilityBooking,
         getAllFacilityBookings: getAllFacilityBookings,
-        deleteFacilityBooking: deleteFacilityBooking
+        deleteFacilityBooking: deleteFacilityBooking,
+        counterFacilityBooking: counterFacilityBooking
     }
 });
 

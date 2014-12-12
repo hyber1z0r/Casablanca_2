@@ -93,6 +93,21 @@ function deleteFacilityBooking(id, callback) {
     })
 };
 
+function counterFacilityBooking(start,callback) {
+    var endDate = new Date(start);
+    endDate.setDate(endDate.getDate() + 1)
+    console.log(start);
+    console.log(endDate);
+    facilitybooking.find({$and:[{starDate: {$gt: start}},{endDate: {$lt:endDate}}]}, function (err, doc) {
+          if(err) {
+            console.log(err)
+            callback(err)
+        }else {
+            callback(null,doc);
+        }
+    })
+};
+
 module.exports.getFacilityBooked = getFacilityBooked;
 module.exports.getFreeFacilityTimes = getFreeFacilityTimes;
 module.exports.getFacility = getFacility;
@@ -100,4 +115,6 @@ module.exports.getFacilityBooking = getFacilityBooking;
 module.exports.getAllFacilityBookings = getAllFacilityBookings;
 module.exports.createFacilityBooking = createFacilityBooking;
 module.exports.deleteFacilityBooking = deleteFacilityBooking;
+module.exports.counterFacilityBooking = counterFacilityBooking;
+
 

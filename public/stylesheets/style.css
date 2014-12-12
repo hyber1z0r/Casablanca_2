@@ -619,13 +619,13 @@ td a {
     text-decoration: none;
 }
 table.tableid td {
-    background: red;
-    color: red;
+    background: #25f014;
+    color: #25f014;
 }
 
 table.tableid td:hover {
-background-color: #25f014;
-    color: #25f014;
+background-color: #f17b00;
+    color: #f17b00;
 }
 
 #showSelectedTime {
