@@ -394,7 +394,7 @@
                 <div class="modal-header">
                     <h3 class="modal-title">Persons added</h3>
                 </div>
-                <div class="modal-body" ng-class-even="md-col-4" ng-class-odd="row">
+                <div class="modal-body" id="showpersonmodal" ng-class-even="md-col-4" ng-class-odd="row">
                     <ul ng-repeat="guest in persons">
                         <li>Full name : {{guest.firstName}} {{guest.lastName}}<a class="glyphicon glyphicon-trash"
                                                                                  ng-click="delete($index)"></a></li>

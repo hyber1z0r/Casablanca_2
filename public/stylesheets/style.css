@@ -631,3 +631,12 @@ background-color: #25f014;
 #showSelectedTime {
     margin-top: 75px;
 }
+
+
+/***********************
+FACILITYBOOKINGMODAL
+***********************/
+#facilitybooking, #showpersonmodal {
+    overflow-y: scroll;
+    height: 300px;
+}
