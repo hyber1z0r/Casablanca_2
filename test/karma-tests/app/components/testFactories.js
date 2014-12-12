@@ -12,7 +12,7 @@ describe('casablanca.factories', function () {
             hotelBookingFactory = _hotelBookingFactory_;
         }));
 
-        it('Should return the free rooms based on startdate, enddate and roomsize', function () {
+        it('Should return the free rooms based on startdate, enddate and roomsize', function (done) {
             var start = new Date();
             start.setFullYear(2014, 11, 20); // 20 dec, 2014
             var end = new Date();
@@ -20,7 +20,7 @@ describe('casablanca.factories', function () {
             var roomsize = 5;
             hotelBookingFactory.getFreeRooms(start, end, roomsize, function (err, data) {
                 expect('Sort').toBe('Hvid');
-                console.log("hej hej");
+                done();
             });
 
         });
