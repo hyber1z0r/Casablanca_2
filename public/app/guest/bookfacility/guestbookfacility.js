@@ -16,7 +16,23 @@ angular.module('casablanca.guestbookfacility', ['ngRoute'])
 
         $scope.search = function () {
             $scope.showRest = true;
+
+            var copy = angular.copy($scope.dateFacility)
+            var startDate = new Date (copy.getFullYear(), copy.getMonth(), copy.getDate())
+            console.log(startDate);
+            guestBookingFactory.counterFacilityBooking(startDate, function (err, res) {
+                if (err){
+                    console.log('Cant read how many bookings there is');
+                } else {
+                    console.log('You can see how many there is');
+                    console.log(res);
+
+
+                }
+            })
         };
+
+
 
         $scope.bookFacility = function () {
             var startDate = $scope.dateFacility;
@@ -36,6 +52,21 @@ angular.module('casablanca.guestbookfacility', ['ngRoute'])
             })
         }
 
+
+
+        $scope.guests = [];
+        $scope.bookinginfo = {};
+        $scope.firstGuest = {};
+
+        guestBookingFactory.getAllInfo($scope.profileID, function (err, user, booking, guests) {
+            if(err) {
+                console.log(err);
+            } else {
+                $scope.firstGuest = user;
+                $scope.bookinginfo = booking;
+                $scope.guests = guests;
+            }
+        });
 
     }]);
 

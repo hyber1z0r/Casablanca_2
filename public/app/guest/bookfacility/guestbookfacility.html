@@ -10,38 +10,45 @@
     <div id="homecontent">
 
 
-        <h1 id="welcome">Book a facility, {{guest.firstName}}</h1>
+        <h1 id="welcome">Book a facility, {{firstGuest.firstName}}</h1>
 
 
         <div class="col-md-8">
 
 
             <div class="row">
-                <div class="col-xs-5">
-                    <div class="input-group bookfacility">
-                        <span class="input-group-addon">Choose facility</span>
-                        <select ng-model="facility" name="facilities" class="form-control">
-                            <option value="Swimming">Swimming</option>
-                            <option value="Golf">Golf</option>
-                            <option value="Ping pong">Ping-pong</option>
-                            <option value="Gym">Gym</option>
-                            <option value="Handball">Handball</option>
-                            <option value="Beachvolley">Beachvolley</option>
-                            <option value="Tennis">Tennis</option>
-                        </select>
+                <form name="bookfacility" novalidate>
+                    <div class="col-xs-5">
+                        <div class="input-group bookfacility">
+                            <span class="input-group-addon">Choose facility</span>
+                            <select ng-model="facility" name="facilities" class="form-control" required>
+                                <option value="Swimming">Swimming</option>
+                                <option value="Golf">Golf</option>
+                                <option value="Ping pong">Ping-pong</option>
+                                <option value="Gym">Gym</option>
+                                <option value="Handball">Handball</option>
+                                <option value="Beachvolley">Beachvolley</option>
+                                <option value="Tennis">Tennis</option>
+                            </select>
+                        </div>
                     </div>
-                </div>
-                <div class="col-xs-5">
-                    <div class="input-group check-out">
-                        <span class="input-group-addon">Choose date</span>
-                        <input type="date" class="form-control" ng-model="dateFacility" ng-click="disableForm=true">
 
+                    <div class="col-xs-5">
+                        <div class="input-group check-out">
+                            <span class="input-group-addon">Choose date</span>
+                            <input type="date" class="form-control" ng-model="dateFacility" ng-click="disableForm=true" required min="{{bookinginfo.startDate}}" max="{{bookinginfo.endDate}}">
+                        </div>
                     </div>
-                </div>
-                <div class="col-xs-2">
-                    <input type="button" value="Search" id="searchDateButton" ng-click="search()" class="form-control"/>
-                </div>
+
+                </form>
             </div>
+
+                    <div class="col-xs-2">
+                        <input type="button" value="Search" id="searchDateButton" ng-click="search()" class="form-control" ng-disabled="bookfacility.$invalid" />
+                </div>
+        </div>
+
+
             <div id="picktimefacility">
                 <div ng-show="showRest">
 
@@ -71,7 +78,11 @@
                     </table>
 
 
-                    <div ng-show="selected"><p id="showSelectedTime">You have chosen the time at {{selected.time}}
+                    <div ng-show="selected"><p id="showSelectedTime">
+
+                        There are {{bookingsleft}} bookings left. <br>
+
+                        You have chosen the time at {{selected.time}}
                         clock. Do
                         you want to book this time?</p></div>
 

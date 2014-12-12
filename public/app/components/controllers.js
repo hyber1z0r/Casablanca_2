@@ -26,6 +26,11 @@ angular.module('casablanca.controllers', []).
         $scope.message = '';
         $scope.error = null;
 
+        $scope.guests = [];
+        $scope.bookinginfo = {};
+        $scope.firstGuest = {};
+        $scope.fbookinginfo = [];
+
         $scope.login = function () {
             hotelBookingFactory.login(LoginService.getUsername(), LoginService.getPassword(), function (err, data) {
                 if (err) {

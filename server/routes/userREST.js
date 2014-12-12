@@ -161,5 +161,18 @@ router.delete('/deleteFacilityBooking/:id', function (req, res) {
     })
 });
 
+router.post('/counterFacilityBooking', function (req, res) {
+    if (typeof global.mongo_error !== "undefined") {
+        return res.status(500).end('Error: ' + global.mongo_error);
+    }
+    datalayer.counterFacilityBooking(req.body.startDato, function callback(err, data) {
+        if (err) {
+            return res.status(500).json({error: err.toString()});
+        }else {
+            res.json(data);
+        }
+
+    })
+    });
 
 module.exports = router;
