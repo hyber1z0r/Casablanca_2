@@ -427,6 +427,7 @@ SIDEBAR AND CONTENT
     border-radius: 30px;
     padding-left: 200px;
     height: 600px;
+    overflow-y:scroll;
 
 }
 
