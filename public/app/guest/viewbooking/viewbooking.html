@@ -63,7 +63,7 @@
                         <div class="modal-body" id="facilitybooking" ng-class-even="md-col-4" ng-class-odd="row">
                             <ul ng-repeat="fb in fbooking1">
                                 <li>Facility: {{fb.fID.name}}<a class="glyphicon glyphicon-trash"
-                                                                ng-click="deleteFacilityBooking($index)"></a></li>
+                                                                ng-click="dbooking1($index)"></a></li>
                                 <li>Date: {{fb.startDate | date}}</li>
                                 <li>Time: {{fb.startDate | date:'shortTime'}} - {{fb.endDate | date:'shortTime'}}</li>
                                 <li>Signed up: {{fb.regDate | date:'short'}}</li>

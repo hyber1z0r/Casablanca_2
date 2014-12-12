@@ -20,9 +20,10 @@ angular.module('casablanca.viewbooking', ['ngRoute'])
             $modalInstance.dismiss('cancel');
         };
     })
-    .controller('ModalDeleteCtrl2', function ($scope, $modalInstance, fbooking) {
+    .controller('ModalDeleteCtrl2', function ($scope, $modalInstance, fbooking, dbooking) {
 
         $scope.fbooking1 = fbooking;
+        $scope.dbooking1 = dbooking;
 
         $scope.ok = function () {
             $modalInstance.close();
@@ -58,11 +59,9 @@ angular.module('casablanca.viewbooking', ['ngRoute'])
             guestBookingFactory.deleteFacilityBooking($scope.fbookinginfo[index]._id, function (err, status) {
                 if (err) {
                     console.log('There was an error in deleting the facilitybooking');
-                    status(500);
                 }
                 else {
                     console.log('Great success! Facilitybooking is deleted!');
-                    status(200);
                 }
             })
         }
@@ -116,6 +115,9 @@ angular.module('casablanca.viewbooking', ['ngRoute'])
                 resolve: {
                     fbooking: function () {
                         return $scope.fbookinginfo;
+                    },
+                    dbooking: function () {
+                        return $scope.deleteFacilityBooking;
                     }
                 }
             });
