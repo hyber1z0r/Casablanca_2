@@ -240,7 +240,7 @@ app.factory('guestBookingFactory', function ($http) {
     };
 
     var deleteFacilityBooking = function (id, callback) {
-       $http.delete('/userApi/deleteLogin/' + id)
+       $http.delete('/userApi/deleteFacilityBooking/' + id)
            .success(function (data, status, headers, config) {
                callback(null, status);
            })

@@ -56,12 +56,13 @@ angular.module('casablanca.viewbooking', ['ngRoute'])
         });
 
         $scope.deleteFacilityBooking = function (index) {
-            guestBookingFactory.deleteFacilityBooking($scope.fbookinginfo[index]._id, function (err, status) {
+            guestBookingFactory.deleteFacilityBooking($scope.fbookinginfo[index]._id, function (err) {
                 if (err) {
                     console.log('There was an error in deleting the facilitybooking');
                 }
                 else {
                     console.log('Great success! Facilitybooking is deleted!');
+                    $scope.fbookinginfo.splice(index, 1);
                 }
             })
         }
