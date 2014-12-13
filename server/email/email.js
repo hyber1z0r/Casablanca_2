@@ -26,8 +26,8 @@ function sentMail(booking, guests, usernpw) {
 // the same transporter object for all e-mails
 
 
-
-    var html = jade.renderFile('../server/email/emaildetail.jade', details)
+// ../server/email/emaildetail.jade
+    var html = jade.renderFile('server/email/emaildetail.jade', details)
 
 // setup e-mail data with unicode symbols
     var mailOptions = {
