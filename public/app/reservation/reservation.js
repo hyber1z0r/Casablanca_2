@@ -11,24 +11,11 @@ angular.module('casablanca.reservation', ['ngRoute', 'ui.bootstrap'])
 
     .controller('ReservationCtrl', function ($scope, hotelBookingFactory, $location, $modal, $log, randomFac) {
 
-
-        /*
-         $scope.guest = {
-         firstName: 'Leon',
-         lastName: 'Hansen',
-         address: 'Lærkevej 12, 4621 Gadstrup',
-         country: 'DK',
-         email: 'messikrkic@gmail.com',
-         phone: 38383060,
-         dateOfBirth: new Date(1993, 6, 23)
-         };
-         */
-
-        $scope.setFieldsWithRandom = function () {
-            randomFac.getRandom(function (err, g) {
-                $scope.guest = g;
-            })
-        };
+        //$scope.setFieldsWithRandom = function () {
+        //    randomFac.getRandom(function (err, g) {
+        //        $scope.guest = g;
+        //    })
+        //};
 
         var local = new Date();
         local.setMinutes(local.getMinutes() - local.getTimezoneOffset());
