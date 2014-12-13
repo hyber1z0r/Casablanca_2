@@ -37,6 +37,7 @@
   },
   "scripts": {
     "start": "node ./bin/www",
+    "postinstall": "bower install",
     "backendtests": "mocha test/backend-tests",
     "test": "node node_modules/karma/bin/karma start test/karma.conf.js",
     "test-single-run": "karma start test/karma.conf.js  --single-run",
