@@ -1,4 +1,2 @@
 node_modules/
-public/vendor/
 .idea/
-server/email/*.js
